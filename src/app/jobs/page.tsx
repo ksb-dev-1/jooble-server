@@ -59,7 +59,10 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
         role="main"
         aria-labelledby="job-page-heading"
       >
-        <aside className="w-1/3" aria-labelledby="job-filters-heading">
+        <aside
+          className="hidden md:block"
+          aria-labelledby="job-filters-heading"
+        >
           <h2 id="job-filters-heading" className="sr-only">
             Filter jobs by type, location, and mode
           </h2>

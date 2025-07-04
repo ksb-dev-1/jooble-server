@@ -88,7 +88,7 @@ export default function JobFilters({
 
   return (
     <aside
-      className="bg-light dark:bg-dark hidden md:block border rounded p-4 w-[275px]"
+      className="bg-light dark:bg-dark border rounded p-4 w-[275px]"
       aria-labelledby="filter-heading"
     >
       <form
