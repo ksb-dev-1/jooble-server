@@ -174,24 +174,22 @@ export default function ProfileDetails({
             </p>
           </div>
 
-          <div className="flex justify-end mt-4">
-            <button
-              onClick={handleDelete}
-              disabled={isPending}
-              className={`relative px-4 h-[41.6px] rounded flex items-center justify-center bg-red-600 text-white hover:bg-red-500 dark:bg-red-700 dark:hover:bg-red-600 transition-colors ${
-                isPending ? "pointer-events-none opacity-70" : ""
-              }`}
-            >
-              <MdOutlineDelete className="mr-2 h-5 w-5" />
-              Delete
-              {isPending && (
-                <AiOutlineLoading3Quarters
-                  className="absolute right-4 animate-spin"
-                  aria-hidden="true"
-                />
-              )}
-            </button>
-          </div>
+          <button
+            onClick={handleDelete}
+            disabled={isPending}
+            className={`mt-4 relative w-full px-4 h-[41.6px] rounded flex items-center justify-center bg-red-600 text-white hover:bg-red-500 dark:bg-red-700 dark:hover:bg-red-600 transition-colors ${
+              isPending ? "pointer-events-none opacity-70" : ""
+            }`}
+          >
+            <MdOutlineDelete className="mr-2 h-5 w-5" />
+            Delete
+            {isPending && (
+              <AiOutlineLoading3Quarters
+                className="absolute right-4 animate-spin"
+                aria-hidden="true"
+              />
+            )}
+          </button>
 
           {errorMsg && (
             <p className="mt-4 text-sm text-red-600 text-center" role="alert">
