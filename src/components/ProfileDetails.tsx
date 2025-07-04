@@ -70,13 +70,7 @@ export default function ProfileDetails({
           <h1 id="profile-heading" className="sr-only">
             User Profile Details
           </h1>
-
-          {status === "loading" ? (
-            <div
-              className="skeleton h-[100px] w-[100px] rounded"
-              aria-hidden="true"
-            />
-          ) : image ? (
+          {image ? (
             <Image
               src={image}
               alt="User profile image"
@@ -84,7 +78,6 @@ export default function ProfileDetails({
               width={100}
               priority
               sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover rounded border"
             />
           ) : (
             <div
@@ -96,19 +89,10 @@ export default function ProfileDetails({
             </div>
           )}
 
-          {status === "loading" ? (
-            <div aria-hidden="true">
-              <p className="skeleton rounded font-bold w-fit">Name skeleton</p>
-              <p className="skeleton rounded font-medium mt-1 w-[300px]">
-                Email skeleton
-              </p>
-            </div>
-          ) : (
-            <div>
-              <p className="text-xl font-bold">{name || "No name"}</p>
-              <p className="font-medium">{email || "No email"}</p>
-            </div>
-          )}
+          <div>
+            <p className="text-xl font-bold">{name || "No name"}</p>
+            <p className="font-medium">{email || "No email"}</p>
+          </div>
 
           <button
             onClick={() => setIsModalOpen(true)}
