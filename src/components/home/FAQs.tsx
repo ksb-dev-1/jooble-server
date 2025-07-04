@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 // 3rd party
-import { motion, AnimatePresence } from "framer-motion";
+//import { motion, AnimatePresence } from "framer-motion";
 import { LiaPlusSolid, LiaMinusSolid } from "react-icons/lia";
 
 interface FAQ {
@@ -57,17 +57,17 @@ const faqs: FAQ[] = [
 ];
 
 function FAQItem({ faq, isOpen, onToggle, index }: FAQItemProps) {
-  const direction = index % 2 === 0 ? -20 : 20;
-  const delay = index * 0.1;
+  // const direction = index % 2 === 0 ? -20 : 20;
+  // const delay = index * 0.1;
   const questionId = `faq-question-${index}`;
   const answerId = `faq-answer-${index}`;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: direction }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
+    <div
+    // initial={{ opacity: 0, x: direction }}
+    // whileInView={{ opacity: 1, x: 0 }}
+    // viewport={{ once: true }}
+    // transition={{ duration: 0.5, delay }}
     >
       <div className="flex w-full items-center justify-between py-4 text-left">
         <button
@@ -78,10 +78,10 @@ function FAQItem({ faq, isOpen, onToggle, index }: FAQItemProps) {
           id={questionId}
         >
           <h3 className="font-medium text-left">{faq.question}</h3>
-          <motion.span
+          <span
             className="ml-6 flex-shrink-0"
-            animate={{ rotate: isOpen ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
+            // animate={{ rotate: isOpen ? 180 : 0 }}
+            // transition={{ duration: 0.3 }}
             aria-hidden="true"
           >
             {isOpen ? (
@@ -89,33 +89,33 @@ function FAQItem({ faq, isOpen, onToggle, index }: FAQItemProps) {
             ) : (
               <LiaPlusSolid className="h-5 w-5" />
             )}
-          </motion.span>
+          </span>
         </button>
       </div>
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            key="answer"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            id={answerId}
-            role="region"
-            aria-labelledby={questionId}
-          >
-            <p className="pb-4 text-slate-500 dark:text-slate-400">
-              {faq.answer}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+      {/* <AnimatePresence initial={false}> */}
+      {isOpen && (
+        <div
+          key="answer"
+          // initial={{ opacity: 0, height: 0 }}
+          // animate={{ opacity: 1, height: "auto" }}
+          // exit={{ opacity: 0, height: 0 }}
+          // transition={{ duration: 0.3 }}
+          id={answerId}
+          role="region"
+          aria-labelledby={questionId}
+        >
+          <p className="pb-4 text-slate-500 dark:text-slate-400">
+            {faq.answer}
+          </p>
+        </div>
+      )}
+      {/* </AnimatePresence> */}
+    </div>
   );
 }
 
-const FAQs = () => {
+export default function FAQs() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
@@ -144,6 +144,4 @@ const FAQs = () => {
       </div>
     </div>
   );
-};
-
-export default FAQs;
+}

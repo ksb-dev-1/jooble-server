@@ -1,4 +1,3 @@
-// import { Suspense } from "react";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
@@ -8,7 +7,6 @@ import { getUserSession } from "@/lib/getUserSession";
 // components
 import Container from "@/components/shared/Container";
 import Breadcrumb from "@/components/shared/BreadCrumb";
-// import JobDetailsSkeleton from "@/components/skeletons/JobDetailsSkeleton";
 import JobDetails from "@/components/job-details/JobDetails";
 
 export const metadata: Metadata = {
@@ -46,9 +44,7 @@ export default async function JobDetailsPage({
           Job Details
         </h1>
 
-        {/* <Suspense fallback={<JobDetailsSkeleton />}> */}
         <JobDetails params={params} userId={userId} />
-        {/* </Suspense> */}
       </main>
     </Container>
   );

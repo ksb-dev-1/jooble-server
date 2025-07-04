@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-// import { Suspense } from "react";
 import { redirect } from "next/navigation";
 
 // lib
@@ -8,7 +7,7 @@ import { getUserSession } from "@/lib/getUserSession";
 // components
 import Container from "@/components/shared/Container";
 import Breadcrumb from "@/components/shared/BreadCrumb";
-// import JobListSkeleton from "@/components/skeletons/JobListSkeleton";
+
 import AppliedJobList from "@/components/jobs/AppliedJobList";
 
 export const metadata: Metadata = {
@@ -46,9 +45,8 @@ export default async function AppliedJobsPage() {
           <h2 id="applied-job-results-heading" className="sr-only">
             Applied Jobs
           </h2>
-          {/* <Suspense fallback={<JobListSkeleton gridClass="md:grid-cols-2" />}> */}
+
           <AppliedJobList userId={userId} />
-          {/* </Suspense> */}
         </section>
       </main>
     </Container>

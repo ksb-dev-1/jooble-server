@@ -1,7 +1,7 @@
-"use client";
+// "use client";
 
 // 3rd party
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import {
   MdFilterList,
   MdSearch,
@@ -44,7 +44,7 @@ const features = [
   },
 ];
 
-const FeatureSection = () => {
+export default async function FeatureSection() {
   return (
     <section
       className="max-w-5xl px-4 mx-auto"
@@ -57,12 +57,12 @@ const FeatureSection = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
         {features.map((feature, index) => (
-          <motion.article
+          <article
             key={index}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
+            // initial={{ opacity: 0, y: 40 }}
+            // whileInView={{ opacity: 1, y: 0 }}
+            // transition={{ duration: 0.5, delay: index * 0.1 }}
+            // viewport={{ once: true }}
             className="p-6 border rounded bg-gradient-to-b from-light to-dark"
             tabIndex={0}
             aria-label={`${feature.title}: ${feature.desc}`}
@@ -72,11 +72,9 @@ const FeatureSection = () => {
             </span>
             <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
             <p className="text-slate-500 dark:text-slate-400">{feature.desc}</p>
-          </motion.article>
+          </article>
         ))}
       </div>
     </section>
   );
-};
-
-export default FeatureSection;
+}

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-//import { Suspense } from "react";
 import { redirect } from "next/navigation";
 
 // lib
@@ -9,7 +8,6 @@ import { getUserSession } from "@/lib/getUserSession";
 import Container from "@/components/shared/Container";
 import Breadcrumb from "@/components/shared/BreadCrumb";
 import JobFilters from "@/components/jobs/JobFilters";
-// import JobListSkeleton from "@/components/skeletons/JobListSkeleton";
 import JobList from "@/components/jobs/JobList";
 
 export const metadata: Metadata = {
@@ -78,9 +76,7 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
           <h2 id="job-results-heading" className="sr-only">
             Job Results
           </h2>
-          {/* <Suspense fallback={<JobListSkeleton />}> */}
           <JobList userId={userId} filterValues={filterValues} />
-          {/* </Suspense> */}
         </section>
       </main>
     </Container>
