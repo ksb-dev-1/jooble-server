@@ -8,7 +8,7 @@ import { fetchAppliedJobsLengthServerAction } from "@/actions/fetch-applied-jobs
 // components
 import Container from "@/components/shared/Container";
 import Breadcrumb from "@/components/shared/BreadCrumb";
-import ProfileDetails from "@/components/ProfileDetails";
+import ProfileDetails from "@/components/profile-details/ProfileDetails";
 
 // utils
 import getUserSession from "@/utils/getUserSession";

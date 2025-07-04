@@ -5,7 +5,7 @@ import UnauthorizedError from "@/components/errors/UnauthorizedError";
 import ServerError from "@/components/errors/ServerError";
 import JobCard from "@/components/shared/JobCard";
 import Markdown from "@/components/Markdown";
-import ApplyForJob from "@/components/ApplyForJob";
+import ApplyNowTrigger from "@/components/job-details/ApplyNowTrigger";
 
 interface JobDetailsProps {
   params: {
@@ -41,7 +41,7 @@ export default async function JobDetails({ params, userId }: JobDetailsProps) {
         />
       </header>
 
-      <ApplyForJob
+      <ApplyNowTrigger
         userId={userId}
         jobId={id}
         applicationStatus={applicationStatus}
