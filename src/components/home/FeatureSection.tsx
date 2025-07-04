@@ -44,7 +44,7 @@ const features = [
   },
 ];
 
-export default async function FeatureSection() {
+export default function FeatureSection() {
   return (
     <section
       className="max-w-5xl px-4 mx-auto"
@@ -64,7 +64,6 @@ export default async function FeatureSection() {
             // transition={{ duration: 0.5, delay: index * 0.1 }}
             // viewport={{ once: true }}
             className="p-6 border rounded bg-gradient-to-b from-light to-dark"
-            tabIndex={0}
             aria-label={`${feature.title}: ${feature.desc}`}
           >
             <span className="text-primary mb-4 block" aria-hidden="true">

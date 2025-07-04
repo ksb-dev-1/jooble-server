@@ -57,7 +57,7 @@ import Link from "next/link";
 //   },
 // };
 
-export default async function Heading() {
+export default function Heading() {
   return (
     <div
       //initial="hidden"

@@ -8,6 +8,8 @@
     "build": "next build",
     "start": "next start",
     "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
     "lint": "next lint"
   },
   "dependencies": {
@@ -18,7 +20,6 @@
     "@tanstack/react-query": "^5.80.6",
     "@vercel/speed-insights": "^1.2.0",
     "cloudinary": "^2.6.1",
-    "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "motion": "^12.19.1",
     "next": "14.2.29",
@@ -30,19 +31,21 @@
     "react-icons": "^5.5.0",
     "react-markdown": "^10.1.0",
     "sharp": "^0.34.2",
-    "stripe": "^18.1.1",
-    "zod": "^3.25.23"
+    "stripe": "^18.1.1"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@vitejs/plugin-react": "^4.6.0",
+    "@vitest/coverage-v8": "^3.2.4",
     "eslint": "^8",
     "eslint-config-next": "14.2.29",
     "jsdom": "^26.1.0",
+    "next-router-mock": "^1.0.2",
     "postcss": "^8",
     "prisma": "^6.8.2",
     "tailwindcss": "^3.4.1",
