@@ -1,12 +1,63 @@
+// import type { Metadata } from "next";
+// import "./globals.css";
+
+// // components
+// import Navbar from "@/components/Navbar";
+// import Footer from "@/components/Footer";
+// import Providers from "./Providers";
+// import { ThemeProvider } from "./ThemeProvider";
+
+// import { SpeedInsights } from "@vercel/speed-insights/next";
+
+// export const metadata: Metadata = {
+//   title: "Jooble",
+//   description: "A go to platform for job seekers",
+// };
+
+// export default function RootLayout({
+//   children,
+// }: Readonly<{
+//   children: React.ReactNode;
+// }>) {
+//   return (
+//     <html lang="en" suppressHydrationWarning={true}>
+//       <head>
+//         <script
+//           dangerouslySetInnerHTML={{
+//             __html: `
+//               (function() {
+//                 try {
+//                   const theme = localStorage.getItem('theme') ||
+//                     (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+//                   document.documentElement.setAttribute('data-theme', theme);
+//                 } catch (_) {}
+//               })();
+//             `,
+//           }}
+//         />
+//       </head>
+//       <body>
+//         <Providers>
+//           <ThemeProvider>
+//             <div className="bg-light dark:bg-dark text-text">
+//               <Navbar />
+//               {children}
+//               <Footer />
+//               <SpeedInsights />
+//             </div>
+//           </ThemeProvider>
+//         </Providers>
+//       </body>
+//     </html>
+//   );
+// }
+
 import type { Metadata } from "next";
 import "./globals.css";
-
-// components
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Providers from "./Providers";
 import { ThemeProvider } from "./ThemeProvider";
-
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
@@ -22,16 +73,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <head>
-        {/* Script to set theme before Tailwind loads */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                try {
-                  const theme = localStorage.getItem('theme') || 
-                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-                  document.documentElement.setAttribute('data-theme', theme);
-                } catch (_) {}
+                var savedTheme = localStorage.getItem('theme') || 'light';
+                var systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                var theme = savedTheme === 'system' ? systemTheme : savedTheme;
+                document.documentElement.setAttribute('data-theme', theme);
+                document.documentElement.classList.add(theme);
               })();
             `,
           }}
