@@ -1,0 +1,179 @@
+"use server";
+
+import { prisma } from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
+import { unstable_cache } from "next/cache";
+
+type BaseParams = {
+  location?: string;
+  jobType?: string;
+  jobMode?: string;
+  page?: number;
+  limit?: number;
+  search?: string;
+};
+
+type FetchJobsParams = BaseParams & {
+  userId: string;
+};
+
+const _fetchPublicJobs = async ({
+  location,
+  jobType,
+  jobMode,
+  page = 1,
+  limit = 5,
+  search,
+}: BaseParams) => {
+  // console.log("⛏️ Fetching Jobs from DB");
+  const skip = (page - 1) * limit;
+
+  const jobTypes = jobType?.split(",").filter((j) => j && j !== "all");
+  const jobModes = jobMode?.split(",").filter((j) => j && j !== "all");
+  const locations = location?.split(",").filter((j) => j && j !== "all");
+
+  // Create base conditions array
+  const conditions: Prisma.JobWhereInput[] = [];
+
+  // Search condition
+  if (search?.trim()) {
+    const searchTerm = search.trim();
+    conditions.push({
+      OR: [
+        { role: { contains: searchTerm, mode: "insensitive" } },
+        { companyName: { contains: searchTerm, mode: "insensitive" } },
+        {
+          skills: {
+            hasSome: [
+              searchTerm,
+              searchTerm.toLowerCase(),
+              searchTerm.toUpperCase(),
+              searchTerm.charAt(0).toUpperCase() +
+                searchTerm.slice(1).toLowerCase(),
+            ],
+          },
+        },
+      ],
+    });
+  }
+
+  // Location condition
+  if (locations?.length) {
+    conditions.push({
+      OR: locations.map((loc) => ({
+        location: { equals: loc, mode: "insensitive" },
+      })),
+    });
+  }
+
+  // Job type condition
+  if (jobTypes?.length) {
+    conditions.push({
+      OR: jobTypes.map((type) => ({
+        jobType: { equals: type, mode: "insensitive" },
+      })),
+    });
+  }
+
+  // Job mode condition
+  if (jobModes?.length) {
+    conditions.push({
+      OR: jobModes.map((mode) => ({
+        jobMode: { equals: mode, mode: "insensitive" },
+      })),
+    });
+  }
+
+  // Final where clause
+  const whereClause: Prisma.JobWhereInput =
+    conditions.length > 0 ? { AND: conditions } : {};
+
+  const [jobs, totalJobs] = await Promise.all([
+    prisma.job.findMany({
+      where: whereClause,
+      skip,
+      take: limit,
+      select: {
+        id: true,
+        companyName: true,
+        experience: true,
+        role: true,
+        jobType: true,
+        location: true,
+        jobMode: true,
+        salary: true,
+        skills: true,
+        openings: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+    }),
+    prisma.job.count({ where: whereClause }),
+  ]);
+
+  return {
+    jobs,
+    totalPages: Math.ceil(totalJobs / limit),
+  };
+};
+
+// ✅ Cached version of public job fetch
+const cachedFetchPublicJobs = (params: BaseParams) => {
+  const cacheKey = [`public-jobs-${JSON.stringify(params)}`];
+
+  return unstable_cache(() => _fetchPublicJobs(params), cacheKey, {
+    revalidate: 3600,
+  })();
+};
+
+// ✅ 2. User-specific personalization: isSaved + applicationStatus
+const fetchUserJobMetadata = async (userId: string, jobIds: string[]) => {
+  const [savedJobs, applications] = await Promise.all([
+    prisma.savedJob.findMany({
+      where: {
+        userId,
+        jobId: { in: jobIds },
+      },
+      select: { jobId: true },
+    }),
+    prisma.jobApplication.findMany({
+      where: {
+        userId,
+        jobId: { in: jobIds },
+      },
+      select: {
+        jobId: true,
+        status: true,
+      },
+    }),
+  ]);
+
+  const savedSet = new Set(savedJobs.map((j) => j.jobId));
+  const applicationMap = new Map(applications.map((a) => [a.jobId, a.status]));
+
+  return { savedSet, applicationMap };
+};
+
+// ✅ 3. Final exposed function
+export const fetchJobsServerAction = async (params: FetchJobsParams) => {
+  const { userId, ...baseParams } = params;
+
+  const publicData = await cachedFetchPublicJobs(baseParams);
+  const jobIds = publicData.jobs.map((job) => job.id);
+
+  const { savedSet, applicationMap } = await fetchUserJobMetadata(
+    userId,
+    jobIds
+  );
+
+  const personalizedJobs = publicData.jobs.map((job) => ({
+    ...job,
+    isSaved: savedSet.has(job.id),
+    applicationStatus: applicationMap.get(job.id) || null,
+  }));
+
+  return {
+    jobs: personalizedJobs,
+    totalPages: publicData.totalPages,
+  };
+};

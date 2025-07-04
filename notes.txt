@@ -1,0 +1,41 @@
+--> User Relations:
+
+✅ Correct: One-to-many to Account, Session, SavedJob, JobApplication
+
+✅ Correct: One-to-one to Resume, Subscription
+
+--> Account:
+
+✅ Correct: Many-to-one to User with @relation directive
+
+Added @db.ObjectId to userId
+
+--> Session:
+
+✅ Correct: Many-to-one to User with @relation directive
+
+Added @db.ObjectId to userId
+
+--> Job Relations:
+
+✅ Correct: One-to-many to SavedJob, JobApplication
+
+--> SavedJob:
+
+✅ Correct: Many-to-one to User and Job with relations
+
+✅ Added composite unique @@unique([userId, jobId]) to prevent duplicates
+
+--> Resume:
+
+✅ Correct: One-to-one with User via unique userId
+
+--> JobApplication:
+
+✅ Correct: Many-to-one to User and Job
+
+✅ Added composite unique @@unique([userId, jobId]) to prevent duplicate applications
+
+--> Subscription:
+
+✅ Correct: One-to-one with User via unique userId

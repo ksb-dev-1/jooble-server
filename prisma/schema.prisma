@@ -1,0 +1,156 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum ApplicationStatus {
+  PENDING
+  INTERVIEW
+  OFFER
+  REJECT
+}
+
+enum Plan {
+  FREE
+  PREMIUM
+}
+
+enum SubscriptionPeriod {
+  MONTHLY
+  YEARLY
+}
+
+model User {
+  id            String           @id @default(auto()) @map("_id") @db.ObjectId
+  name          String?
+  email         String           @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  savedJobs     SavedJob[]
+  applications  JobApplication[]
+  resume        Resume?
+  customerId    String?
+  plan          Plan             @default(FREE)
+  subscription  Subscription?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique
+  userId       String   @db.ObjectId
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Job {
+  id           String           @id @default(auto()) @map("_id") @db.ObjectId
+  companyLogo  String?
+  companyName  String
+  experience   String
+  role         String
+  jobType      String
+  location     String
+  jobMode      String
+  salary       Int
+  skills       String[]
+  openings     Int
+  description  String?
+  savedByUsers SavedJob[]
+  applications JobApplication[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SavedJob {
+  id             String           @id @default(auto()) @map("_id") @db.ObjectId
+  userId         String           @db.ObjectId
+  jobId          String           @db.ObjectId
+  user           User             @relation(fields: [userId], references: [id])
+  job            Job              @relation(fields: [jobId], references: [id])
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  JobApplication JobApplication[]
+
+  @@unique([userId, jobId])
+}
+
+model Resume {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  url       String?
+  publicId  String
+  userId    String   @unique @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model JobApplication {
+  id         String            @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String            @db.ObjectId
+  jobId      String            @db.ObjectId
+  status     ApplicationStatus @default(PENDING)
+  user       User              @relation(fields: [userId], references: [id])
+  job        Job               @relation(fields: [jobId], references: [id])
+  savedJobId String?           @db.ObjectId
+  savedJob   SavedJob?         @relation(fields: [savedJobId], references: [id])
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+
+  @@unique([userId, jobId])
+}
+
+model Subscription {
+  id                 String             @id @default(auto()) @map("_id") @db.ObjectId
+  userId             String             @unique @db.ObjectId
+  plan               Plan
+  subscriptionPeriod SubscriptionPeriod
+  startDate          DateTime           @default(now())
+  endDate            DateTime?
+
+  user User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
