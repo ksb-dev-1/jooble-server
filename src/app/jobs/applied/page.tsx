@@ -9,7 +9,7 @@ import { getUserSession } from "@/lib/getUserSession";
 import Container from "@/components/shared/Container";
 import Breadcrumb from "@/components/shared/BreadCrumb";
 // import JobListSkeleton from "@/components/skeletons/JobListSkeleton";
-import AppliedJobList from "@/components/AppliedJobList";
+import AppliedJobList from "@/components/jobs/AppliedJobList";
 
 export const metadata: Metadata = {
   title: "Applied Jobs",

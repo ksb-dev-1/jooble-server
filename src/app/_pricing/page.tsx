@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 // components
 import Container from "@/components/shared/Container";
 import Breadcrumb from "@/components/shared/BreadCrumb";
-import PricingPlans from "@/components/PricingPlans";
+import PricingPlans from "@/components/pricing/PricingPlans";
 
 export const metadata: Metadata = {
   title: "Pricing",

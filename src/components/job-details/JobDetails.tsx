@@ -1,10 +1,9 @@
 import { fetchJobDetailsServerAction } from "@/actions/fetch-job-details-server-action";
 
 // components
-import UnauthorizedError from "@/components/errors/UnauthorizedError";
 import ServerError from "@/components/errors/ServerError";
 import JobCard from "@/components/shared/JobCard";
-import Markdown from "@/components/Markdown";
+import Markdown from "@/components/job-details/Markdown";
 import ApplyNowTrigger from "@/components/job-details/ApplyNowTrigger";
 
 interface JobDetailsProps {
@@ -17,8 +16,7 @@ interface JobDetailsProps {
 export default async function JobDetails({ params, userId }: JobDetailsProps) {
   const data = await fetchJobDetailsServerAction(userId, params.job_id);
 
-  if (!data || "error" in data) {
-    if (data?.error === "Missing userId") return <UnauthorizedError />;
+  if (!data) {
     return <ServerError />;
   }
 

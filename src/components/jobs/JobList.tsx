@@ -12,8 +12,8 @@ import {
 // components
 import ServerError from "@/components/errors/ServerError";
 import JobCard from "@/components/shared/JobCard";
-import Pagination from "./Pagination";
-import ActiveFilters from "./ActiveFilters";
+import Pagination from "@/components/jobs/Pagination";
+import ActiveFilters from "@/components/jobs/ActiveFilters";
 
 interface JobListProps {
   userId: string;
@@ -45,7 +45,7 @@ export default async function JobList({ userId, filterValues }: JobListProps) {
     jobMode: filterValues.jobMode || undefined,
   });
 
-  if (!data || "error" in data) {
+  if (!data) {
     return <ServerError />;
   }
 

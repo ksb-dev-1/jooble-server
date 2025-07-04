@@ -8,9 +8,9 @@ import { getUserSession } from "@/lib/getUserSession";
 // components
 import Container from "@/components/shared/Container";
 import Breadcrumb from "@/components/shared/BreadCrumb";
-import JobFilters from "@/components/JobFilters";
+import JobFilters from "@/components/jobs/JobFilters";
 // import JobListSkeleton from "@/components/skeletons/JobListSkeleton";
-import JobList from "@/components/JobList";
+import JobList from "@/components/jobs/JobList";
 
 export const metadata: Metadata = {
   title: "Jobs",

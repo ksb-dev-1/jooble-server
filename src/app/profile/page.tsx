@@ -11,7 +11,7 @@ import Breadcrumb from "@/components/shared/BreadCrumb";
 import ProfileDetails from "@/components/profile-details/ProfileDetails";
 
 // utils
-import getUserSession from "@/utils/getUserSession";
+import { getUserSession } from "@/lib/getUserSession";
 
 export const metadata: Metadata = {
   title: "Profile",
@@ -20,11 +20,9 @@ export const metadata: Metadata = {
 const breadcrumbItems = [{ label: "Home", href: "/" }, { label: "Profile" }];
 
 export default async function ProfilePage() {
-  const session = await getUserSession();
+  const { userId, name, email, image } = await getUserSession();
 
-  if (!session) redirect("/sign-in");
-
-  const { id: userId, name, email, image } = session;
+  if (!userId) redirect("/sign-in");
 
   const savedJobsLength = await fetchSavedJobsLengthServerAction(userId);
   const appliedJobsLength = await fetchAppliedJobsLengthServerAction(userId);

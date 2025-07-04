@@ -9,7 +9,7 @@ import { getUserSession } from "@/lib/getUserSession";
 import Container from "@/components/shared/Container";
 import Breadcrumb from "@/components/shared/BreadCrumb";
 // import JobListSkeleton from "@/components/skeletons/JobListSkeleton";
-import SavedJobList from "@/components/SavedJobList";
+import SavedJobList from "@/components/jobs/SavedJobList";
 
 export const metadata: Metadata = {
   title: "Saved Jobs",

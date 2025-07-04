@@ -9,8 +9,8 @@ import {
 } from "@/actions/sigin-in-server-actions";
 
 // components
-import GoogleSignInButton from "@/components/GoogleSignInButton";
-import GitHubSignInButton from "@/components/GitHubSignInButton";
+import GoogleSignInButton from "@/components/sign-in/GoogleSignInButton";
+import GitHubSignInButton from "@/components/sign-in/GitHubSignInButton";
 
 export const metadata: Metadata = {
   title: "Sign in",
