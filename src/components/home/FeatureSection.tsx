@@ -1,7 +1,6 @@
-// "use client";
+"use client";
 
 // 3rd party
-// import { motion } from "framer-motion";
 import {
   MdFilterList,
   MdSearch,
@@ -59,10 +58,6 @@ export default function FeatureSection() {
         {features.map((feature, index) => (
           <article
             key={index}
-            // initial={{ opacity: 0, y: 40 }}
-            // whileInView={{ opacity: 1, y: 0 }}
-            // transition={{ duration: 0.5, delay: index * 0.1 }}
-            // viewport={{ once: true }}
             className="p-6 border rounded bg-gradient-to-b from-light to-dark"
             aria-label={`${feature.title}: ${feature.desc}`}
           >

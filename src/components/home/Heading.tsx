@@ -1,7 +1,7 @@
-// "use client";
+"use client";
 
 import Link from "next/link";
-// import { motion, Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 // const container: Variants = {
 //   hidden: { opacity: 0 },
@@ -45,17 +45,17 @@ import Link from "next/link";
 //   },
 // };
 
-// const underlineItem: Variants = {
-//   hidden: { scaleX: 0 },
-//   show: {
-//     scaleX: 1,
-//     transition: {
-//       delay: 1.0,
-//       duration: 0.8,
-//       ease: [0.22, 1, 0.36, 1],
-//     },
-//   },
-// };
+const underlineItem: Variants = {
+  hidden: { scaleX: 0 },
+  show: {
+    scaleX: 1,
+    transition: {
+      delay: 1.0,
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 export default function Heading() {
   return (
@@ -103,9 +103,11 @@ export default function Heading() {
           A modern job discovery platform powered by intelligent filters,
           real-time search, and smooth UI animations.
         </p>
-        <div
-          className="w-24 h-1 bg-primary rounded mx-auto mt-6"
-          //variants={underlineItem}
+        <motion.div
+          className="w-24 h-1 bg-primary rounded mx-auto mt-6 origin-center"
+          variants={underlineItem}
+          initial="hidden"
+          animate="show"
           role="presentation"
           aria-hidden="true"
         />

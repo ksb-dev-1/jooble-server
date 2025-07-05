@@ -75,7 +75,7 @@ export default function JobFilters({
       jobModeValue.join(",");
 
     startTransition(() => {
-      form.requestSubmit();
+      applyFiltersServerAction(new FormData(form));
     });
   };
 
@@ -93,9 +93,10 @@ export default function JobFilters({
     >
       <form
         ref={formRef}
-        action={applyFiltersServerAction}
+        data-testid="job-filter-form"
         className="hidden"
         aria-hidden="true"
+        role="form"
       >
         <input type="hidden" name="search" value={search} />
         <input type="hidden" name="location" value={location.join(",")} />
