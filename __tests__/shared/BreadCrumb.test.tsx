@@ -21,18 +21,19 @@ describe("Breadcrumb", () => {
     expect(current).toHaveAttribute("aria-current", "page");
   });
 
-  it("does not render separator for the last item", () => {
+  it("renders correct number of separators (SVGs)", () => {
     const items = [
       { label: "Home", href: "/" },
       { label: "Jobs", href: "/jobs" },
       { label: "Fullstack Developer" },
     ];
 
-    render(<Breadcrumb items={items} />);
+    const { container } = render(<Breadcrumb items={items} />);
 
-    // There should be two separators (one between 1st & 2nd, and 2nd & 3rd)
-    const separators = screen.getAllByTestId("breadcrumb-separator");
-    expect(separators).toHaveLength(items.length - 1);
+    // This will grab all <svg> elements inside the rendered output
+    const svgSeparators = container.querySelectorAll("svg");
+
+    expect(svgSeparators.length).toBe(items.length - 1);
   });
 
   it("applies custom className", () => {

@@ -3,6 +3,7 @@
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
 import { unstable_cache } from "next/cache";
+import { JobsWithTotalPages } from "@/types/job";
 
 type BaseParams = {
   location?: string;
@@ -118,11 +119,12 @@ const _fetchPublicJobs = async ({
 };
 
 // ✅ Cached version of public job fetch
-const cachedFetchPublicJobs = (params: BaseParams) => {
+const cachedFetchPublicJobs = (params: BaseParams & { userId: string }) => {
   const cacheKey = [`public-jobs-${JSON.stringify(params)}`];
 
   return unstable_cache(() => _fetchPublicJobs(params), cacheKey, {
     revalidate: 3600,
+    tags: [`jobs-user-${params.userId}`], // ✅ Add tag
   })();
 };
 
@@ -155,25 +157,32 @@ const fetchUserJobMetadata = async (userId: string, jobIds: string[]) => {
 };
 
 // ✅ 3. Final exposed function
-export const fetchJobsServerAction = async (params: FetchJobsParams) => {
+export const fetchJobsServerAction = async (
+  params: FetchJobsParams
+): Promise<JobsWithTotalPages | null> => {
   const { userId, ...baseParams } = params;
 
-  const publicData = await cachedFetchPublicJobs(baseParams);
-  const jobIds = publicData.jobs.map((job) => job.id);
+  try {
+    const publicData = await cachedFetchPublicJobs({ ...baseParams, userId });
+    const jobIds = publicData.jobs.map((job) => job.id);
 
-  const { savedSet, applicationMap } = await fetchUserJobMetadata(
-    userId,
-    jobIds
-  );
+    const { savedSet, applicationMap } = await fetchUserJobMetadata(
+      userId,
+      jobIds
+    );
 
-  const personalizedJobs = publicData.jobs.map((job) => ({
-    ...job,
-    isSaved: savedSet.has(job.id),
-    applicationStatus: applicationMap.get(job.id) || null,
-  }));
+    const personalizedJobs = publicData.jobs.map((job) => ({
+      ...job,
+      isSaved: savedSet.has(job.id),
+      applicationStatus: applicationMap.get(job.id) || null,
+    }));
 
-  return {
-    jobs: personalizedJobs,
-    totalPages: publicData.totalPages,
-  };
+    return {
+      jobs: personalizedJobs,
+      totalPages: publicData.totalPages,
+    };
+  } catch (error) {
+    console.error("❌ fetchJobsServerAction failed:", error);
+    return null;
+  }
 };

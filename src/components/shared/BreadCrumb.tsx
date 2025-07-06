@@ -33,9 +33,7 @@ export default function Breadcrumb({ items, className }: BreadcrumbProps) {
             ) : (
               <span aria-current="page">{item.label}</span>
             )}
-            {index < items.length - 1 && (
-              <IoChevronForwardSharp data-testid="breadcrumb-separator" />
-            )}
+            {index < items.length - 1 && <IoChevronForwardSharp />}
           </li>
         ))}
       </ol>

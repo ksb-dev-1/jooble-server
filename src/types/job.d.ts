@@ -2,7 +2,6 @@ import { ApplicationStatus } from "@prisma/client";
 
 interface Job {
   id: string;
-  companyLogo?: string | null;
   companyName: string;
   experience: string;
   role: string;
@@ -17,17 +16,22 @@ interface Job {
   updatedAt: Date;
 }
 
-type JobWithSavedStatus = Job & { isSaved: boolean };
-
-type JobWithSavedStatusAndTotalPages = Job & {
-  isSaved: boolean;
-  totalPages: number;
-};
-
 type JobWithSavedStatusAndApplicationStatus = Job & {
   isSaved: boolean;
   applicationStatus: ApplicationStatus | null;
 };
+
+type JobsWithTotalPages = {
+  jobs: JobWithSavedStatusAndApplicationStatus[];
+  totalPages: number;
+};
+
+// type JobWithSavedStatus = Job & { isSaved: boolean };
+
+// type JobWithSavedStatusAndTotalPages = Job & {
+//   isSaved: boolean;
+//   totalPages: number;
+// };
 
 interface JobFilterValues {
   page: string;

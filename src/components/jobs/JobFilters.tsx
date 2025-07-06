@@ -93,7 +93,7 @@ export default function JobFilters({
     >
       <form
         ref={formRef}
-        data-testid="job-filter-form"
+        // data-testid="job-filter-form"
         className="hidden"
         aria-hidden="true"
         role="form"

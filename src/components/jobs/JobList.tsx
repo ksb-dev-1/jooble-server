@@ -6,6 +6,7 @@ import { fetchJobsServerAction } from "@/actions/fetch-jobs-server-action";
 // types
 import {
   JobFilterValues,
+  JobsWithTotalPages,
   JobWithSavedStatusAndApplicationStatus,
 } from "@/types/job";
 
@@ -35,17 +36,25 @@ export default async function JobList({ userId, filterValues }: JobListProps) {
   const currentPage = parseInt(filterValues.page || "1", 10);
   const limit = 5;
 
-  const data = await fetchJobsServerAction({
-    userId,
-    page: currentPage,
-    limit,
-    search: filterValues.search || undefined,
-    jobType: filterValues.jobType || undefined,
-    location: filterValues.location || undefined,
-    jobMode: filterValues.jobMode || undefined,
-  });
+  let data: JobsWithTotalPages | null = null;
 
-  if (!data) {
+  try {
+    data = await fetchJobsServerAction({
+      userId,
+      page: currentPage,
+      limit,
+      search: filterValues.search || undefined,
+      jobType: filterValues.jobType || undefined,
+      location: filterValues.location || undefined,
+      jobMode: filterValues.jobMode || undefined,
+    });
+
+    if (!data) {
+      console.error("❌ No data from fetchJobsServerAction");
+      return <ServerError />;
+    }
+  } catch (error) {
+    console.error("❌ JobList fetch failed:", error);
     return <ServerError />;
   }
 

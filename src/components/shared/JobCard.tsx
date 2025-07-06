@@ -61,7 +61,6 @@ export default function JobCard({
     >
       <Link
         href={link ?? `/jobs/${id}`}
-        prefetch={false}
         className={`h-full block bg-light dark:bg-dark border rounded p-4 hover:shadow-card transition-shadow ${pointerEventsClass}`}
       >
         <header>
