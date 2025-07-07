@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, forwardRef } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
@@ -11,6 +10,7 @@ import { useHandleOutsideClick } from "@/hooks/useHandleOutsideClick";
 import { useAutoCloseOnGreaterThanEqualToBreakpoint } from "@/hooks/useAutoCloseOnGreaterThanEqualToBreakPoint";
 
 // Components
+import Link from "@/components/LinkWithProgress";
 import ThemeSwitch from "./ThemeSwitch";
 
 // 3rd party

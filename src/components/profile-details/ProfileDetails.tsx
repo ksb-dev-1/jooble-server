@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+
 //import dynamic from "next/dynamic";
 
 // components
+import Link from "@/components/LinkWithProgress";
 import DeleteAccountModal from "./DeleteAccountModal";
 // const DeleteAccountModal = dynamic(() => import("./DeleteAccountModal"), {
 //   ssr: false,

@@ -1,9 +1,8 @@
-import Link from "next/link";
-
 // actions
 import { toggleSaveJobServerAction } from "@/actions/toggle-save-job-server-action";
 
-// components/shared
+// components
+import Link from "@/components/LinkWithProgress";
 import ToggleSaveButton from "@/components/shared//ToggleSaveButton";
 
 // utils

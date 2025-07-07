@@ -36,6 +36,7 @@
   --modal-bg-color: rgba(0, 0, 0, 0.4);
   --card-shadow: 0 0 3px #0a66c2;
   --skeleton: linear-gradient(90deg, #e5e7eb 25%, #d1d5db 50%, #e5e7eb 75%);
+  --link-progress-color: #ff4757;
 }
 
 /* Dark Theme Override */
@@ -55,6 +56,7 @@
     #ffffff14 50%,
     #ffffff0d 75%
   );
+  --link-progress-color: #ff4757;
 }
 
 * {
@@ -116,4 +118,20 @@ body {
 
 .btn-disabled:disabled:hover {
   background: var(--primary-hover-color);
+}
+
+/* styles/nprogress.css */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: var(--link-progress-color); /* GitHub blue */
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  transition: all 300ms ease;
 }
