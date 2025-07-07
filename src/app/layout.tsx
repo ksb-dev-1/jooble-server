@@ -4,7 +4,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/Footer";
 import Providers from "./Providers";
 import { ThemeProvider } from "./ThemeProvider";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+// import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Jooble",
@@ -40,7 +40,7 @@ export default function RootLayout({
               <Navbar />
               {children}
               <Footer />
-              <SpeedInsights />
+              {/* <SpeedInsights /> */}
             </div>
           </ThemeProvider>
         </Providers>
