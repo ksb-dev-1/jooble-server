@@ -1,8 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 
+// components
+import Link from "@/components/LinkWithProgress";
 // const container: Variants = {
 //   hidden: { opacity: 0 },
 //   show: {
