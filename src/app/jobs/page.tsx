@@ -52,11 +52,7 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
         <Breadcrumb items={breadcrumbItems} />
       </nav>
 
-      <main
-        className="w-full flex items-start md:gap-8"
-        role="main"
-        aria-labelledby="job-page-heading"
-      >
+      <main className="w-full flex items-start md:gap-8" role="main">
         <aside
           className="hidden md:block"
           aria-labelledby="job-filters-heading"

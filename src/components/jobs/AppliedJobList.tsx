@@ -4,7 +4,8 @@ import Image from "next/image";
 import { fetchAppliedJobsServerAction } from "@/actions/fetch-applied-jobs-server-action";
 
 // types
-import { JobWithSavedStatusAndApplicationStatus } from "@/types/job";
+
+import { Jobs, JobWithSavedStatusAndApplicationStatus } from "@/types/job";
 
 // components
 import ServerError from "@/components/errors/ServerError";
@@ -15,10 +16,22 @@ interface AppliedJobListProps {
 }
 
 export default async function AppliedJobList({ userId }: AppliedJobListProps) {
-  const data = await fetchAppliedJobsServerAction(userId);
-  if (!data || "error" in data) return <ServerError />;
+  let data: Jobs | null = null;
 
-  const { appliedJobs } = data;
+  // Fetch applied jobs
+  try {
+    data = await fetchAppliedJobsServerAction(userId);
+
+    if (!data) {
+      console.error("❌ No data from fetchAppliedJobsServerAction");
+      return <ServerError />;
+    }
+  } catch (error) {
+    console.error("❌ AppliedJobList fetch failed:", error);
+    return <ServerError />;
+  }
+
+  const { jobs: appliedJobs } = data;
 
   if (appliedJobs.length === 0) {
     return (

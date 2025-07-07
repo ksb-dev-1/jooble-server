@@ -5,7 +5,7 @@ import Link from "next/link";
 import { fetchSavedJobsServerAction } from "@/actions/fetch-saved-jobs-server-action";
 
 // types
-import { JobWithSavedStatusAndApplicationStatus } from "@/types/job";
+import { Jobs, JobWithSavedStatusAndApplicationStatus } from "@/types/job";
 
 // components
 import ServerError from "@/components/errors/ServerError";
@@ -16,10 +16,21 @@ interface SavedJobListProps {
 }
 
 export default async function SavedJobList({ userId }: SavedJobListProps) {
-  const data = await fetchSavedJobsServerAction(userId);
-  if (!data || "error" in data) return <ServerError />;
+  let data: Jobs | null = null;
 
-  const { savedJobs } = data;
+  // Fetch saved jobs
+  try {
+    data = await fetchSavedJobsServerAction(userId);
+    if (!data) {
+      console.error("❌ No data from fetchSavedJobsServerAction");
+      return <ServerError />;
+    }
+  } catch (error) {
+    console.error("❌ SavedJobList fetch failed:", error);
+    return <ServerError />;
+  }
+
+  const { jobs: savedJobs } = data;
 
   if (savedJobs.length === 0) {
     return (

@@ -3,14 +3,12 @@
 // lib
 import { prisma } from "@/lib/prisma";
 
+// types
+import { CheckIsResumeUploadedResponse } from "@/types/job";
+
 export async function checkIsResumeUploadedServerAction(
   userId: string | undefined
-): Promise<{
-  success: boolean;
-  status: number;
-  message: string;
-  data: { url: string | undefined } | null;
-}> {
+): Promise<CheckIsResumeUploadedResponse> {
   if (!userId) {
     return {
       success: false,

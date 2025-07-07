@@ -6,14 +6,8 @@ import { prisma } from "@/lib/prisma";
 // utils
 import cloudinary from "@/utils/cloudinary";
 
-interface UploadResumeResponse {
-  success: boolean;
-  status: number;
-  message: string;
-  data: {
-    url?: string;
-  } | null;
-}
+// types
+import { UploadResumeResponse } from "@/types/job";
 
 export async function uploadResumeServerAction(
   userId: string,

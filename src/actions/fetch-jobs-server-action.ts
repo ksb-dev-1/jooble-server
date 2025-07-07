@@ -1,8 +1,12 @@
 "use server";
 
-import { prisma } from "@/lib/prisma";
-import { Prisma } from "@prisma/client";
 import { unstable_cache } from "next/cache";
+import { Prisma } from "@prisma/client";
+
+// lib
+import { prisma } from "@/lib/prisma";
+
+// types
 import { JobsWithTotalPages } from "@/types/job";
 
 type BaseParams = {
@@ -94,20 +98,20 @@ const _fetchPublicJobs = async ({
       where: whereClause,
       skip,
       take: limit,
-      select: {
-        id: true,
-        companyName: true,
-        experience: true,
-        role: true,
-        jobType: true,
-        location: true,
-        jobMode: true,
-        salary: true,
-        skills: true,
-        openings: true,
-        createdAt: true,
-        updatedAt: true,
-      },
+      // select: {
+      //   id: true,
+      //   companyName: true,
+      //   experience: true,
+      //   role: true,
+      //   jobType: true,
+      //   location: true,
+      //   jobMode: true,
+      //   salary: true,
+      //   skills: true,
+      //   openings: true,
+      //   createdAt: true,
+      //   updatedAt: true,
+      // },
     }),
     prisma.job.count({ where: whereClause }),
   ]);

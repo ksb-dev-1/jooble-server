@@ -5,6 +5,7 @@ import ServerError from "@/components/errors/ServerError";
 import JobCard from "@/components/shared/JobCard";
 import Markdown from "@/components/job-details/Markdown";
 import ApplyNowTrigger from "@/components/job-details/ApplyNowTrigger";
+import { JobWithSavedStatusAndApplicationStatus } from "@/types/job";
 
 interface JobDetailsProps {
   params: {
@@ -14,9 +15,18 @@ interface JobDetailsProps {
 }
 
 export default async function JobDetails({ params, userId }: JobDetailsProps) {
-  const data = await fetchJobDetailsServerAction(userId, params.job_id);
+  let data: JobWithSavedStatusAndApplicationStatus | null = null;
 
-  if (!data) {
+  // Fetch applied jobs
+  try {
+    data = await fetchJobDetailsServerAction(userId, params.job_id);
+
+    if (!data) {
+      console.error("❌ No data from fetchJobDetailsServerAction");
+      return <ServerError />;
+    }
+  } catch (error) {
+    console.error("❌ JobDetails fetch failed:", error);
     return <ServerError />;
   }
 

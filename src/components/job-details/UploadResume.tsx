@@ -5,6 +5,9 @@ import { useState } from "react";
 // actions
 import { uploadResumeServerAction } from "@/actions/upload-resume-server-action";
 
+// types
+import { UploadResumeResponse } from "@/types/job";
+
 // 3rd party
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
@@ -39,7 +42,12 @@ export default function UploadResume({
       fileName: string;
     }) => {
       if (!userId) throw new Error("User ID is required");
-      return uploadResumeServerAction(userId, base64, fileName);
+      const response: UploadResumeResponse = await uploadResumeServerAction(
+        userId,
+        base64,
+        fileName
+      );
+      return response;
     },
     onSuccess: (response) => {
       if (response.success) {

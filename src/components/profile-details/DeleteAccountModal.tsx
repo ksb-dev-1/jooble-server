@@ -14,6 +14,9 @@ import { useHandleOutsideClick } from "@/hooks/useHandleOutsideClick";
 // actions
 import { deleteUserAccount } from "@/actions/delete-user-account";
 
+// types
+import { DeleteAccountResponse } from "@/types/job";
+
 // components
 import Modal from "@/components/shared/Modal";
 
@@ -43,9 +46,10 @@ export default function DeleteAccountModal({
   const handleDelete = () => {
     setErrorMsg("");
     startTransition(async () => {
-      const res = await deleteUserAccount(userId);
+      const res: DeleteAccountResponse = await deleteUserAccount(userId);
+
       if (res.success) {
-        toast.success("Account deleted successfully");
+        toast.success(res?.message || "Account deleted successfully");
         setIsModalOpen(false);
         signOut();
       } else {

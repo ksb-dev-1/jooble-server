@@ -1,10 +1,6 @@
-"use client";
-
-import { useFormStatus } from "react-dom";
-
-// Icons
+// 3rd party
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { MdOutlineBookmarkBorder, MdOutlineBookmark } from "react-icons/md";
+import { MdOutlineBookmark, MdOutlineBookmarkBorder } from "react-icons/md";
 
 function IconButton({
   children,
@@ -28,9 +24,13 @@ function IconButton({
   );
 }
 
-export default function ToggleSaveButton({ isSaved }: { isSaved: boolean }) {
-  const { pending } = useFormStatus();
-
+export default function ToggleSaveButton({
+  isSaved,
+  pending,
+}: {
+  isSaved: boolean;
+  pending: boolean;
+}) {
   if (pending) {
     return (
       <IconButton label="Saving job" pressed={isSaved}>
@@ -42,23 +42,22 @@ export default function ToggleSaveButton({ isSaved }: { isSaved: boolean }) {
     );
   }
 
-  if (isSaved) {
-    return (
-      <IconButton label="Remove job from saved" pressed={true}>
+  return (
+    <IconButton
+      label={isSaved ? "Remove job from saved" : "Save job"}
+      pressed={isSaved}
+    >
+      {isSaved ? (
         <MdOutlineBookmark
           className="h-5 w-5 text-primary"
           aria-hidden="true"
         />
-      </IconButton>
-    );
-  }
-
-  return (
-    <IconButton label="Save job" pressed={false}>
-      <MdOutlineBookmarkBorder
-        className="h-5 w-5 text-primary"
-        aria-hidden="true"
-      />
+      ) : (
+        <MdOutlineBookmarkBorder
+          className="h-5 w-5 text-primary"
+          aria-hidden="true"
+        />
+      )}
     </IconButton>
   );
 }

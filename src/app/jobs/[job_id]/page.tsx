@@ -37,11 +37,7 @@ export default async function JobDetailsPage({
         <Breadcrumb items={breadcrumbItems} />
       </nav>
 
-      <main
-        className="w-full"
-        role="main"
-        aria-labelledby="job-details-heading"
-      >
+      <main className="w-full" role="main">
         <h1 id="job-details-heading" className="sr-only">
           Job Details
         </h1>

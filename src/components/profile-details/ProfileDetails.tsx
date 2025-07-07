@@ -22,8 +22,8 @@ interface ProfileDetailsProps {
   image: string | null | undefined;
   name: string | null | undefined;
   email: string | null | undefined;
-  savedJobsLength: number;
-  appliedJobsLength: number;
+  savedJobsLength: number | null;
+  appliedJobsLength: number | null;
 }
 
 export default function ProfileDetails({
@@ -82,7 +82,7 @@ export default function ProfileDetails({
         </div>
       </section>
 
-      {/* Saved & Applied Jobs */}
+      {/* Saved & Applied Job Links */}
       <section
         className="mt-4 grid sm:grid-cols-2 gap-4"
         aria-label="User job statistics"

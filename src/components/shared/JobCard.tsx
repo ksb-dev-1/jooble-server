@@ -1,9 +1,6 @@
-// actions
-import { toggleSaveJobServerAction } from "@/actions/toggle-save-job-server-action";
-
 // components
 import Link from "@/components/LinkWithProgress";
-import ToggleSaveButton from "@/components/shared//ToggleSaveButton";
+import { ToggleSaveForm } from "@/components/shared/ToggleSaveForm";
 
 // utils
 import { formatMoney, relativeDate } from "@/utils";
@@ -138,13 +135,7 @@ export default function JobCard({
         </footer>
       </Link>
 
-      <form
-        action={toggleSaveJobServerAction}
-        className="absolute top-4 right-4"
-      >
-        <input type="hidden" name="jobId" value={job.id} />
-        <ToggleSaveButton isSaved={job.isSaved} />
-      </form>
+      <ToggleSaveForm jobId={id} isSaved={job.isSaved} />
     </article>
   );
 }

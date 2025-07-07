@@ -15,7 +15,7 @@ import { ApplicationStatus } from "@prisma/client";
 interface ApplyForJobProps {
   userId: string;
   jobId: string;
-  applicationStatus: ApplicationStatus;
+  applicationStatus: ApplicationStatus | null;
 }
 
 export default function ApplyNowTrigger({

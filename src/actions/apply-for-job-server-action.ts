@@ -5,18 +5,16 @@ import { revalidateTag } from "next/cache";
 // lib
 import { prisma } from "@/lib/prisma";
 
+// types
+import { ApplyForJobResponse } from "@/types/job";
+
 // 3rd party
 import { ApplicationStatus } from "@prisma/client";
 
 export async function applyForJobServerAction(
   userId: string,
   jobId: string
-): Promise<{
-  success: boolean;
-  status: number;
-  message: string;
-  data: { isApplied: boolean } | null;
-}> {
+): Promise<ApplyForJobResponse> {
   // Check for user id
   if (!userId) {
     return {

@@ -1,7 +1,12 @@
 "use server";
 
-import { prisma } from "@/lib/prisma";
 import { unstable_cache } from "next/cache";
+
+// lib
+import { prisma } from "@/lib/prisma";
+
+// types
+import { Jobs } from "@/types/job";
 
 type FetchSavedJobsParams = {
   userId: string;
@@ -37,15 +42,26 @@ const _fetchSavedJobs = async ({ userId }: FetchSavedJobsParams) => {
 };
 
 // ✅ Helper to wrap the above with correct static tag per call
-export const fetchSavedJobsServerAction = async (userId: string) => {
-  const cached = unstable_cache(
-    () => _fetchSavedJobs({ userId }),
-    [`saved-jobs-user-${userId}`], // static key array
-    {
-      tags: [`saved-jobs-user-${userId}`],
-      revalidate: 3600,
-    }
-  );
+export const fetchSavedJobsServerAction = async (
+  userId: string
+): Promise<Jobs | null> => {
+  try {
+    const cached = unstable_cache(
+      () => _fetchSavedJobs({ userId }),
+      [`saved-jobs-user-${userId}`],
+      {
+        tags: [`saved-jobs-user-${userId}`],
+        revalidate: 3600,
+      }
+    );
 
-  return cached(); // <-- invoke cached function
+    const data = await cached();
+
+    return {
+      jobs: data.savedJobs,
+    };
+  } catch (error) {
+    console.error("❌ fetchSavedJobsServerAction failed:", error);
+    return null;
+  }
 };

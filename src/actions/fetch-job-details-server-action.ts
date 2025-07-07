@@ -1,7 +1,12 @@
 "use server";
 
-import { prisma } from "@/lib/prisma";
 import { unstable_cache } from "next/cache";
+
+// lib
+import { prisma } from "@/lib/prisma";
+
+// types
+import { JobWithSavedStatusAndApplicationStatus } from "@/types/job";
 
 type FetchJobDetailsParams = {
   userId: string;
@@ -42,15 +47,20 @@ const _fetchJobDetails = async ({ userId, jobId }: FetchJobDetailsParams) => {
 export const fetchJobDetailsServerAction = async (
   userId: string,
   jobId: string
-) => {
-  const cached = unstable_cache(
-    () => _fetchJobDetails({ userId, jobId }),
-    [`job-details-${userId}-${jobId}`],
-    {
-      tags: [`job-details-${userId}-${jobId}`],
-      revalidate: 3600,
-    }
-  );
+): Promise<JobWithSavedStatusAndApplicationStatus | null> => {
+  try {
+    const cached = unstable_cache(
+      () => _fetchJobDetails({ userId, jobId }),
+      [`job-details-${userId}-${jobId}`],
+      {
+        tags: [`job-details-${userId}-${jobId}`],
+        revalidate: 3600,
+      }
+    );
 
-  return cached();
+    return cached();
+  } catch (error) {
+    console.error("❌ fetchAppliedJobsServerAction failed:", error);
+    return null;
+  }
 };

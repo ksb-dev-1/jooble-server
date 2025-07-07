@@ -1,9 +1,17 @@
 "use server";
 
+// lib
 import { prisma } from "@/lib/prisma";
-import cloudinary from "@/utils/cloudinary"; // use your pre-configured instance
 
-export async function deleteUserAccount(userId: string) {
+// utils
+import cloudinary from "@/utils/cloudinary";
+
+// types
+import { DeleteAccountResponse } from "@/types/job";
+
+export async function deleteUserAccount(
+  userId: string
+): Promise<DeleteAccountResponse> {
   try {
     if (!userId) throw new Error("Missing user ID");
 

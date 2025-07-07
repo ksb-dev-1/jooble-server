@@ -2,7 +2,9 @@
 
 import { redirect } from "next/navigation";
 
-export async function applyFiltersServerAction(formData: FormData) {
+export async function applyFiltersServerAction(
+  formData: FormData
+): Promise<void> {
   const search = formData.get("search")?.toString() || "";
   const locationRaw = formData.get("location")?.toString() || "";
   const jobTypeRaw = formData.get("jobType")?.toString() || "";

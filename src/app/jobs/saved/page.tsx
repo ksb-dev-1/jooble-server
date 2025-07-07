@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-// import { Suspense } from "react";
 
 // lib
 import { getUserSession } from "@/lib/getUserSession";
@@ -8,7 +7,6 @@ import { getUserSession } from "@/lib/getUserSession";
 // components
 import Container from "@/components/shared/Container";
 import Breadcrumb from "@/components/shared/BreadCrumb";
-// import JobListSkeleton from "@/components/skeletons/JobListSkeleton";
 import SavedJobList from "@/components/jobs/SavedJobList";
 
 export const metadata: Metadata = {
@@ -33,19 +31,13 @@ export default async function SavedJobsPage() {
         <Breadcrumb items={breadcrumbItems} />
       </nav>
 
-      <main
-        className="w-full flex flex-col"
-        role="main"
-        aria-labelledby="saved-job-list-heading"
-      >
+      <main className="w-full flex flex-col" role="main">
         <section className="w-full" aria-labelledby="saved-job-results-heading">
           <h2 id="saved-job-results-heading" className="sr-only">
             Saved Jobs
           </h2>
 
-          {/* <Suspense fallback={<JobListSkeleton gridClass="md:grid-cols-2" />}> */}
           <SavedJobList userId={userId} />
-          {/* </Suspense> */}
         </section>
       </main>
     </Container>

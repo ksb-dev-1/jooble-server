@@ -38,6 +38,7 @@ export default async function JobList({ userId, filterValues }: JobListProps) {
 
   let data: JobsWithTotalPages | null = null;
 
+  // Fetch jobs
   try {
     data = await fetchJobsServerAction({
       userId,
