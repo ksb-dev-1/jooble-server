@@ -1,30 +1,3 @@
-// "use server";
-
-// import { prisma } from "@/lib/prisma";
-
-// export async function deleteUserAccount(userId: string) {
-//   try {
-//     if (!userId) {
-//       throw new Error("Missing user ID");
-//     }
-
-//     await prisma.$transaction([
-//       prisma.resume.deleteMany({ where: { userId } }),
-//       prisma.subscription.deleteMany({ where: { userId } }),
-//       prisma.savedJob.deleteMany({ where: { userId } }),
-//       prisma.jobApplication.deleteMany({ where: { userId } }),
-//       prisma.account.deleteMany({ where: { userId } }),
-//       prisma.session.deleteMany({ where: { userId } }),
-//       prisma.user.delete({ where: { id: userId } }),
-//     ]);
-
-//     return { success: true, message: "User deleted successfully" };
-//   } catch (error) {
-//     console.error("Failed to delete user:", error);
-//     return { success: false, error: "Failed to delete user" };
-//   }
-// }
-
 "use server";
 
 import { prisma } from "@/lib/prisma";
