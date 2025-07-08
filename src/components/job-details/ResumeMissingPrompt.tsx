@@ -8,7 +8,7 @@ export default function ResumeMissingPrompt({
   return (
     <div className="text-center space-y-4">
       <h2 className="text-xl font-bold text-red-600 dark:text-red-400">
-        Resume Required1!
+        Resume Required!
       </h2>
       <p className="font-medium">
         You need to upload a resume to apply for this position.
