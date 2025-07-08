@@ -29,7 +29,7 @@ export default function ApplyNowTrigger({
     return (
       <div
         role="status"
-        className="mt-4 p-2 bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 rounded text-center"
+        className="mt-4 p-2 bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 rounded text-center font-medium"
       >
         <p>
           Your application is under review. You&apos;ll be notified via email
@@ -44,7 +44,7 @@ export default function ApplyNowTrigger({
       <button
         aria-label="Apply for this job"
         onClick={() => setIsOpen(true)}
-        className="mt-4 w-full md:w-fit px-4 py-2 rounded bg-primary text-light dark:text-dark hover:opacity-80 dark:hover:opacity-90 transition-opacity"
+        className="mt-4 w-full md:w-fit px-4 py-2 rounded bg-primary text-light dark:text-dark hover:opacity-80 dark:hover:opacity-90 transition-opacity font-medium"
       >
         Apply Now
       </button>

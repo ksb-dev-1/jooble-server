@@ -25,6 +25,7 @@ import { signOut } from "next-auth/react";
 import toast from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { MdOutlineDelete } from "react-icons/md";
+import WarningCard from "../shared/WarningCard";
 
 interface Props {
   isModalOpen: boolean;
@@ -68,26 +69,23 @@ export default function DeleteAccountModal({
       <div role="document">
         <h2
           id="modal-title"
-          className="text-lg md:text-xl font-semibold text-red-600 text-center"
+          className="text-xl font-bold text-red-600 text-center"
         >
           Do you want to delete your account?
         </h2>
 
-        <div className="mt-4 p-4 rounded bg-red-50 text-red-600 dark:bg-red-950 dark:text-red-400">
-          <p className="font-semibold">Note</p>
-          <p className="border-b-2 mb-4 border-red-500 dark:border-red-400 w-9"></p>
-          <p className="mt-1">
-            This will delete everything related to your account, including saved
-            jobs, applied jobs, and more.
-          </p>
-        </div>
+        <WarningCard
+          message=" This will delete everything related to your account, including saved
+            jobs, applied jobs, and more."
+          className="mt-8"
+        />
 
         <button
           onClick={handleDelete}
           disabled={isPending}
           className={`mt-4 relative w-full px-4 h-[41.6px] rounded flex items-center justify-center bg-red-600 text-white hover:bg-red-500 dark:bg-red-700 dark:hover:bg-red-600 transition-colors ${
             isPending ? "pointer-events-none opacity-70" : ""
-          }`}
+          } font-medium`}
         >
           <MdOutlineDelete className="mr-2 h-5 w-5" />
           Delete

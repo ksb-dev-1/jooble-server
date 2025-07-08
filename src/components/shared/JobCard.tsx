@@ -24,7 +24,7 @@ interface JobCardProps {
 }
 
 const statusColors: Record<ApplicationStatus, string> = {
-  PENDING: "bg-yellow-700 text-white dark:bg-yellow-950 dark:text-yellow-300",
+  PENDING: "text-amber-600 dark:text-amber-300",
   OFFER: "border-emerald-600 bg-emerald-100 text-emerald-600",
   INTERVIEW: "border-blue-600 bg-blue-100 text-blue-600",
   REJECT: "border-red-600 bg-red-100 text-red-600",
@@ -57,28 +57,29 @@ export default function JobCard({
     >
       <Link
         href={link ?? `/jobs/${id}`}
-        className={`h-full block bg-light dark:bg-dark border rounded p-4 hover:shadow-card transition-shadow ${pointerEventsClass}`}
+        className={`h-full block bg-light dark:bg-dark border rounded p-4 md:p-6 hover:shadow-card transition-shadow ${pointerEventsClass}`}
       >
         <header>
-          <h3 className="font-semibold">{role}</h3>
+          <h3 className="font-bold text-xl">{role}</h3>
           <p className="mt-1">
-            <span className="text-primary font-semibold">{companyName}</span>
+            <span className="text-primary font-bold">{companyName}</span>
             {applicationStatus && (
-              <span
-                className={`${statusColors[applicationStatus]} px-2 py-[2px] rounded-3xl text-xs ml-2 uppercase tracking-wider`}
-              >
-                {applicationStatus.charAt(0) +
-                  applicationStatus.substring(1).toLowerCase()}
-              </span>
+              <>
+                {/* <span className="h-3 w-[2px] inline-block bg-black dark:bg-white mx-2"></span> */}
+                <span className="inline-block mx-2">-</span>
+                <span
+                  className={`${statusColors[applicationStatus]} font-bold capitalize`}
+                >
+                  {applicationStatus.charAt(0) +
+                    applicationStatus.substring(1).toLowerCase()}
+                </span>
+              </>
             )}
           </p>
         </header>
 
-        <section
-          className="my-4 p-4 rounded border bg-gradient-to-b from-light to-dark dark:from-dark dark:to-light"
-          aria-label="Job details"
-        >
-          <dl className="grid grid-cols-2 lg:flex items-center flex-wrap gap-4 lg:gap-x-6 lg:gap-y-4 text-sm md:text-base">
+        <section className="my-4 p-4 rounded border" aria-label="Job details">
+          <dl className="grid grid-cols-2 lg:flex items-center flex-wrap gap-4 lg:gap-x-6 lg:gap-y-4">
             <div className="flex items-center">
               <MdOutlineWorkOutline className="h-4 w-4" aria-hidden="true" />
               <dt className="sr-only">Experience</dt>
@@ -112,7 +113,7 @@ export default function JobCard({
             {skills?.length > 0 &&
               skills.slice(0, 3).map((skill: string, index: number) => (
                 <div key={skill} className="mt-2 flex items-center">
-                  <span className="rounded-xl capitalize text-sm md:text-base text-slate-500 dark:text-slate-400">
+                  <span className="rounded-xl capitalize text-slate-500 dark:text-slate-400">
                     {skill}
                   </span>
                   {index !== 2 && index !== skills.slice(0, 3).length - 1 && (
@@ -127,7 +128,7 @@ export default function JobCard({
         </section>
 
         <footer className="flex items-center justify-between w-full text-slate-500 dark:text-slate-400">
-          <p className="font-medium text-sm">Openings: {openings}</p>
+          <p className="text-sm">Openings: {openings}</p>
           <div className="w-fit flex items-center text-xs">
             <BsClock aria-hidden="true" />
             <span className="ml-1">{relativeDate(createdAt)}</span>

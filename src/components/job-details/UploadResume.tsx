@@ -8,6 +8,9 @@ import { uploadResumeServerAction } from "@/actions/upload-resume-server-action"
 // types
 import { UploadResumeResponse } from "@/types/job";
 
+// components
+import WarningCard from "@/components/shared/WarningCard";
+
 // 3rd party
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
@@ -123,25 +126,8 @@ export default function UploadResume({
         Back
       </button>
 
-      {isResumeUploaded && (
-        <div
-          role="alert"
-          className="p-4 rounded bg-amber-600 dark:bg-amber-950 text-white dark:text-amber-400"
-        >
-          <p className="font-semibold border-amber-600">Note</p>
-          <p className="border-b-2 mb-4 border-white dark:border-amber-400 w-9"></p>
-          <p>Your previous resume will be replaced with the new one.</p>
-        </div>
-      )}
-
       <div className="space-y-2">
-        {/* <label
-            htmlFor="resume-upload"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-          >
-            Upload Resume
-          </label> */}
-        <div className="relative border-2 border-dashed border-primary rounded-lg h-40 flex items-center justify-center">
+        <div className="relative border-2 border-dashed border-primary rounded h-40 flex items-center justify-center">
           <input
             id="resume-upload"
             type="file"
@@ -153,21 +139,25 @@ export default function UploadResume({
           />
           <div className="flex flex-col items-center p-4 text-center">
             <MdOutlineCloudUpload
-              className="text-5xl text-primary mb-2"
+              className="text-5xl text-primary"
               aria-hidden="true"
             />
-            <p className="text-sm">
+            <p className="font-medium">
               {fileName || "Drag and drop or click to select a file"}
             </p>
             <p
               id="file-upload-instructions"
-              className="text-xs text-gray-500 mt-1"
+              className="text-xs text-gray-500 mt-1 font-medium"
             >
               Supported formats: PDF, TXT, DOCX (Max 5MB)
             </p>
           </div>
         </div>
       </div>
+
+      {file && isResumeUploaded && (
+        <WarningCard message="Your previous resume will be replaced with the new one." />
+      )}
 
       {file && (
         <button
@@ -178,7 +168,7 @@ export default function UploadResume({
             file && !isPending
               ? "hover:opacity-80 dark:hover:opacity-90"
               : "opacity-60 pointer-events-none"
-          } mt-4 w-full px-4 h-[41.6px]`}
+          } mt-4 w-full px-4 h-[41.6px] font-medium`}
         >
           Upload
           {isPending && (

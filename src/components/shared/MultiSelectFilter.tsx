@@ -224,7 +224,7 @@ const MultiSelectFilter: React.FC<MultiSelectFilterProps> = ({
             {icon}
           </span>
         )}
-        <span>{placeholder}</span>
+        <span className="font-semibold">{placeholder}</span>
       </div>
 
       {/* Options Group */}
@@ -245,9 +245,7 @@ const MultiSelectFilter: React.FC<MultiSelectFilterProps> = ({
               onClick={() => toggleOption(option)}
               role="checkbox"
               aria-checked={isSelected}
-              className={`transition-colors w-fit ${
-                isSelected ? "" : "hover:text-primary"
-              } flex items-center`}
+              className="w-fit flex items-center"
             >
               {isSelected ? (
                 <div
@@ -265,13 +263,7 @@ const MultiSelectFilter: React.FC<MultiSelectFilterProps> = ({
                   aria-hidden="true"
                 />
               )}
-              <span
-                className={`${
-                  isSelected
-                    ? "text-gray-700 dark:text-gray-300"
-                    : "text-slate-500 dark:text-slate-400"
-                }`}
-              >
+              <span className="hover:text-primary dark:hover:text-primary transition-colors">
                 {capitalize(option)}
               </span>
             </Link>

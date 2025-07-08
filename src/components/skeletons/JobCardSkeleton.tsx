@@ -15,13 +15,13 @@ export default function JobCardSkeleton() {
       aria-label="Loading job card"
     >
       <header>
-        <h3 className="skeleton w-fit rounded font-semibold">
+        <h3 className="skeleton w-fit rounded font-semibold text-lg">
           Job Designation
         </h3>
         <p className="mt-1">
-          <span className="skeleton rounded font-semibold">Company</span>
+          <span className="skeleton rounded font-bold">Company</span>
 
-          <span className="skeleton inline-block w-16 rounded-3xl text-xs ml-2 uppercase tracking-wider">
+          <span className="skeleton inline-block border border-transparent font-medium px-2 py-[2px] rounded-3xl text-xs ml-2 uppercase tracking-wider">
             Status
           </span>
         </p>
@@ -31,7 +31,7 @@ export default function JobCardSkeleton() {
         className="my-4 p-4 rounded border bg-gradient-to-b from-light to-dark dark:from-dark dark:to-light"
         aria-label="Job details"
       >
-        <dl className="grid grid-cols-2 lg:flex items-center flex-wrap gap-4 lg:gap-x-6 lg:gap-y-4 text-sm md:text-base">
+        <dl className="grid grid-cols-2 lg:flex items-center flex-wrap gap-4 lg:gap-x-6 lg:gap-y-4">
           <div className="skeleton rounded flex items-center">
             <MdOutlineWorkOutline className="h-4 w-4" aria-hidden="true" />
             <dt className="sr-only">Experience</dt>
@@ -64,7 +64,7 @@ export default function JobCardSkeleton() {
         <div className="flex items-end flex-wrap">
           {[1, 2, 3].map((_, index, arr) => (
             <div key={index} className="mt-2 flex items-center">
-              <span className="skeleton rounded capitalize inline-block text-sm md:text-base">
+              <span className="skeleton rounded capitalize inline-block text-sm">
                 skilllllllllll
               </span>
               {index !== arr.length - 1 && (

@@ -249,10 +249,10 @@ export default function JobFilters({
 
   return (
     <aside
-      className="bg-light dark:bg-dark border rounded p-4 w-[275px]"
+      className="bg-light dark:bg-dark border rounded p-4 md:p-6 w-[275px]"
       aria-labelledby="filter-heading"
     >
-      <h2 id="filter-heading" className="font-semibold">
+      <h2 id="filter-heading" className="font-bold">
         Search & Filters
       </h2>
 

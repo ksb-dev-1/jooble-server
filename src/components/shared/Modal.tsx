@@ -55,7 +55,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
       >
         <div
           ref={ref}
-          className={`max-w-[500px] w-full transform rounded bg-light dark:bg-dark border-4 shadow-xl transition-transform duration-200 ${
+          className={`max-w-[500px] w-full transform rounded bg-light dark:bg-dark border-2 shadow-xl transition-transform duration-200 ${
             isOpen ? "scale-100" : "scale-75"
           } p-4 md:p-8`}
         >

@@ -12,7 +12,7 @@ export default function ThemeSwitch() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded border hover:bg-dark dark:hover:bg-light transition-colors"
+      className="p-2 rounded-full border hover:bg-dark dark:hover:bg-light transition-colors"
       type="button"
       aria-label={isLight ? "Activate dark mode" : "Activate light mode"}
       title={isLight ? "Switch to dark mode" : "Switch to light mode"}

@@ -67,10 +67,10 @@ export default function ResumeActions({
   };
 
   return (
-    <div className="space-y-4 text-center">
-      <h2 className="text-xl font-semibold">Ready to Apply</h2>
+    <div className="text-center">
+      <h2 className="text-xl font-bold up">Ready to Apply</h2>
 
-      <p>
+      <p className="font-medium mt-8">
         Review your resume:{" "}
         <Link
           href={resumeUrl || "#"}
@@ -83,7 +83,7 @@ export default function ResumeActions({
         </Link>
       </p>
 
-      <p>
+      <p className="font-medium mt-4">
         Want to upload a new resume?{" "}
         <button
           onClick={() => setShowUploadResume(true)}
@@ -94,7 +94,7 @@ export default function ResumeActions({
         </button>
       </p>
 
-      <div className="border-t border my-4"></div>
+      <div className="border-t-[1px] my-6"></div>
 
       <button
         aria-busy={applyJobMutation.isPending}
@@ -104,7 +104,7 @@ export default function ResumeActions({
           applyJobMutation.isPending
             ? "opacity-60 pointer-events-none"
             : "hover:opacity-80 dark:hover:opacity-90 transition-opacity"
-        } bg-primary text-light dark:text-dark rounded w-full h-[41.6px] py-2 flex items-center justify-center`}
+        } bg-primary text-light dark:text-dark rounded w-full h-[41.6px] py-2 flex items-center justify-center font-medium`}
       >
         Apply Now <MdOutlineSend className="ml-2" />
         {applyJobMutation.isPending && (

@@ -45,7 +45,7 @@ export default function Pagination({
         aria-label="Go to previous page"
       >
         <GrFormPrevious className="h-5 w-5 sm:mr-1" />
-        <span className="hidden sm:block">Prev</span>
+        <span className="hidden sm:block font-medium">Prev</span>
       </button>
 
       <form
@@ -72,7 +72,7 @@ export default function Pagination({
         />
         <button
           type="submit"
-          className="bg-primary text-light dark:text-dark hover:opacity-80 dark:hover:opacity-90 transition-opacity rounded px-4 py-2"
+          className="bg-primary text-light dark:text-dark hover:opacity-80 dark:hover:opacity-90 transition-opacity rounded px-4 py-2 font-medium"
           aria-label={`Jump to page ${inputPage || ""}`}
         >
           Go
@@ -85,7 +85,7 @@ export default function Pagination({
         className="bg-primary text-light dark:text-dark hover:opacity-80 dark:hover:opacity-90 transition-opacity rounded p-2 sm:pl-4 py-2 flex items-center disabled:opacity-40 disabled:pointer-events-none"
         aria-label="Go to next page"
       >
-        <span className="hidden sm:block">Next</span>
+        <span className="hidden sm:block font-medium">Next</span>
         <GrFormNext className="h-5 w-5 sm:ml-1" />
       </button>
     </nav>

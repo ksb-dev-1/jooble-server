@@ -43,7 +43,7 @@ export default function ProfileDetails({
         aria-labelledby="profile-heading"
         className="relative rounded overflow-hidden"
       >
-        <div className="p-4 md:p-6 border flex flex-col gap-4 bg-gradient-to-b from-light to-dark rounded">
+        <div className="p-4 md:p-6 border flex flex-col gap-4 rounded">
           <h1 id="profile-heading" className="sr-only">
             User Profile Details
           </h1>
