@@ -127,7 +127,7 @@ const UserProfile = ({ image }: UserProfileProps) => {
           className="px-4 py-2 flex items-center hover:bg-dark dark:hover:bg-light transition-colors rounded"
         >
           <FaRegUser className="h-4 w-4" />
-          <span className="ml-3">Profile</span>
+          <span className="ml-3 font-medium">Profile</span>
         </Link>
         <button
           onClick={() => {
@@ -137,7 +137,7 @@ const UserProfile = ({ image }: UserProfileProps) => {
           className="px-4 py-2 flex items-center hover:bg-dark dark:hover:bg-light transition-colors rounded"
         >
           <MdOutlineLogout className="h-4 w-4" />
-          <span className="ml-3">Sign out</span>
+          <span className="ml-3 font-medium">Sign out</span>
         </button>
       </div>
     </div>
