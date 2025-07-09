@@ -5,7 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 // Hooks
-// import { useHeaderShadowOnScroll } from "@/hooks/useHeaderShadowOnScroll";
+import { useHeaderShadowOnScroll } from "@/hooks/useHeaderShadowOnScroll";
 import { useHandleOutsideClick } from "@/hooks/useHandleOutsideClick";
 import { useAutoCloseOnGreaterThanEqualToBreakpoint } from "@/hooks/useAutoCloseOnGreaterThanEqualToBreakPoint";
 
@@ -317,7 +317,7 @@ export default function Navbar() {
   const navbarRef = useRef<HTMLDivElement>(null);
   const { data: session, status } = useSession();
 
-  // useHeaderShadowOnScroll(navbarRef);
+  useHeaderShadowOnScroll(navbarRef);
 
   if (status === "loading") return <NavbarLoadingState ref={navbarRef} />;
   if (session?.user.id)
