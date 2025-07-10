@@ -17,8 +17,12 @@ export default function GoogleSignInButton() {
       aria-busy={pending}
       aria-label="Sign in with Google"
       title="Sign in with Google"
-      className={`relative w-full border rounded-full p-4 flex items-center justify-center transition-colors focus:outline-none focus-visible:ring focus-visible:ring-offset-2
-        ${pending ? "pointer-events-none opacity-70" : "hover:bg-btnHover"}`}
+      className={`relative w-full border rounded-full p-4 flex items-center justify-center transition-colors 
+        ${
+          pending
+            ? "pointer-events-none opacity-70"
+            : "hover:bg-dark dark:hover:bg-light"
+        }`}
     >
       <FcGoogle className="text-2xl" aria-hidden="true" />
       <span className="mx-4 font-medium md:text-lg">Sign in with Google</span>

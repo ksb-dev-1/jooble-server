@@ -15,8 +15,11 @@ export default function GitHubSignInButton() {
       aria-busy={pending}
       aria-label="Sign in with GitHub"
       title="Sign in with GitHub"
-      className={`relative w-full border rounded-full p-4 flex items-center justify-center transition-colors focus:outline-none focus-visible:ring focus-visible:ring-offset-2
-        ${pending ? "pointer-events-none opacity-70" : "hover:bg-btnHover"}`}
+      className={`relative w-full border rounded-full p-4 flex items-center justify-center transition-colors ${
+        pending
+          ? "pointer-events-none opacity-70"
+          : "hover:bg-dark dark:hover:bg-light"
+      }`}
     >
       <FaGithub className="text-xl md:text-2xl" aria-hidden="true" />
       <span className="mx-4 font-medium md:text-lg">Sign in with GitHub</span>

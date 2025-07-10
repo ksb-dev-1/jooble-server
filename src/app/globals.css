@@ -1,28 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* .marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 60s linear infinite;
-}
-
-.marquee-content {
-  display: flex;
-  white-space: nowrap;
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-} */
 
 /* Light theme (default) */
 :root {
@@ -62,14 +40,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* color: #0b56a1; */
-  /* color: rgba(16, 24, 41, 0.85); */
-  /* color: rgb(8, 14, 34); */
 }
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  /* font-family: "Outfit", sans-serif; */
 }
 
 .skeleton {
@@ -124,7 +98,7 @@ body {
 }
 
 #nprogress .bar {
-  background: var(--link-progress-color); /* GitHub blue */
+  background: var(--link-progress-color);
   position: fixed;
   z-index: 9999;
   top: 0;
