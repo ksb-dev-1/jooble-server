@@ -11,12 +11,12 @@ export default function WarningCard({
   return (
     <div
       role="alert"
-      className={`relative rounded bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-500 flex items-center overflow-hidden ${className}`}
+      className={`relative rounded border bg-amber-100 text-amber-700 border-amber-700 dark:bg-amber-950 dark:text-amber-500 dark:border-amber-500 flex items-center overflow-hidden ${className}`}
     >
-      <div className="absolute top-0 left-0 bottom-0 bg-amber-700 text-white dark:bg-amber-500 dark:text-amber-950 w-10">
+      <div className="absolute top-0 left-0 bottom-0 bg-amber-700 text-white dark:bg-amber-500 dark:text-amber-950 w-12">
         <PiWarningCircleBold className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6" />
       </div>
-      <p className="ml-10 p-4 font-medium text-sm">{message}</p>
+      <p className="ml-12 p-4 font-medium">{message}</p>
     </div>
   );
 }

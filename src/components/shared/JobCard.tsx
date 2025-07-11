@@ -24,7 +24,8 @@ interface JobCardProps {
 }
 
 const statusColors: Record<ApplicationStatus, string> = {
-  PENDING: "text-amber-600 dark:text-amber-300",
+  PENDING:
+    "text-amber-600 border-amber-600 dark:text-amber-500 dark:border-amber-500 rounded-full border-2",
   OFFER: "border-emerald-600 bg-emerald-100 text-emerald-600",
   INTERVIEW: "border-blue-600 bg-blue-100 text-blue-600",
   REJECT: "border-red-600 bg-red-100 text-red-600",
@@ -68,7 +69,7 @@ export default function JobCard({
                 {/* <span className="h-3 w-[2px] inline-block bg-black dark:bg-white mx-2"></span> */}
                 <span className="inline-block mx-2">-</span>
                 <span
-                  className={`${statusColors[applicationStatus]} font-bold capitalize`}
+                  className={`${statusColors[applicationStatus]} text-xs px-2 py-[2px] font-semibold uppercase`}
                 >
                   {applicationStatus.charAt(0) +
                     applicationStatus.substring(1).toLowerCase()}

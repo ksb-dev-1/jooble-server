@@ -26,7 +26,7 @@ const config: Config = {
         DEFAULT: "var(--border-color)",
       },
       borderRadius: {
-        DEFAULT: "8px",
+        DEFAULT: "10px",
       },
       boxShadow: {
         card: "var(--card-shadow)",

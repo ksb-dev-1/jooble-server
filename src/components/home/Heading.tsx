@@ -38,7 +38,7 @@ export default function Heading() {
       <div className="mt-8 md:mt-12">
         <Link
           href="/jobs"
-          className="font-medium bg-primary text-light dark:text-dark rounded-full px-8 py-4 sm:text-lg hover:tracking-widest transition-all"
+          className="font-medium bg-primary text-light dark:text-dark rounded px-8 py-4 sm:text-lg hover:tracking-widest transition-all"
           aria-label="Start exploring job opportunities"
         >
           Start Exploring
