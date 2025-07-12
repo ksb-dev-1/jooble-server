@@ -128,14 +128,12 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 
 // hooks
 import { useHandleOutsideClick } from "@/hooks/useHandleOutsideClick";
 import { useAutoCloseOnSmallerThanEqualToBreakpoint } from "@/hooks/useAutoCloseOnSmallerThanEqualToBreakpoint";
-
-// components
-import Link from "@/components/LinkWithProgress";
 
 // 3rd party
 import { IoIosCheckmark } from "react-icons/io";

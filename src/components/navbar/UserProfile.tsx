@@ -1,13 +1,11 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Link from "next/link";
 import Image from "next/image";
 
 // hooks
 import { useHandleOutsideClick } from "@/hooks/useHandleOutsideClick";
-
-// components
-import Link from "@/components/LinkWithProgress";
 
 // 3rd party
 import { FaRegUser } from "react-icons/fa";

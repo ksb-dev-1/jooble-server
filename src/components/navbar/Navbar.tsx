@@ -1,13 +1,13 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 // Hooks
 import { useHeaderShadowOnScroll } from "@/hooks/useHeaderShadowOnScroll";
 
 // Components
-import Link from "@/components/LinkWithProgress";
 import NavbarLoadingState from "@/components/navbar/NavLoadingState";
 import AuthenticatedNav from "@/components/navbar/AuthenticatedNav";
 import UnauthenticatedNav from "@/components/navbar/UnauthenticatedNav";

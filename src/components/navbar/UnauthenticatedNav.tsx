@@ -1,9 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { forwardRef } from "react";
 
 // components
-import Link from "@/components/LinkWithProgress";
 import ThemeSwitch from "@/components/navbar/ThemeSwitch";
 
 // 3rd party

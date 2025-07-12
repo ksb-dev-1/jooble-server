@@ -1,5 +1,6 @@
+import Link from "next/link";
+
 // components
-import Link from "@/components/LinkWithProgress";
 import { ToggleSaveForm } from "@/components/shared/ToggleSaveForm";
 
 // utils

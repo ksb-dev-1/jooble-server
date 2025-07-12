@@ -1,11 +1,11 @@
 "use client";
 
 import { forwardRef, useState } from "react";
+import Link from "next/link";
 
 import { NAV_LINKS, NavLink } from "@/components/navbar/Navbar";
 
 // components
-import Link from "@/components/LinkWithProgress";
 import SideNav from "@/components/navbar/SideNav";
 import ThemeSwitch from "@/components/navbar/ThemeSwitch";
 import UserProfile from "@/components/navbar/UserProfile";
