@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+// components
+import Link from "@/components/shared/LinkWithProgress";
 
 // 3rd party
 import { motion, Variants } from "framer-motion";
