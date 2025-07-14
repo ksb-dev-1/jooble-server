@@ -4,9 +4,9 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 
 // components
 import Modal from "@/components/shared/Modal";
-import ResumeActions from "@/components/job-details/ResumeActions";
-import ResumeMissingPrompt from "@/components/job-details/ResumeMissingPrompt";
-import UploadResume from "@/components/job-details/UploadResume";
+import ResumeActions from "./ResumeActions";
+import ResumeMissingPrompt from "./ResumeMissingPrompt";
+import UploadResume from "./UploadResume";
 
 // actions
 import { checkIsResumeUploadedServerAction } from "@/actions/check-is-resume-uploaded-server-action";
@@ -45,6 +45,10 @@ export default function ApplyForJobModal({
       setResumeUrl(undefined);
     }
   }, [data]);
+
+  useEffect(() => {
+    if (isOpen) setShowUploadResume(false);
+  }, [isOpen]);
 
   return (
     <Modal

@@ -32,10 +32,13 @@
 // }
 
 "use client";
-import Link from "next/link";
-import NProgress from "nprogress";
+
 import { useEffect } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+// 3rd party
+import NProgress from "nprogress";
 
 export default function LinkWithProgress(
   props: React.ComponentProps<typeof Link>

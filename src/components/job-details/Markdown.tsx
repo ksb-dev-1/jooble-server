@@ -9,7 +9,9 @@ export default function Markdown({ children }: MarkdownProps) {
   return (
     <ReactMarkdown
       components={{
-        h2: ({ ...props }) => <h2 className="font-bold mb-2" {...props} />,
+        h2: ({ ...props }) => (
+          <h2 className="font-semibold text-lg mb-2" {...props} />
+        ),
         p: ({ ...props }) => (
           <p
             className="leading-relaxed text-slate-500 dark:text-slate-400 mb-8"

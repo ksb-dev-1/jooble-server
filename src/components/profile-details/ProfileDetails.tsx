@@ -6,7 +6,7 @@ import Image from "next/image";
 //import dynamic from "next/dynamic";
 
 // components
-import Link from "@/components/LinkWithProgress";
+import Link from "@/components/shared/LinkWithProgress";
 import DeleteAccountModal from "./DeleteAccountModal";
 // const DeleteAccountModal = dynamic(() => import("./DeleteAccountModal"), {
 //   ssr: false,
@@ -34,7 +34,7 @@ export default function ProfileDetails({
   savedJobsLength,
   appliedJobsLength,
 }: ProfileDetailsProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
@@ -71,15 +71,14 @@ export default function ProfileDetails({
             <p className="text-xl font-bold">{name || "No name"}</p>
             <p className="font-medium">{email || "No email"}</p>
           </div>
-
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="absolute top-4 right-4 bg-red-600 text-white hover:bg-red-500 dark:bg-red-950 dark:text-red-300 dark:hover:bg-red-900 transition-colors h-8 w-8 rounded-full flex items-center justify-center"
-            aria-label="Delete account"
-          >
-            <MdOutlineDelete className="h-5 w-5" />
-          </button>
         </div>
+        <button
+          onClick={() => setIsOpen(true)}
+          className="absolute top-0 right-0 bg-red-600 text-white hover:bg-red-500 dark:bg-red-900 dark:hover:bg-red-800 transition-colors h-8 w-8 rounded-tr rounded-bl flex items-center justify-center"
+          aria-label="Delete account"
+        >
+          <MdOutlineDelete className="h-5 w-5" />
+        </button>
       </section>
 
       {/* Saved & Applied Job Links */}
@@ -95,7 +94,7 @@ export default function ProfileDetails({
           <p className="flex items-center">
             <span>Saved Jobs</span>
             <span
-              className="ml-2 relative inline-block h-6 w-6 rounded-full bg-primary text-light dark:text-dark"
+              className="ml-4 relative inline-block h-8 w-8 rounded bg-primary text-light dark:text-dark"
               aria-live="polite"
               aria-label="Saved jobs count"
             >
@@ -115,7 +114,7 @@ export default function ProfileDetails({
           <p className="flex items-center">
             <span>Applied Jobs</span>
             <span
-              className="ml-2 relative inline-block h-6 w-6 rounded-full bg-primary text-light dark:text-dark"
+              className="ml-4 relative inline-block h-8 w-8 rounded bg-primary text-light dark:text-dark"
               aria-live="polite"
               aria-label="Applied jobs count"
             >
@@ -130,8 +129,8 @@ export default function ProfileDetails({
 
       {/* Delete Confirmation Modal */}
       <DeleteAccountModal
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
         userId={userId}
       />
     </div>

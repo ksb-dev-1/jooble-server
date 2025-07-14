@@ -7,8 +7,9 @@ import { getUserSession } from "@/lib/getUserSession";
 // components
 import Container from "@/components/shared/Container";
 import Breadcrumb from "@/components/shared/BreadCrumb";
-import JobFilters from "@/components/jobs/JobFilters";
+import JobSearchInput from "@/components/jobs/JobSearchInput";
 import JobList from "@/components/jobs/JobList";
+import FilterTrigger from "@/components/jobs/Filter/FilterTrigger";
 
 export const metadata: Metadata = {
   title: "Jobs",
@@ -52,23 +53,18 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
         <Breadcrumb items={breadcrumbItems} />
       </nav>
 
-      <main className="w-full flex items-start md:gap-8" role="main">
-        <aside
-          className="hidden md:block"
-          aria-labelledby="job-filters-heading"
-        >
-          <h2 id="job-filters-heading" className="sr-only">
-            Filter jobs by type, location, and mode
+      <main className="w-full flex flex-col gap-6" role="main">
+        <section aria-labelledby="filter-search-heading">
+          <h2 id="filter-search-heading" className="sr-only">
+            Filter and Search Jobs
           </h2>
-          <JobFilters
-            currentSearch={searchParams.search}
-            currentJobType={searchParams.jobType}
-            currentLocation={searchParams.location}
-            currentJobMode={searchParams.jobMode}
-          />
-        </aside>
+          <div className="flex items-center justify-between gap-4 mb-4">
+            <FilterTrigger />
+            <JobSearchInput />
+          </div>
+        </section>
 
-        <section className="w-full" aria-labelledby="job-results-heading">
+        <section aria-labelledby="job-results-heading">
           <h2 id="job-results-heading" className="sr-only">
             Job Results
           </h2>

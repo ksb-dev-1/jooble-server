@@ -1,7 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useRef } from "react";
+
+// components
+import Link from "@/components/shared/LinkWithProgress";
 
 // hooks
 import { useAutoCloseOnGreaterThanEqualToBreakpoint } from "@/hooks/useAutoCloseOnGreaterThanEqualToBreakPoint";
@@ -9,11 +11,12 @@ import { useHandleOutsideClick } from "@/hooks/useHandleOutsideClick";
 import { NAV_LINKS, NavLink } from "@/components/navbar/Navbar";
 
 interface SideNavProps {
+  isHome: boolean;
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function SideNav({ isOpen, onClose }: SideNavProps) {
+export default function SideNav({ isOpen, onClose, isHome }: SideNavProps) {
   const sideNavRef = useRef<HTMLDivElement>(null);
 
   useHandleOutsideClick(sideNavRef, onClose);
@@ -38,7 +41,9 @@ export default function SideNav({ isOpen, onClose }: SideNavProps) {
             <Link
               href="/"
               onClick={onClose}
-              className="text-2xl font-extrabold text-primary rounded hover:tracking-wider transition-all"
+              className={`text-2xl font-extrabold text-primary rounded hover:tracking-wider transition-all ${
+                isHome ? "pointer-events-none" : ""
+              }`}
             >
               Jooble
             </Link>

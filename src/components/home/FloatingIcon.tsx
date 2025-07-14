@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+
+// 3rd party
 import { IconType } from "react-icons";
 
 interface FloatingIconProps {

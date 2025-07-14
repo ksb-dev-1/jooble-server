@@ -68,9 +68,9 @@ export default function ResumeActions({
 
   return (
     <div className="text-center">
-      <h2 className="text-xl font-bold up">Ready to Apply</h2>
+      <h2 className="text-xl font-semibold up">Ready to Apply</h2>
 
-      <p className="font-medium mt-8">
+      <p className="sm:text-lg mt-8">
         Review your resume:{" "}
         <Link
           href={resumeUrl || "#"}
@@ -83,7 +83,7 @@ export default function ResumeActions({
         </Link>
       </p>
 
-      <p className="font-medium mt-4">
+      <p className="sm:text-lg mt-4">
         Want to upload a new resume?{" "}
         <button
           onClick={() => setShowUploadResume(true)}
@@ -94,7 +94,7 @@ export default function ResumeActions({
         </button>
       </p>
 
-      <div className="border-t-[1px] my-6"></div>
+      <div className="border-t my-8"></div>
 
       <button
         aria-busy={applyJobMutation.isPending}

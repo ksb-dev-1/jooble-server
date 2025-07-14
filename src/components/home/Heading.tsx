@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+
+// 3rd party
 import { motion, Variants } from "framer-motion";
 
 const underlineItem: Variants = {
@@ -36,7 +38,7 @@ export default function Heading() {
       <div className="mt-8 md:mt-12">
         <Link
           href="/jobs"
-          className="font-medium bg-primary text-light dark:text-dark rounded px-8 py-4 sm:text-lg hover:tracking-widest transition-all"
+          className="font-medium text-xl bg-primary text-light dark:text-dark rounded px-8 py-4 hover:tracking-widest transition-all"
           aria-label="Start exploring job opportunities"
         >
           Start Exploring

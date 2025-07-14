@@ -1,16 +1,20 @@
 "use client";
 
 import { useState, useRef } from "react";
-import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 
 // hooks
 import { useHandleOutsideClick } from "@/hooks/useHandleOutsideClick";
+// import { useToggleLockScroll } from "@/hooks/useToggleLockScroll";
+
+// components
+import Link from "@/components/shared/LinkWithProgress";
 
 // 3rd party
+import { signOut } from "next-auth/react";
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineLogout } from "react-icons/md";
-import { signOut } from "next-auth/react";
 
 interface UserProfileProps {
   image: string | null | undefined;
@@ -19,7 +23,10 @@ interface UserProfileProps {
 export default function UserProfile({ image }: UserProfileProps) {
   const [isProfileModalOpen, setIsProfileOpen] = useState(false);
   const profileRef = useRef<HTMLDivElement>(null);
+  const path = usePathname();
+  const isProfile = path === "/profile";
 
+  //useToggleLockScroll(isProfileModalOpen);
   useHandleOutsideClick(profileRef, setIsProfileOpen);
 
   const toggleOpen = () => setIsProfileOpen((prev) => !prev);
@@ -60,11 +67,13 @@ export default function UserProfile({ image }: UserProfileProps) {
         <Link
           href="/profile"
           onClick={toggleOpen}
-          className="px-4 py-2 flex items-center hover:bg-dark dark:hover:bg-light transition-colors rounded"
+          className={`${
+            isProfile ? "pointer-events-none" : ""
+          } px-4 py-2 flex items-center hover:bg-dark dark:hover:bg-light transition-colors rounded`}
           role="menuitem"
         >
           <FaRegUser className="h-4 w-4" />
-          <span className="ml-3 font-medium">Profile</span>
+          <span className="ml-3">Profile</span>
         </Link>
         <button
           onClick={() => {
@@ -75,7 +84,7 @@ export default function UserProfile({ image }: UserProfileProps) {
           role="menuitem"
         >
           <MdOutlineLogout className="h-4 w-4" />
-          <span className="ml-3 font-medium">Sign out</span>
+          <span className="ml-3">Sign out</span>
         </button>
       </div>
     </div>

@@ -3,12 +3,12 @@
 import { forwardRef, useState } from "react";
 import Link from "next/link";
 
-import { NAV_LINKS, NavLink } from "@/components/navbar/Navbar";
+import { NAV_LINKS, NavLink } from "./Navbar";
 
 // components
-import SideNav from "@/components/navbar/SideNav";
-import ThemeSwitch from "@/components/navbar/ThemeSwitch";
-import UserProfile from "@/components/navbar/UserProfile";
+import SideNav from "./SideNav";
+import ThemeSwitch from "./ThemeSwitch";
+import UserProfile from "./UserProfile";
 
 // 3rd party
 import { Session } from "next-auth";
@@ -16,9 +16,11 @@ import { MdMenu } from "react-icons/md";
 
 interface AuthenticatedNavProps {
   session: Session | null;
+  isHome: boolean;
 }
+
 const AuthenticatedNav = forwardRef<HTMLDivElement, AuthenticatedNavProps>(
-  ({ session }, ref) => {
+  ({ session, isHome }, ref) => {
     const [isSideNavOpen, setIsSideNavOpen] = useState(false);
     const image = session?.user.image;
 
@@ -40,7 +42,12 @@ const AuthenticatedNav = forwardRef<HTMLDivElement, AuthenticatedNavProps>(
                 <MdMenu className="h-5 w-5" aria-hidden="true" />
               </button>
 
-              <Link href="/" className="text-2xl font-extrabold text-primary">
+              <Link
+                href="/"
+                className={`${
+                  isHome ? "pointer-events-none" : ""
+                } text-2xl font-extrabold text-primary`}
+              >
                 Jooble
               </Link>
             </div>
@@ -61,6 +68,7 @@ const AuthenticatedNav = forwardRef<HTMLDivElement, AuthenticatedNavProps>(
           </nav>
         </div>
         <SideNav
+          isHome={isHome}
           isOpen={isSideNavOpen}
           onClose={() => setIsSideNavOpen(false)}
         />

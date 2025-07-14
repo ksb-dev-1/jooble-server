@@ -3,7 +3,7 @@
 import { useTransition } from "react";
 
 // components
-import ToggleSaveButton from "@/components/shared/ToggleSaveButton";
+import ToggleSaveButton from "./ToggleSaveButton";
 
 // 3rd party
 import toast from "react-hot-toast";

@@ -17,7 +17,7 @@ function IconButton({
       aria-label={label}
       aria-pressed={pressed}
       title={label}
-      className="flex items-center justify-center border rounded-full h-8 w-8 hover:shadow-md transition-shadow"
+      className="flex items-center justify-center border rounded h-8 w-8 hover:shadow-card transition-shadow"
     >
       {children}
     </button>

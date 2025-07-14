@@ -1,16 +1,16 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 // Hooks
 import { useHeaderShadowOnScroll } from "@/hooks/useHeaderShadowOnScroll";
 
 // Components
-import NavbarLoadingState from "@/components/navbar/NavLoadingState";
-import AuthenticatedNav from "@/components/navbar/AuthenticatedNav";
-import UnauthenticatedNav from "@/components/navbar/UnauthenticatedNav";
+import Link from "@/components/shared/LinkWithProgress";
+import NavbarLoadingState from "./NavLoadingState";
+import AuthenticatedNav from "./AuthenticatedNav";
+import UnauthenticatedNav from "./UnauthenticatedNav";
 
 // 3rd party
 import { useSession } from "next-auth/react";
@@ -80,11 +80,16 @@ export const NavLink = ({
 export default function Navbar() {
   const navbarRef = useRef<HTMLDivElement>(null);
   const { data: session, status } = useSession();
+  const pathname = usePathname();
+
+  const isHome = pathname === "/";
 
   useHeaderShadowOnScroll(navbarRef);
 
   if (status === "loading") return <NavbarLoadingState ref={navbarRef} />;
   if (session?.user.id)
-    return <AuthenticatedNav session={session} ref={navbarRef} />;
-  return <UnauthenticatedNav ref={navbarRef} />;
+    return (
+      <AuthenticatedNav session={session} ref={navbarRef} isHome={isHome} />
+    );
+  return <UnauthenticatedNav ref={navbarRef} isHome={isHome} />;
 }

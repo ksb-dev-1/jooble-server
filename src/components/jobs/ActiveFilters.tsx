@@ -136,8 +136,8 @@ export default function ActiveFilters({
         <form action={clearFiltersServerAction}>
           <button type="submit">
             <FilterTag
-              label="Clear All"
-              className="bg-red-600 border-transparent text-white hover:bg-red-500 dark:bg-red-700 dark:hover:bg-red-600"
+              label="Clear"
+              className="bg-red-600 border-transparent text-white hover:bg-red-500 dark:bg-red-900 dark:hover:bg-red-800"
             />
           </button>
         </form>
@@ -161,7 +161,7 @@ function FilterTag({ label, onRemove, className, title }: FilterTagProps) {
   return (
     <span
       title={title}
-      className={`flex items-center px-3 py-1 rounded-3xl border ${className}`}
+      className={`flex items-center px-3 py-1 rounded border ${className}`}
     >
       {label}
       {onRemove && (

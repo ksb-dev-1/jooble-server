@@ -8,9 +8,6 @@ import {
   SetStateAction,
 } from "react";
 
-// hooks
-import { useHandleOutsideClick } from "@/hooks/useHandleOutsideClick";
-
 // actions
 import { deleteUserAccount } from "@/actions/delete-user-account";
 
@@ -19,30 +16,28 @@ import { DeleteAccountResponse } from "@/types/job";
 
 // components
 import Modal from "@/components/shared/Modal";
+import WarningCard from "@/components/shared/WarningCard";
 
 // 3rd party
 import { signOut } from "next-auth/react";
 import toast from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { MdOutlineDelete } from "react-icons/md";
-import WarningCard from "../shared/WarningCard";
 
 interface Props {
-  isModalOpen: boolean;
-  setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+  isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
   userId: string;
 }
 
 export default function DeleteAccountModal({
-  isModalOpen,
-  setIsModalOpen,
+  isOpen,
+  setIsOpen,
   userId,
 }: Props) {
   const [errorMsg, setErrorMsg] = useState("");
   const [isPending, startTransition] = useTransition();
   const modalRef = useRef<HTMLDivElement>(null);
-
-  useHandleOutsideClick(modalRef, setIsModalOpen);
 
   const handleDelete = () => {
     setErrorMsg("");
@@ -51,7 +46,7 @@ export default function DeleteAccountModal({
 
       if (res.success) {
         toast.success(res?.message || "Account deleted successfully");
-        setIsModalOpen(false);
+        setIsOpen(false);
         signOut();
       } else {
         setErrorMsg(res.error || "Something went wrong.");
@@ -61,16 +56,13 @@ export default function DeleteAccountModal({
 
   return (
     <Modal
-      isOpen={isModalOpen}
-      setIsOpen={setIsModalOpen}
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
       ref={modalRef}
       labelledById="modal-title"
     >
       <div role="document">
-        <h2
-          id="modal-title"
-          className="text-xl font-bold text-red-600 text-center"
-        >
+        <h2 id="modal-title" className="text-xl font-semibold text-center">
           Do you want to delete your account?
         </h2>
 
@@ -83,7 +75,7 @@ export default function DeleteAccountModal({
         <button
           onClick={handleDelete}
           disabled={isPending}
-          className={`mt-4 relative w-full px-4 h-[41.6px] rounded flex items-center justify-center bg-red-600 text-white hover:bg-red-500 dark:bg-red-700 dark:hover:bg-red-600 transition-colors ${
+          className={`mt-4 relative w-full px-4 h-[41.6px] rounded flex items-center justify-center bg-red-600 text-white dark:bg-red-900 hover:bg-red-500 dark:hover:bg-red-800 transition-colors ${
             isPending ? "pointer-events-none opacity-70" : ""
           } font-medium`}
         >

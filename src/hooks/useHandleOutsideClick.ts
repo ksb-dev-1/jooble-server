@@ -1,8 +1,8 @@
-import { useEffect, RefObject } from "react";
+import { useEffect, RefObject, SetStateAction, Dispatch } from "react";
 
 export function useHandleOutsideClick(
   ref: RefObject<HTMLDivElement | null>,
-  setIsOpen: (isOpen: boolean) => void
+  setIsOpen: Dispatch<SetStateAction<boolean>>
 ) {
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {

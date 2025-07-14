@@ -142,12 +142,12 @@ export default function UploadResume({
               className="text-5xl text-primary"
               aria-hidden="true"
             />
-            <p className="font-medium">
+            <p className="font-medium sm:text-lg">
               {fileName || "Drag and drop or click to select a file"}
             </p>
             <p
               id="file-upload-instructions"
-              className="text-xs text-gray-500 mt-1 font-medium"
+              className="text-xs sm:text-sm text-gray-500 mt-1 font-medium"
             >
               Supported formats: PDF, TXT, DOCX (Max 5MB)
             </p>

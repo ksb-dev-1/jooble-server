@@ -1,11 +1,13 @@
 import { fetchJobDetailsServerAction } from "@/actions/fetch-job-details-server-action";
 
+// types
+import { JobWithSavedStatusAndApplicationStatus } from "@/types/job";
+
 // components
 import ServerError from "@/components/errors/ServerError";
 import JobCard from "@/components/shared/JobCard";
-import Markdown from "@/components/job-details/Markdown";
-import ApplyNowTrigger from "@/components/job-details/ApplyNowTrigger";
-import { JobWithSavedStatusAndApplicationStatus } from "@/types/job";
+import Markdown from "./Markdown";
+import ApplyNowTrigger from "./ApplyNowTrigger";
 
 interface JobDetailsProps {
   params: {

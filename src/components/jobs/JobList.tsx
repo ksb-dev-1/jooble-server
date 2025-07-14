@@ -13,8 +13,8 @@ import {
 // components
 import ServerError from "@/components/errors/ServerError";
 import JobCard from "@/components/shared/JobCard";
-import Pagination from "@/components/jobs/Pagination";
-import ActiveFilters from "@/components/jobs/ActiveFilters";
+import Pagination from "./Pagination";
+import ActiveFilters from "./ActiveFilters";
 
 interface JobListProps {
   userId: string;
@@ -34,7 +34,7 @@ const parseUnique = (str?: string): string[] => {
 
 export default async function JobList({ userId, filterValues }: JobListProps) {
   const currentPage = parseInt(filterValues.page || "1", 10);
-  const limit = 5;
+  const limit = 8;
 
   let data: JobsWithTotalPages | null = null;
 
@@ -125,7 +125,7 @@ export default async function JobList({ userId, filterValues }: JobListProps) {
           Job listings
         </h2>
 
-        <ul className="w-full grid gap-8">
+        <ul className="w-full grid md:grid-cols-2 gap-8">
           {jobs.map((job: JobWithSavedStatusAndApplicationStatus) => (
             <li key={job.id}>
               <JobCard job={job} />

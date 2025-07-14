@@ -66,8 +66,8 @@ export default function Pagination({
           max={totalPages}
           value={inputPage}
           onChange={(e) => setInputPage(e.target.value)}
-          className="min-w-[80px] px-4 py-2 bg-light dark:bg-dark border rounded text-center focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent"
-          placeholder="Jump to"
+          className="min-w-24 px-4 py-2 bg-light dark:bg-dark border rounded text-center focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent"
+          //placeholder="Jump to"
           aria-label="Enter page number to jump"
         />
         <button

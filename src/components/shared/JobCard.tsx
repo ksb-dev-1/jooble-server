@@ -1,7 +1,6 @@
-import Link from "next/link";
-
 // components
-import { ToggleSaveForm } from "@/components/shared/ToggleSaveForm";
+import Link from "./LinkWithProgress";
+import { ToggleSaveForm } from "./ToggleSaveForm";
 
 // utils
 import { formatMoney, relativeDate } from "@/utils";
@@ -25,8 +24,7 @@ interface JobCardProps {
 }
 
 const statusColors: Record<ApplicationStatus, string> = {
-  PENDING:
-    "text-amber-600 border-amber-600 dark:text-amber-500 dark:border-amber-500 rounded-full border-2",
+  PENDING: "text-amber-600 dark:text-amber-500",
   OFFER: "border-emerald-600 bg-emerald-100 text-emerald-600",
   INTERVIEW: "border-blue-600 bg-blue-100 text-blue-600",
   REJECT: "border-red-600 bg-red-100 text-red-600",
@@ -62,15 +60,15 @@ export default function JobCard({
         className={`h-full block bg-light dark:bg-dark border rounded p-4 md:p-6 hover:shadow-card transition-shadow ${pointerEventsClass}`}
       >
         <header>
-          <h3 className="font-bold text-xl">{role}</h3>
+          <h3 className="font-semibold text-xl">{role}</h3>
           <p className="mt-1">
-            <span className="text-primary font-bold">{companyName}</span>
+            <span className="text-primary font-medium">{companyName}</span>
             {applicationStatus && (
               <>
                 {/* <span className="h-3 w-[2px] inline-block bg-black dark:bg-white mx-2"></span> */}
                 <span className="inline-block mx-2">-</span>
                 <span
-                  className={`${statusColors[applicationStatus]} text-xs px-2 py-[2px] font-semibold uppercase`}
+                  className={`${statusColors[applicationStatus]} font-medium`}
                 >
                   {applicationStatus.charAt(0) +
                     applicationStatus.substring(1).toLowerCase()}
@@ -115,7 +113,7 @@ export default function JobCard({
             {skills?.length > 0 &&
               skills.slice(0, 3).map((skill: string, index: number) => (
                 <div key={skill} className="mt-2 flex items-center">
-                  <span className="rounded-xl capitalize text-slate-500 dark:text-slate-400">
+                  <span className="capitalize text-sm text-slate-500 dark:text-slate-400">
                     {skill}
                   </span>
                   {index !== 2 && index !== skills.slice(0, 3).length - 1 && (

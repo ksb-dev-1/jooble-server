@@ -87,7 +87,7 @@ export default function FeatureSection() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
           >
-            <div className="relative h-10 w-10 rounded-full border mb-4">
+            <div className="relative h-10 w-10 rounded border mb-4">
               <span
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary"
                 aria-hidden="true"
@@ -95,7 +95,7 @@ export default function FeatureSection() {
                 {feature.icon}
               </span>
             </div>
-            <h3 className="font-bold text-xl mb-2">{feature.title}</h3>
+            <h3 className="font-semibold text-xl mb-2">{feature.title}</h3>
             <p className="text-slate-500 dark:text-slate-400">{feature.desc}</p>
           </motion.article>
         ))}

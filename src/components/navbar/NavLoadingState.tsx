@@ -18,7 +18,7 @@ const NavbarLoadingState = forwardRef<HTMLDivElement>((_, ref) => {
         aria-busy="true"
         className="max-w-5xl w-full mx-auto px-4 flex items-center justify-between"
       >
-        <Link href="/" className="text-2xl font-extrabold text-primary">
+        <Link href="#" className="text-2xl font-extrabold text-primary">
           Jooble
         </Link>
         <div className="hidden md:flex items-center space-x-4">
