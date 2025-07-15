@@ -92,17 +92,17 @@ export default function ProfileDetails({
               <p className="font-medium">{email || "No email"}</p>
             </div>
             {isLoading ? (
-              <span className="skeleton h-6 w-36 rounded mt-2 sm:mt-0"></span>
+              <span className="skeleton h-6 w-60 rounded mt-2 sm:mt-0"></span>
             ) : (
               resumeUrl && (
                 <a
                   href={resumeUrl || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary underline mt-2 sm:mt-0"
+                  className="mt-2 sm:mt-0 underline text-primary hover:opacity-80 dark:hover:opacity-80 transition-opacity font-medium"
                   aria-label="Download current resume"
                 >
-                  Review your resume
+                  Click here to view your resume
                 </a>
               )
             )}
@@ -120,7 +120,7 @@ export default function ProfileDetails({
 
       {/* Saved & Applied Job Links */}
       <section
-        className="mt-4 grid sm:grid-cols-2 gap-4"
+        className="mt-4 sm:mt-8 grid sm:grid-cols-2 gap-4 sm:gap-8"
         aria-label="User job statistics"
       >
         <LinkWithProgress
@@ -129,9 +129,9 @@ export default function ProfileDetails({
           aria-label="View saved jobs"
         >
           <p className="flex items-center">
-            <span>Saved Jobs</span>
+            <span className="font-medium">Saved Jobs</span>
             <span
-              className="ml-4 relative inline-block h-8 w-8 rounded bg-primary text-light dark:text-dark"
+              className="ml-4 relative inline-block h-6 w-6 rounded border border-gray-400 dark:border-gray-500 text-primary"
               aria-live="polite"
               aria-label="Saved jobs count"
             >
@@ -140,7 +140,7 @@ export default function ProfileDetails({
               </span>
             </span>
           </p>
-          <FaArrowRightLong />
+          <FaArrowRightLong className="text-primary" />
         </LinkWithProgress>
 
         <LinkWithProgress
@@ -149,18 +149,18 @@ export default function ProfileDetails({
           aria-label="View applied jobs"
         >
           <p className="flex items-center">
-            <span>Applied Jobs</span>
+            <span className="font-Medium">Applied Jobs</span>
             <span
-              className="ml-4 relative inline-block h-8 w-8 rounded bg-primary text-light dark:text-dark"
+              className="ml-4 relative inline-block h-6 w-6 rounded border border-gray-400 dark:border-gray-500 text-primary"
               aria-live="polite"
               aria-label="Applied jobs count"
             >
-              <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-sm font-medium">
+              <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-sm font-semibold">
                 {appliedJobsLength ?? 0}
               </span>
             </span>
           </p>
-          <FaArrowRightLong />
+          <FaArrowRightLong className="text-primary" />
         </LinkWithProgress>
       </section>
 

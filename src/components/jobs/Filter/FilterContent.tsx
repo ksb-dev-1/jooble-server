@@ -57,7 +57,7 @@ export function FilterContent({
       id={`tabpanel-${activeTab}`}
       role="tabpanel"
       aria-labelledby={`tab-${activeTab}`}
-      className="h-full p-8"
+      className="h-full p-4 sm:p-8 "
     >
       <MultiSelectFilter
         placeholder={config.placeholder}

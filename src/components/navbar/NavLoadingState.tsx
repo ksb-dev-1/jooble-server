@@ -26,7 +26,7 @@ const NavbarLoadingState = forwardRef<HTMLDivElement>((_, ref) => {
         </Link>
         <div className="hidden md:flex items-center space-x-4">
           {["Jobs", "Saved", "Applied"].map((label) => (
-            <div key={label} className="skeleton rounded-3xl w-20 py-[3px]">
+            <div key={label} className="skeleton rounded w-20 py-[3px]">
               {label}
             </div>
           ))}

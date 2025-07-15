@@ -71,8 +71,6 @@ export default function DeleteAccountModal({
         className="mt-4"
       />
 
-      <div className="border-t my-4"></div>
-
       <button
         onClick={handleDelete}
         disabled={isPending}
