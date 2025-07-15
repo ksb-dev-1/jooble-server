@@ -24,7 +24,7 @@ interface JobCardProps {
 }
 
 const statusColors: Record<ApplicationStatus, string> = {
-  PENDING: "text-amber-600 dark:text-amber-500",
+  PENDING: "text-amber-700 dark:text-amber-500",
   OFFER: "border-emerald-600 bg-emerald-100 text-emerald-600",
   INTERVIEW: "border-blue-600 bg-blue-100 text-blue-600",
   REJECT: "border-red-600 bg-red-100 text-red-600",

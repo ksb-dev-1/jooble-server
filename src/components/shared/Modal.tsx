@@ -70,6 +70,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
           } bg-light dark:bg-dark border-2 ${maxWidth} w-full mx-auto rounded overflow-hidden shadow-xl p-4 md:p-8`}
         >
           <button
+            aria-label="Close filter panel"
             onClick={() => setIsOpen(false)}
             className="absolute top-0 right-0 w-8 h-8 rounded-tr rounded-bl border-l border-b hover:bg-dark dark:hover:bg-light transition-colors"
           >
