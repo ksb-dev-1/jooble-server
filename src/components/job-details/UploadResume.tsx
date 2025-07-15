@@ -127,7 +127,7 @@ export default function UploadResume({
         Back
       </button>
 
-      <div className="space-y-2 mt-4">
+      <div className="mt-4 border rounded p-4">
         <div className="relative border-2 border-dashed border-primary rounded h-40 flex items-center justify-center">
           <input
             id="resume-upload"
@@ -154,15 +154,14 @@ export default function UploadResume({
             </p>
           </div>
         </div>
+
+        {file && isResumeUploaded && (
+          <WarningCard
+            message="Your previous resume will be replaced with the new one."
+            className="mt-4"
+          />
+        )}
       </div>
-
-      {file && isResumeUploaded && (
-        <WarningCard
-          message="Your previous resume will be replaced with the new one."
-          className="mt-4"
-        />
-      )}
-
       {file && (
         <button
           onClick={handleUpload}

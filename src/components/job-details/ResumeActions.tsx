@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 
 // actions
@@ -96,33 +95,43 @@ export default function ResumeActions({
       {/* Resume Preview Link */}
       <section className="my-4 border rounded p-4">
         {resumeUrl && (
-          <p className="mb-4 font-medium">
-            1 - Would you like to review your resume before applying for the
-            job?{" "}
-            <Link
-              href={resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary"
-              aria-label="View your uploaded resume"
-            >
-              Click here
-            </Link>
-          </p>
+          <div className="font-medium flex items-start mb-4">
+            <p className="mr-2">-</p>
+            <p>
+              <span>
+                Would you like to review your resume before applying for the
+                job?{" "}
+              </span>
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary"
+                aria-label="View your uploaded resume"
+              >
+                Click here to review
+              </a>
+            </p>
+          </div>
         )}
 
         {/* Upload New Resume Button */}
-        <p className="font-medium">
-          2 - Would you like to upload a new resume tailored for this job
-          application?{" "}
-          <button
-            onClick={() => setShowUploadResume(true)}
-            className="text-primary"
-            aria-label="Upload a new resume"
-          >
-            Click here
-          </button>
-        </p>
+        <div className="font-medium flex items-start">
+          <p className="mr-2">-</p>
+          <p>
+            <span>
+              Would you like to upload a new resume tailored for this job
+              application?{" "}
+            </span>
+            <button
+              onClick={() => setShowUploadResume(true)}
+              className="text-primary"
+              aria-label="Upload a new resume"
+            >
+              Click here to upload
+            </button>
+          </p>
+        </div>
       </section>
 
       {/* Apply Button */}

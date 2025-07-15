@@ -84,7 +84,7 @@ export default function DeleteAccountModal({
         aria-describedby="modal-description"
         className="my-4 border p-4 rounded"
       >
-        <p id="modal-description" className="font-medium">
+        <p id="modal-description" className="font-medium text-center">
           Do you want to delete your account?
         </p>
 
