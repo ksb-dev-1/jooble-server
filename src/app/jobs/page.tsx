@@ -53,12 +53,15 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
         <Breadcrumb items={breadcrumbItems} />
       </nav>
 
-      <main className="w-full flex flex-col gap-6" role="main">
-        <section aria-labelledby="filter-search-heading">
+      <main className="w-full flex flex-col" role="main">
+        <section
+          aria-labelledby="filter-search-heading"
+          className="mb-4 sm:mb-8"
+        >
           <h2 id="filter-search-heading" className="sr-only">
             Filter and Search Jobs
           </h2>
-          <div className="flex items-center justify-between gap-4 mb-4">
+          <div className="flex items-center justify-between gap-4">
             <FilterTrigger />
             <JobSearchInput />
           </div>

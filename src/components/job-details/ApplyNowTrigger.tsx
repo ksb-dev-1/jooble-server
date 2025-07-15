@@ -44,7 +44,7 @@ export default function ApplyNowTrigger({
       <button
         aria-label="Apply for this job"
         onClick={() => setIsOpen(true)}
-        className="mt-4 w-fit px-4 py-2 rounded bg-primary text-light dark:text-dark hover:opacity-80 dark:hover:opacity-90 transition-opacity font-medium"
+        className="mt-4 w-full sm:w-fit px-4 py-2 rounded bg-primary text-light dark:text-dark hover:opacity-80 dark:hover:opacity-90 transition-opacity font-medium"
       >
         Click here to apply for a job
       </button>

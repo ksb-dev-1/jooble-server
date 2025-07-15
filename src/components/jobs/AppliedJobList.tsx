@@ -58,7 +58,7 @@ export default async function AppliedJobList({ userId }: AppliedJobListProps) {
   }
 
   return (
-    <ul className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+    <ul className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
       {appliedJobs.map((job: JobWithSavedStatusAndApplicationStatus) => (
         <li key={job.id}>
           <JobCard job={job} />
