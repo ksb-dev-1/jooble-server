@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+// components
+import LinkWithProgress from "./LinkWithProgress";
 
 // 3rd party
 import { IoChevronForwardSharp } from "react-icons/io5";
@@ -29,9 +30,12 @@ export default function Breadcrumb({ items, className }: BreadcrumbProps) {
             role="listitem"
           >
             {item.href ? (
-              <Link href={item.href} className="text-primary hover:underline">
+              <LinkWithProgress
+                href={item.href}
+                className="text-primary hover:underline"
+              >
                 {item.label}
-              </Link>
+              </LinkWithProgress>
             ) : (
               <span aria-current="page">{item.label}</span>
             )}

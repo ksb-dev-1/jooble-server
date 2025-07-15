@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+
+// actions
+import { checkIsResumeUploadedServerAction } from "@/actions/check-is-resume-uploaded-server-action";
 
 //import dynamic from "next/dynamic";
 
 // components
-import Link from "@/components/shared/LinkWithProgress";
+import LinkWithProgress from "@/components/shared/LinkWithProgress";
 import DeleteAccountModal from "./DeleteAccountModal";
 // const DeleteAccountModal = dynamic(() => import("./DeleteAccountModal"), {
 //   ssr: false,
@@ -16,6 +19,7 @@ import DeleteAccountModal from "./DeleteAccountModal";
 import { FaRegUser } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { MdOutlineDelete } from "react-icons/md";
+import { useQuery } from "@tanstack/react-query";
 
 interface ProfileDetailsProps {
   userId: string;
@@ -35,6 +39,21 @@ export default function ProfileDetails({
   appliedJobsLength,
 }: ProfileDetailsProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [resumeUrl, setResumeUrl] = useState<string>();
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["checkResumeUploaded", userId],
+    queryFn: () => checkIsResumeUploadedServerAction(userId!),
+    enabled: !!userId,
+  });
+
+  useEffect(() => {
+    if (data?.success) {
+      setResumeUrl(data.data?.url);
+    } else {
+      setResumeUrl(undefined);
+    }
+  }, [data]);
 
   return (
     <div>
@@ -67,11 +86,29 @@ export default function ProfileDetails({
             </div>
           )}
 
-          <div>
-            <p className="text-xl font-bold">{name || "No name"}</p>
-            <p className="font-medium">{email || "No email"}</p>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between">
+            <div>
+              <p className="text-xl font-bold">{name || "No name"}</p>
+              <p className="font-medium">{email || "No email"}</p>
+            </div>
+            {isLoading ? (
+              <span className="skeleton h-6 w-36 rounded mt-2 sm:mt-0"></span>
+            ) : (
+              resumeUrl && (
+                <a
+                  href={resumeUrl || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline mt-2 sm:mt-0"
+                  aria-label="Download current resume"
+                >
+                  Review your resume
+                </a>
+              )
+            )}
           </div>
         </div>
+
         <button
           onClick={() => setIsOpen(true)}
           className="absolute top-0 right-0 bg-red-600 text-white hover:bg-red-500 dark:bg-red-900 dark:hover:bg-red-800 transition-colors h-8 w-8 rounded-tr rounded-bl flex items-center justify-center"
@@ -86,7 +123,7 @@ export default function ProfileDetails({
         className="mt-4 grid sm:grid-cols-2 gap-4"
         aria-label="User job statistics"
       >
-        <Link
+        <LinkWithProgress
           href="/jobs/saved"
           className="p-4 rounded border flex items-center justify-between hover:bg-dark dark:hover:bg-light transition-colors"
           aria-label="View saved jobs"
@@ -104,9 +141,9 @@ export default function ProfileDetails({
             </span>
           </p>
           <FaArrowRightLong />
-        </Link>
+        </LinkWithProgress>
 
-        <Link
+        <LinkWithProgress
           href="/jobs/applied"
           className="p-4 rounded border flex items-center justify-between hover:bg-dark dark:hover:bg-light transition-colors"
           aria-label="View applied jobs"
@@ -124,7 +161,7 @@ export default function ProfileDetails({
             </span>
           </p>
           <FaArrowRightLong />
-        </Link>
+        </LinkWithProgress>
       </section>
 
       {/* Delete Confirmation Modal */}

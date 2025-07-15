@@ -71,7 +71,7 @@ export default function ResumeActions({
       <h2 className="text-xl font-bold up">Ready to Apply</h2>
 
       <p className="sm:text-lg mt-8">
-        Review your resume:{" "}
+        Want to review your resume?{" "}
         <Link
           href={resumeUrl || "#"}
           target="_blank"
@@ -79,7 +79,7 @@ export default function ResumeActions({
           className="text-primary underline"
           aria-label="Download current resume"
         >
-          Download
+          Click here
         </Link>
       </p>
 
@@ -94,7 +94,7 @@ export default function ResumeActions({
         </button>
       </p>
 
-      <div className="border-t my-8"></div>
+      <div className="border-t my-4"></div>
 
       <button
         aria-busy={applyJobMutation.isPending}

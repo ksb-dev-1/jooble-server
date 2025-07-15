@@ -116,7 +116,7 @@ export default function UploadResume({
   };
 
   return (
-    <div className="space-y-4">
+    <div>
       <button
         onClick={() => setShowUploadResume(false)}
         className="flex items-center text-primary font-medium"
@@ -126,7 +126,7 @@ export default function UploadResume({
         Back
       </button>
 
-      <div className="space-y-2">
+      <div className="space-y-2 mt-4">
         <div className="relative border-2 border-dashed border-primary rounded h-40 flex items-center justify-center">
           <input
             id="resume-upload"
@@ -156,31 +156,43 @@ export default function UploadResume({
       </div>
 
       {file && isResumeUploaded && (
-        <WarningCard message="Your previous resume will be replaced with the new one." />
+        <WarningCard
+          message="Your previous resume will be replaced with the new one."
+          className="mt-4"
+        />
       )}
 
       {file && (
-        <button
-          onClick={handleUpload}
-          disabled={isPending}
-          aria-busy={isPending}
-          className={`relative bg-primary text-light dark:text-dark rounded flex items-center justify-center transition-opacity ${
-            file && !isPending
-              ? "hover:opacity-80 dark:hover:opacity-90"
-              : "opacity-60 pointer-events-none"
-          } mt-4 w-full px-4 h-[41.6px] font-medium`}
-        >
-          Upload
-          {isPending && (
-            <AiOutlineLoading3Quarters className="absolute right-4 animate-spin" />
-          )}
-        </button>
+        <>
+          <div className="border-t my-4"></div>
+          <button
+            onClick={handleUpload}
+            disabled={isPending}
+            aria-busy={isPending}
+            className={`relative bg-primary text-light dark:text-dark rounded flex items-center justify-center transition-opacity ${
+              file && !isPending
+                ? "hover:opacity-80 dark:hover:opacity-90"
+                : "opacity-60 pointer-events-none"
+            } mt-4 w-full px-4 h-[41.6px] font-medium`}
+          >
+            Upload
+            {isPending && (
+              <AiOutlineLoading3Quarters className="absolute right-4 animate-spin" />
+            )}
+          </button>
+        </>
       )}
 
       {errorMessage && (
-        <p role="alert" className="text-red-600 dark:text-red-400 text-sm mt-2">
-          {errorMessage}
-        </p>
+        <>
+          <div className="border-t my-4"></div>
+          <p
+            role="alert"
+            className="text-red-600 dark:text-red-400 text-sm mt-2"
+          >
+            {errorMessage}
+          </p>
+        </>
       )}
     </div>
   );

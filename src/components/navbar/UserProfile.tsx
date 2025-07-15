@@ -9,7 +9,7 @@ import { useHandleOutsideClick } from "@/hooks/useHandleOutsideClick";
 import { useToggleLockScroll } from "@/hooks/useToggleLockScroll";
 
 // components
-import Link from "@/components/shared/LinkWithProgress";
+import LinkWithProgress from "@/components/shared/LinkWithProgress";
 
 // 3rd party
 import { signOut } from "next-auth/react";
@@ -64,7 +64,7 @@ export default function UserProfile({ image }: UserProfileProps) {
         role="menu"
         aria-label="User menu"
       >
-        <Link
+        <LinkWithProgress
           href="/profile"
           onClick={toggleOpen}
           className={`${
@@ -74,7 +74,7 @@ export default function UserProfile({ image }: UserProfileProps) {
         >
           <FaRegUser className="h-4 w-4" />
           <span className="ml-3">Profile</span>
-        </Link>
+        </LinkWithProgress>
         <button
           onClick={() => {
             signOut();

@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 // lib
 import { prisma } from "@/lib/prisma";
@@ -62,6 +62,7 @@ export async function applyForJobServerAction(
   revalidateTag(`saved-jobs-user-${userId}`);
   revalidateTag(`job-details-${userId}-${jobId}`);
   revalidateTag(`applied-jobs-user-${userId}`);
+  revalidatePath("/profile");
 
   return {
     success: true,

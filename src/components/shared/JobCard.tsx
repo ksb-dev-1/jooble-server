@@ -1,5 +1,5 @@
 // components
-import Link from "./LinkWithProgress";
+import LinkWithProgress from "./LinkWithProgress";
 import { ToggleSaveForm } from "./ToggleSaveForm";
 
 // utils
@@ -55,7 +55,7 @@ export default function JobCard({
       className="relative"
       aria-label={`Job posting: ${role} at ${companyName}`}
     >
-      <Link
+      <LinkWithProgress
         href={link ?? `/jobs/${id}`}
         className={`h-full block bg-light dark:bg-dark border rounded p-4 md:p-6 hover:shadow-card transition-shadow ${pointerEventsClass}`}
       >
@@ -133,7 +133,7 @@ export default function JobCard({
             <span className="ml-1">{relativeDate(createdAt)}</span>
           </div>
         </footer>
-      </Link>
+      </LinkWithProgress>
 
       <ToggleSaveForm jobId={id} isSaved={job.isSaved} />
     </article>

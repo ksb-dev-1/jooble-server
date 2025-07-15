@@ -1,8 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -51,11 +48,8 @@
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  /* font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; */
-  /* font-family: "Figtree", sans-serif; */
-  /* font-family: "Roboto", sans-serif; */
-  /* font-family: "Open Sans", sans-serif; */
-  /* font-family: "Outfit", sans-serif; */
+  font-family: "Figtree", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .skeleton {

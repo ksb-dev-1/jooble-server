@@ -48,12 +48,12 @@ export default async function SavedJobList({ userId }: SavedJobListProps) {
           priority
         />
         <div className="flex flex-col items-center justify-center gap-2">
-          <h2 id="no-saved-jobs-heading" className="font-medium">
+          <h2 id="no-saved-jobs-heading" className="font-medium text-lg">
             You haven&apos;t saved to any jobs yet!
           </h2>
           <Link
             href="/jobs"
-            className="text-primary font-medium underline"
+            className="text-primary font-medium underline text-lg"
             aria-label="Browse available jobs to save"
           >
             Browse jobs

@@ -1,7 +1,7 @@
 "use client";
 
 // components
-import Link from "@/components/shared/LinkWithProgress";
+import LinkWithProgress from "@/components/shared/LinkWithProgress";
 
 // 3rd party
 import { motion, Variants } from "framer-motion";
@@ -37,13 +37,13 @@ export default function Heading() {
       </p>
 
       <div className="mt-8 md:mt-12">
-        <Link
+        <LinkWithProgress
           href="/jobs"
           className="font-medium text-xl bg-primary text-light dark:text-dark rounded px-8 py-4 hover:tracking-widest transition-all"
           aria-label="Start exploring job opportunities"
         >
           Start Exploring
-        </Link>
+        </LinkWithProgress>
       </div>
 
       <div className="text-center space-y-3 max-w-2xl w-full mt-8 md:mt-12">

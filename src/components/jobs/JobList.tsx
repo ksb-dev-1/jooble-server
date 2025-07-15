@@ -98,7 +98,7 @@ export default async function JobList({ userId, filterValues }: JobListProps) {
             priority
           />
           <div className="flex flex-col items-center justify-center gap-2">
-            <h2 id="no-jobs-heading" className="font-semibold">
+            <h2 id="no-jobs-heading" className="font-semibold text-xl">
               No jobs found!
             </h2>
           </div>

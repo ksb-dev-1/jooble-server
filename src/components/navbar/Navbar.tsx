@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { useHeaderShadowOnScroll } from "@/hooks/useHeaderShadowOnScroll";
 
 // Components
-import Link from "@/components/shared/LinkWithProgress";
+import LinkWithProgress from "@/components/shared/LinkWithProgress";
 import NavbarLoadingState from "./NavLoadingState";
 import AuthenticatedNav from "./AuthenticatedNav";
 import UnauthenticatedNav from "./UnauthenticatedNav";
@@ -65,14 +65,14 @@ export const NavLink = ({
     : "border-transparent hover:border-[#999]";
 
   return (
-    <Link
+    <LinkWithProgress
       href={linkPath}
       onClick={onClick}
       className={`${baseClasses} ${isActive ? activeClasses : inactiveClasses}`}
       aria-current={isActive ? "page" : undefined}
     >
       {text}
-    </Link>
+    </LinkWithProgress>
   );
 };
 

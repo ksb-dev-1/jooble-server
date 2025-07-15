@@ -3,7 +3,7 @@ import { FaGithub } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="border-t bg-light dark:bg-dark" role="contentinfo">
+    <footer className="border-t bg-light dark:bg-dark h-16" role="contentinfo">
       <div className="max-w-5xl w-full mx-auto p-4 flex flex-col sm:flex-row items-center justify-between">
         <p className="text-center sm:text-left text-sm" aria-label="Copyright">
           © {new Date().getFullYear()} Jooble. All rights reserved.

@@ -1,5 +1,7 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
+
 // lib
 import { prisma } from "@/lib/prisma";
 
@@ -104,6 +106,8 @@ export async function uploadResumeServerAction(
         userId,
       },
     });
+
+    revalidatePath("/profile");
 
     return {
       success: true,

@@ -68,8 +68,10 @@ export default function DeleteAccountModal({
       <WarningCard
         message=" This will delete everything related to your account, including saved
             jobs, applied jobs, and more."
-        className="mt-8"
+        className="mt-4"
       />
+
+      <div className="border-t my-4"></div>
 
       <button
         onClick={handleDelete}

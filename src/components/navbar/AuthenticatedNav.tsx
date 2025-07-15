@@ -5,7 +5,7 @@ import { forwardRef, useState } from "react";
 import { NAV_LINKS, NavLink } from "./Navbar";
 
 // components
-import Link from "@/components/shared/LinkWithProgress";
+import LinkWithProgress from "@/components/shared/LinkWithProgress";
 import SideNav from "./SideNav";
 import ThemeSwitch from "./ThemeSwitch";
 import UserProfile from "./UserProfile";
@@ -42,14 +42,14 @@ const AuthenticatedNav = forwardRef<HTMLDivElement, AuthenticatedNavProps>(
                 <MdMenu className="h-5 w-5" aria-hidden="true" />
               </button>
 
-              <Link
+              <LinkWithProgress
                 href="/"
                 className={`${
                   isHome ? "pointer-events-none" : ""
                 } text-2xl font-extrabold text-primary hover:opacity-80 dark:hover:opacity-90 transition-opacity`}
               >
                 Jooble
-              </Link>
+              </LinkWithProgress>
             </div>
             <div className="hidden md:flex items-center space-x-8">
               {NAV_LINKS.map((link) => (

@@ -49,7 +49,7 @@ export default async function AppliedJobList({ userId }: AppliedJobListProps) {
           priority
         />
         <div className="flex flex-col items-center justify-center gap-2">
-          <h2 id="no-applied-jobs-heading" className="font-medium">
+          <h2 id="no-applied-jobs-heading" className="font-medium text-lg">
             You haven&apos;t applied to any jobs yet!
           </h2>
         </div>

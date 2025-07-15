@@ -3,7 +3,7 @@
 import { useRef } from "react";
 
 // components
-import Link from "@/components/shared/LinkWithProgress";
+import LinkWithProgress from "@/components/shared/LinkWithProgress";
 
 // hooks
 import { useAutoCloseOnGreaterThanEqualToBreakpoint } from "@/hooks/useAutoCloseOnGreaterThanEqualToBreakPoint";
@@ -38,7 +38,7 @@ export default function SideNav({ isOpen, onClose, isHome }: SideNavProps) {
       >
         <div className="flex flex-col h-full">
           <div className="w-full border-b h-16 flex items-center justify-start pl-4">
-            <Link
+            <LinkWithProgress
               href="/"
               onClick={onClose}
               className={`text-2xl font-extrabold text-primary rounded hover:tracking-wider transition-all ${
@@ -46,7 +46,7 @@ export default function SideNav({ isOpen, onClose, isHome }: SideNavProps) {
               }`}
             >
               Jooble
-            </Link>
+            </LinkWithProgress>
           </div>
           <div className="flex flex-col items-start mt-4 px-4 space-y-2">
             {NAV_LINKS.map((link) => (
