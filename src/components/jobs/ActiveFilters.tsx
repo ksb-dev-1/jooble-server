@@ -161,7 +161,7 @@ function FilterTag({ label, onRemove, className, title }: FilterTagProps) {
   return (
     <span
       title={title}
-      className={`flex items-center px-3 py-1 rounded border ${className}`}
+      className={`flex items-center px-3 py-1 rounded-full border ${className}`}
     >
       {label}
       {onRemove && (

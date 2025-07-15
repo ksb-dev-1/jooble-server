@@ -67,9 +67,9 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
         >
           <button
             onClick={() => setIsOpen(false)}
-            className="absolute top-0 right-0 w-8 h-8 rounded-tr rounded-bl bg-red-600 dark:bg-red-900 hover:bg-red-500 dark:hover:bg-red-800 transition-colors"
+            className="absolute top-0 right-0 w-8 h-8 rounded-tr rounded-bl border-l border-b hover:bg-dark dark:hover:bg-light transition-colors"
           >
-            <MdOutlineClose className="h-6 w-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white" />
+            <MdOutlineClose className="h-6 w-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
           </button>
           {children}
         </div>

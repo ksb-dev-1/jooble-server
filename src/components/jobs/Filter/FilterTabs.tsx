@@ -18,7 +18,7 @@ export function FilterTabs({
       id: "jobType",
       label: "Job type",
       icon: (
-        <MdOutlineTimer aria-hidden="true" className="h-6 w-6 sm:w-4 sm:h-4" />
+        <MdOutlineTimer aria-hidden="true" className="h-5 w-5 sm:w-4 sm:h-4" />
       ),
     },
     {
@@ -27,7 +27,7 @@ export function FilterTabs({
       icon: (
         <RiHomeOfficeLine
           aria-hidden="true"
-          className="h-6 w-6 sm:w-4 sm:h-4"
+          className="h-5 w-5 sm:w-4 sm:h-4"
         />
       ),
     },
@@ -37,7 +37,7 @@ export function FilterTabs({
       icon: (
         <MdOutlineLocationOn
           aria-hidden="true"
-          className="h-6 w-6 sm:w-4 sm:h-4"
+          className="h-5 w-5 sm:w-4 sm:h-4"
         />
       ),
     },
@@ -72,7 +72,7 @@ export function FilterTabs({
             {icon}
             <span className="font-medium hidden sm:block ml-2">{label}</span>
             <span
-              className="h-6 w-6 ml-4 flex items-center justify-center border border-gray-400 dark:border-gray-600 text-primary rounded font-medium"
+              className="h-5 w-5 sm:h-6 sm:w-6 ml-4 flex items-center justify-center border border-gray-400 dark:border-gray-600 text-primary rounded-md font-medium text-xs sm:text-sm"
               aria-hidden="true"
             >
               {counts[id as keyof typeof counts] || "-"}

@@ -1,11 +1,11 @@
 "use client";
 
 import { forwardRef, useState } from "react";
-import Link from "next/link";
 
 import { NAV_LINKS, NavLink } from "./Navbar";
 
 // components
+import Link from "@/components/shared/LinkWithProgress";
 import SideNav from "./SideNav";
 import ThemeSwitch from "./ThemeSwitch";
 import UserProfile from "./UserProfile";
@@ -28,7 +28,7 @@ const AuthenticatedNav = forwardRef<HTMLDivElement, AuthenticatedNavProps>(
       <>
         <div
           ref={ref}
-          className="fixed z-30 bg-light dark:bg-dark border-b top-0 left-0 right-0 h-16 flex items-center justify-center"
+          className="navbar-fixed fixed z-30 bg-light dark:bg-dark border-b top-0 left-0 w-full h-16 flex items-center justify-center"
         >
           <nav className="max-w-5xl w-full mx-auto px-4 flex items-center justify-between">
             <div className="flex items-center">
@@ -46,7 +46,7 @@ const AuthenticatedNav = forwardRef<HTMLDivElement, AuthenticatedNavProps>(
                 href="/"
                 className={`${
                   isHome ? "pointer-events-none" : ""
-                } text-2xl font-extrabold text-primary`}
+                } text-2xl font-extrabold text-primary hover:opacity-80 dark:hover:opacity-90 transition-opacity`}
               >
                 Jooble
               </Link>

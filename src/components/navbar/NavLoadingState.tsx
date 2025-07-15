@@ -10,7 +10,7 @@ const NavbarLoadingState = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <div
       ref={ref}
-      className="fixed z-30 bg-light dark:bg-dark border-b top-0 left-0 right-0 h-16 flex items-center justify-center"
+      className="navbar-fixed fixed z-30 bg-light dark:bg-dark border-b top-0 left-0 right-0 h-16 flex items-center justify-center"
     >
       <nav
         role="navigation"
@@ -18,7 +18,10 @@ const NavbarLoadingState = forwardRef<HTMLDivElement>((_, ref) => {
         aria-busy="true"
         className="max-w-5xl w-full mx-auto px-4 flex items-center justify-between"
       >
-        <Link href="#" className="text-2xl font-extrabold text-primary">
+        <Link
+          href="#"
+          className="text-2xl font-extrabold text-primary pointer-events-none"
+        >
           Jooble
         </Link>
         <div className="hidden md:flex items-center space-x-4">

@@ -6,7 +6,7 @@ import Image from "next/image";
 
 // hooks
 import { useHandleOutsideClick } from "@/hooks/useHandleOutsideClick";
-// import { useToggleLockScroll } from "@/hooks/useToggleLockScroll";
+import { useToggleLockScroll } from "@/hooks/useToggleLockScroll";
 
 // components
 import Link from "@/components/shared/LinkWithProgress";
@@ -26,7 +26,7 @@ export default function UserProfile({ image }: UserProfileProps) {
   const path = usePathname();
   const isProfile = path === "/profile";
 
-  //useToggleLockScroll(isProfileModalOpen);
+  useToggleLockScroll(isProfileModalOpen);
   useHandleOutsideClick(profileRef, setIsProfileOpen);
 
   const toggleOpen = () => setIsProfileOpen((prev) => !prev);

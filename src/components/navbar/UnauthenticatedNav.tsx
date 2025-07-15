@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { forwardRef } from "react";
 
 // components
+import Link from "@/components/shared/LinkWithProgress";
 import ThemeSwitch from "@/components/navbar/ThemeSwitch";
 
 // 3rd party
@@ -17,7 +17,7 @@ const UnauthenticatedNav = forwardRef<HTMLDivElement, UnauthenticatedNavProps>(
   ({ isHome }, ref) => (
     <div
       ref={ref}
-      className="fixed z-30 bg-light dark:bg-dark border-b top-0 left-0 right-0 h-16 flex items-center justify-center"
+      className="navbar-fixed fixed z-30 bg-light dark:bg-dark border-b top-0 left-0 right-0 h-16 flex items-center justify-center"
     >
       <nav
         className="max-w-5xl w-full mx-auto px-4 flex items-center justify-between"
@@ -28,7 +28,7 @@ const UnauthenticatedNav = forwardRef<HTMLDivElement, UnauthenticatedNavProps>(
           href="/"
           className={`${
             isHome ? "pointer-events-none" : ""
-          } text-2xl font-extrabold text-primary`}
+          } text-2xl font-extrabold text-primary hover:opacity-80 dark:hover:opacity-90 transition-opacity`}
         >
           Jooble
         </Link>
