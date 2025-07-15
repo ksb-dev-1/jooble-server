@@ -16,7 +16,7 @@ export default function WarningCard({
       {/* <div className="absolute top-0 left-0 bottom-0 bg-amber-700 text-white dark:bg-amber-500 dark:text-amber-950 w-8">
         <PiWarningCircleBold className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5" />
       </div> */}
-      <p className="p-2 text-sm text-center">{message}</p>
+      <p className="p-2 text-sm text-center font-medium">{message}</p>
     </div>
   );
 }

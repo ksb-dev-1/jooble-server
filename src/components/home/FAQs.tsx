@@ -67,7 +67,7 @@ function FAQItem({ faq, isOpen, onToggle, index }: FAQItemProps) {
           className="flex w-full items-center justify-between hover:underline"
           onClick={onToggle}
         >
-          <h3 className="text-left font-medium">{faq.question}</h3>
+          <h3 className="text-left font-semibold">{faq.question}</h3>
           <motion.span
             className="ml-6 flex-shrink-0"
             animate={{ rotate: isOpen ? 180 : 0 }}

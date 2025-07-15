@@ -96,9 +96,9 @@ export default function ResumeActions({
       {/* Resume Preview Link */}
       <section className="my-4 border rounded p-4">
         {resumeUrl && (
-          <p className="mb-4">
-            <span className="font-semibold">1</span> - Would you like to review
-            your resume before applying for the job?{" "}
+          <p className="mb-4 font-medium">
+            1 - Would you like to review your resume before applying for the
+            job?{" "}
             <Link
               href={resumeUrl}
               target="_blank"
@@ -112,9 +112,9 @@ export default function ResumeActions({
         )}
 
         {/* Upload New Resume Button */}
-        <p>
-          <span className="font-semibold">2</span> - Would you like to upload a
-          new resume tailored for this job application?{" "}
+        <p className="font-medium">
+          2 - Would you like to upload a new resume tailored for this job
+          application?{" "}
           <button
             onClick={() => setShowUploadResume(true)}
             className="text-primary"
