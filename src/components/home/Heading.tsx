@@ -39,7 +39,7 @@ export default function Heading() {
       <div className="mt-8 md:mt-12">
         <LinkWithProgress
           href="/jobs"
-          className="font-medium text-xl bg-primary text-light dark:text-dark rounded px-8 py-4 hover:tracking-widest transition-all"
+          className="font-medium sm:text-xl bg-primary text-light dark:text-dark rounded px-8 py-4 hover:tracking-widest transition-all"
           aria-label="Start exploring job opportunities"
         >
           Start Exploring
@@ -47,7 +47,7 @@ export default function Heading() {
       </div>
 
       <div className="text-center space-y-3 max-w-2xl w-full mt-8 md:mt-12">
-        <p className="text-xl text-slate-500 dark:text-slate-400">
+        <p className="sm:text-xl text-slate-500 dark:text-slate-400">
           Discover jobs effortlessly with intelligent filtering, instant search
           results, and an elegant, modern UI.
         </p>

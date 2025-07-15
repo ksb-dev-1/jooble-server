@@ -10,9 +10,6 @@ import {
 import { useToggleLockScroll } from "@/hooks/useToggleLockScroll";
 import { useHandleOutsideClick } from "@/hooks/useHandleOutsideClick";
 
-// 3rd party
-import { MdOutlineClose } from "react-icons/md";
-
 interface ModalProps {
   children: React.ReactNode;
   isOpen: boolean;
@@ -23,7 +20,7 @@ interface ModalProps {
 
 const Modal = forwardRef<HTMLDivElement, ModalProps>(
   (
-    { children, isOpen, setIsOpen, maxWidth = "max-w-lg", labelledById },
+    { children, isOpen, setIsOpen, maxWidth = "max-w-[500px]", labelledById },
     ref
   ) => {
     useHandleOutsideClick(ref as React.RefObject<HTMLDivElement>, setIsOpen);
@@ -54,10 +51,10 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
 
     return (
       <div
-        className={`z-30 fixed inset-0 transition duration-500 ${
+        className={`z-30 fixed inset-0 ${
           isOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+            ? "scale-100 pointer-events-auto"
+            : "scale-0 pointer-events-none"
         } backdrop-blur-sm bg-modal flex items-center justify-center px-4`}
         role="dialog"
         aria-modal="true"
@@ -66,16 +63,9 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
         <div
           ref={ref}
           className={`relative ${
-            isOpen ? "scale-100" : "scale-0"
-          } bg-light dark:bg-dark border-2 ${maxWidth} w-full mx-auto rounded overflow-hidden shadow-xl p-4 md:p-8`}
+            isOpen ? "scale-100" : "scale-75"
+          } bg-light dark:bg-dark border-2 ${maxWidth} w-full mx-auto rounded shadow-xl p-4 sm:p-6 transition-transform`}
         >
-          <button
-            aria-label="Close filter panel"
-            onClick={() => setIsOpen(false)}
-            className="absolute top-0 right-0 w-8 h-8 rounded-tr rounded-bl bg-red-600 text-white dark:bg-red-900 hover:bg-red-500 dark:hover:bg-red-800 transition-colors"
-          >
-            <MdOutlineClose className="h-6 w-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-          </button>
           {children}
         </div>
       </div>

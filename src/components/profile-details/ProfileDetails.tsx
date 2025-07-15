@@ -111,7 +111,7 @@ export default function ProfileDetails({
 
         <button
           onClick={() => setIsOpen(true)}
-          className="absolute top-0 right-0 bg-red-600 text-white hover:bg-red-500 dark:bg-red-900 dark:hover:bg-red-800 transition-colors h-8 w-8 rounded-tr rounded-bl flex items-center justify-center"
+          className="absolute top-0 right-0 bg-red-600 text-white hover:bg-red-500 transition-colors h-8 w-8 rounded-tr rounded-bl flex items-center justify-center"
           aria-label="Delete account"
         >
           <MdOutlineDelete className="h-5 w-5" />

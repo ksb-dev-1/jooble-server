@@ -35,7 +35,7 @@ const UnauthenticatedNav = forwardRef<HTMLDivElement, UnauthenticatedNavProps>(
               isHome ? "pointer-events-none" : ""
             } text-2xl font-extrabold text-primary hover:opacity-80 dark:hover:opacity-90 transition-opacity`}
           >
-            Jooble
+            Glassdoor
           </LinkWithProgress>
 
           <div className="flex items-center">

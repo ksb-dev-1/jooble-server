@@ -3,14 +3,14 @@
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 
-// hooks
+// actions
 import { applyForJobServerAction } from "@/actions/apply-for-job-server-action";
 
 // 3rd party
 import toast from "react-hot-toast";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { MdOutlineSend } from "react-icons/md";
+import { MdOutlineClose, MdOutlineSend } from "react-icons/md";
 
 interface ResumeActionsProps {
   userId: string | undefined;
@@ -67,50 +67,83 @@ export default function ResumeActions({
   };
 
   return (
-    <div className="text-center">
-      <h2 className="text-xl font-bold up">Ready to Apply</h2>
-
-      <p className="sm:text-lg mt-8">
-        Want to review your resume?{" "}
-        <Link
-          href={resumeUrl || "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-primary underline"
-          aria-label="Download current resume"
+    <section aria-labelledby="resume-actions-title">
+      {/* Header with Close Button */}
+      <header className="flex items-center justify-between">
+        <h1
+          id="resume-actions-title"
+          className="sm:text-lg font-semibold"
+          role="heading"
+          aria-level={1}
         >
-          Click here
-        </Link>
-      </p>
+          Apply for Job
+        </h1>
 
-      <p className="sm:text-lg mt-4">
-        Want to upload a new resume?{" "}
         <button
-          onClick={() => setShowUploadResume(true)}
-          className="text-primary underline"
-          aria-label="Upload new resume"
+          onClick={() => setIsOpen(false)}
+          type="button"
+          aria-label="Close apply panel"
+          className="p-1 rounded hover:bg-muted"
         >
-          Click here
+          <MdOutlineClose className="h-5 w-5" aria-hidden="true" />
         </button>
-      </p>
+      </header>
 
-      <div className="border-t my-4"></div>
+      {/* <p className="text-sm mt-2">
+        Review resume, upload a new one if needed, and apply for this job.
+      </p> */}
 
+      {/* Resume Preview Link */}
+      <section className="my-4 border rounded p-4">
+        {resumeUrl && (
+          <p className="mb-4">
+            <span className="font-semibold">1</span> - Would you like to review
+            your resume before applying for the job?{" "}
+            <Link
+              href={resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary"
+              aria-label="View your uploaded resume"
+            >
+              Click here
+            </Link>
+          </p>
+        )}
+
+        {/* Upload New Resume Button */}
+        <p>
+          <span className="font-semibold">2</span> - Would you like to upload a
+          new resume tailored for this job application?{" "}
+          <button
+            onClick={() => setShowUploadResume(true)}
+            className="text-primary"
+            aria-label="Upload a new resume"
+          >
+            Click here
+          </button>
+        </p>
+      </section>
+
+      {/* Apply Button */}
       <button
         aria-busy={applyJobMutation.isPending}
         disabled={applyJobMutation.isPending}
         onClick={handleApply}
-        className={`relative ${
-          applyJobMutation.isPending
-            ? "opacity-60 pointer-events-none"
-            : "hover:opacity-80 dark:hover:opacity-90 transition-opacity"
-        } bg-primary text-light dark:text-dark rounded w-full h-[41.6px] py-2 flex items-center justify-center font-medium`}
+        type="button"
+        className={`relative w-full h-[41.6px] py-2 px-4 flex items-center justify-center rounded font-medium text-white bg-primary dark:text-dark hover:opacity-90 transition-opacity ${
+          applyJobMutation.isPending ? "opacity-60 pointer-events-none" : ""
+        }`}
       >
-        Apply Now <MdOutlineSend className="ml-2" />
+        Apply Now
+        <MdOutlineSend className="ml-2" aria-hidden="true" />
         {applyJobMutation.isPending && (
-          <AiOutlineLoading3Quarters className="absolute right-4 animate-spin" />
+          <AiOutlineLoading3Quarters
+            className="absolute right-4 animate-spin"
+            aria-hidden="true"
+          />
         )}
       </button>
-    </div>
+    </section>
   );
 }

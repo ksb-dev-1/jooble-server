@@ -20,7 +20,8 @@ const config: Config = {
         modal: "var(--modal-bg-color)",
         skeleton: "var(--skeleton)",
         shadow: "var(--card-shadow)",
-        text: "var(--text-color)",
+        text_primary: "var(--text-primary-color)",
+        text_secondary: "var(--text-secondary-color)",
       },
       borderColor: {
         DEFAULT: "var(--border-color)",

@@ -9,11 +9,12 @@
 :root {
   --primary-color: #0a66c2;
   --light-color: #ffffff;
-  --dark-color: #f7f9fc;
-  --text-color: #333;
-  --border-color: #e5eaf0;
+  --dark-color: #f1f5f9;
+  --text-primary-color: #000000;
+  --text-secondary-color: #62748e;
+  --border-color: #eae9e8;
   --hero-bg-color: rgba(255, 255, 255, 0.9);
-  --modal-bg-color: rgba(0, 0, 0, 0.5);
+  --modal-bg-color: rgba(0, 0, 0, 0.4);
   --card-shadow: 0 0 2px #0a66c2;
   --skeleton: linear-gradient(90deg, #e5e7eb 25%, #d1d5db 50%, #e5e7eb 75%);
   --link-progress-color: #ff4757;
@@ -22,15 +23,15 @@
 /* Dark Theme Override */
 [data-theme="dark"] {
   /* Base Layout Colors */
-  --primary-color: #42d392;
-  --light-color: #080e22;
+  --primary-color: #50c878;
+  --light-color: #0f172b;
   --dark-color: #020618;
-  --text-color: #e5e5e5;
-  --border-color: #1e293b;
+  --text-primary-color: #d4d4d4;
+  --text-secondary-color: #90a1b9;
+  --border-color: #1d283c;
   --hero-bg-color: rgba(2, 6, 24, 0.9);
   --modal-bg-color: rgba(8, 14, 34, 0.4);
-  /* --modal-bg-color: rgba(31, 41, 68, 0.5); */
-  --card-shadow: 0 0 2px #42d392;
+  --card-shadow: 0 0 2px #50c878;
   --skeleton: linear-gradient(
     90deg,
     #ffffff0d 25%,

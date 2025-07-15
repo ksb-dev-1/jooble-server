@@ -22,7 +22,7 @@ import WarningCard from "@/components/shared/WarningCard";
 import { signOut } from "next-auth/react";
 import toast from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { MdOutlineDelete } from "react-icons/md";
+import { MdOutlineClose, MdOutlineDelete } from "react-icons/md";
 
 interface Props {
   isOpen: boolean;
@@ -61,38 +61,66 @@ export default function DeleteAccountModal({
       ref={modalRef}
       labelledById="modal-title"
     >
-      <h2 id="modal-title" className="text-xl font-bold text-center">
-        Do you want to delete your account?
-      </h2>
+      <header className="flex items-center justify-between">
+        <h1
+          id="modal-title"
+          className="text-lg font-semibold"
+          role="heading"
+          aria-level={1}
+        >
+          Delete Account
+        </h1>
+        <button
+          type="button"
+          onClick={() => setIsOpen(false)}
+          aria-label="Close delete account modal"
+          className="p-1 rounded hover:bg-muted"
+        >
+          <MdOutlineClose className="w-5 h-5" aria-hidden="true" />
+        </button>
+      </header>
 
-      <WarningCard
-        message=" This will delete everything related to your account, including saved
-            jobs, applied jobs, and more."
-        className="mt-4"
-      />
-
-      <button
-        onClick={handleDelete}
-        disabled={isPending}
-        className={`mt-4 relative w-full px-4 h-[41.6px] rounded flex items-center justify-center bg-red-600 text-white dark:bg-red-900 hover:bg-red-500 dark:hover:bg-red-800 transition-colors ${
-          isPending ? "pointer-events-none opacity-70" : ""
-        } font-medium`}
+      <section
+        aria-describedby="modal-description"
+        className="my-4 border p-4 rounded"
       >
-        <MdOutlineDelete className="mr-2 h-5 w-5" />
-        Delete
-        {isPending && (
-          <AiOutlineLoading3Quarters
-            className="absolute right-4 animate-spin"
-            aria-hidden="true"
-          />
-        )}
-      </button>
+        <p id="modal-description">Do you want to delete your account?</p>
 
-      {errorMsg && (
-        <p className="mt-4 text-sm text-red-600 text-center" role="alert">
-          {errorMsg}
-        </p>
-      )}
+        <WarningCard
+          message="This will delete everything related to your account, including saved jobs, applied jobs, and more."
+          className="mt-4"
+        />
+      </section>
+
+      <footer className="mt-4">
+        <button
+          type="button"
+          onClick={handleDelete}
+          disabled={isPending}
+          className={`w-full flex items-center justify-center px-4 h-[41.6px] rounded font-medium text-white bg-red-600 hover:bg-red-500 transition-colors ${
+            isPending ? "pointer-events-none opacity-70" : ""
+          }`}
+        >
+          <MdOutlineDelete className="w-5 h-5 mr-1" aria-hidden="true" />
+          Delete
+          {isPending && (
+            <AiOutlineLoading3Quarters
+              className="w-4 h-4 animate-spin ml-2"
+              aria-hidden="true"
+            />
+          )}
+        </button>
+
+        {errorMsg && (
+          <p
+            className="mt-4 text-sm text-center text-red-600"
+            role="alert"
+            aria-live="assertive"
+          >
+            {errorMsg}
+          </p>
+        )}
+      </footer>
     </Modal>
   );
 }

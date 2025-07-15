@@ -76,11 +76,11 @@ export default function FeatureSection() {
         </motion.span>
       </motion.h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
         {features.map((feature, index) => (
           <motion.article
             key={index}
-            className="p-6 border rounded bg-light dark:bg-dark"
+            className="p-4 sm:p-6 border rounded bg-light dark:bg-dark"
             aria-label={`${feature.title}: ${feature.desc}`}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -95,8 +95,8 @@ export default function FeatureSection() {
                 {feature.icon}
               </span>
             </div>
-            <h3 className="font-bold text-xl mb-2">{feature.title}</h3>
-            <p className="text-slate-500 dark:text-slate-400">{feature.desc}</p>
+            <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+            <p className="text-text_secondary">{feature.desc}</p>
           </motion.article>
         ))}
       </div>

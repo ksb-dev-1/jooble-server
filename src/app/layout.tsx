@@ -33,10 +33,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
+      <body className="bg-light dark:bg-dark text-text_primary">
         <Providers>
           <ThemeProvider>
-            <div className="bg-light dark:bg-dark text-text">
+            <div>
               <Navbar />
               {children}
               <Footer />

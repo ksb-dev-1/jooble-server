@@ -22,7 +22,7 @@ const NavbarLoadingState = forwardRef<HTMLDivElement>((_, ref) => {
           href="#"
           className="text-2xl font-extrabold text-primary pointer-events-none"
         >
-          Jooble
+          Glassdoor
         </Link>
         <div className="hidden md:flex items-center space-x-4">
           {["Jobs", "Saved", "Applied"].map((label) => (

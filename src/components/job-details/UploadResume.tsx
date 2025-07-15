@@ -15,7 +15,8 @@ import WarningCard from "@/components/shared/WarningCard";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { MdArrowBack, MdOutlineCloudUpload } from "react-icons/md";
+import { MdArrowBack } from "react-icons/md";
+import { SlCloudUpload } from "react-icons/sl";
 
 interface UploadResumeProps {
   isResumeUploaded: boolean;
@@ -138,16 +139,16 @@ export default function UploadResume({
             aria-describedby="file-upload-instructions"
           />
           <div className="flex flex-col items-center p-4 text-center">
-            <MdOutlineCloudUpload
-              className="text-5xl text-primary"
+            <SlCloudUpload
+              className="text-3xl text-primary"
               aria-hidden="true"
             />
-            <p className="font-medium sm:text-lg">
+            <p className="font-medium mt-2">
               {fileName || "Drag and drop or click to select a file"}
             </p>
             <p
               id="file-upload-instructions"
-              className="text-xs sm:text-sm text-gray-500 mt-1 font-medium"
+              className="text-sm text-gray-500 mt-1"
             >
               Supported formats: PDF, TXT, DOCX (Max 5MB)
             </p>

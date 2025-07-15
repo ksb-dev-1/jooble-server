@@ -7,15 +7,13 @@ export default function ResumeMissingPrompt({
 }) {
   return (
     <div className="text-center space-y-4">
-      <h2 className="text-xl font-bold text-red-600 dark:text-red-400">
+      <h2 className="text-lg font-semibold text-red-600 dark:text-red-400">
         Resume Required!
       </h2>
-      <p className="sm:text-lg">
-        You need to upload a resume to apply for this position.
-      </p>
+      <p>You need to upload a resume to apply for this position.</p>
       <button
         onClick={() => setShowUploadResume(true)}
-        className="text-primary underline sm:text-lg"
+        className="text-primary underline"
         aria-label="Upload resume"
       >
         Click here to upload your resume

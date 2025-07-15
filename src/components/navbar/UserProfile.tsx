@@ -60,7 +60,7 @@ export default function UserProfile({ image }: UserProfileProps) {
           isProfileModalOpen
             ? "translate-y-0 opacity-100 pointer-events-auto"
             : "translate-y-3 opacity-0 pointer-events-none"
-        } origin-top-right absolute right-0 mt-2 rounded bg-light dark:bg-dark shadow-xl border-2 p-2 flex flex-col w-max transition-all`}
+        } origin-top-right absolute right-0 mt-2 rounded bg-light dark:bg-dark shadow-xl border p-2 flex flex-col w-max transition-all`}
         role="menu"
         aria-label="User menu"
       >

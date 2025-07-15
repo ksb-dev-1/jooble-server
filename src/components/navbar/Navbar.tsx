@@ -53,7 +53,7 @@ export const NavLink = ({
   const isActive = path === matchPath;
 
   const baseClasses = isMobile
-    ? "w-full flex items-center px-4 py-2 rounded transition-colors font-medium text-xl"
+    ? "w-full flex items-center px-4 py-2 rounded transition-colors font-medium text-lg"
     : "border-b-2 font-medium h-16 flex items-center";
 
   const activeClasses = isMobile

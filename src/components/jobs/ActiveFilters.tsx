@@ -136,8 +136,8 @@ export default function ActiveFilters({
         <form action={clearFiltersServerAction}>
           <button type="submit">
             <FilterTag
-              label="Clear"
-              className="bg-red-600 border-transparent text-white hover:bg-red-500 dark:bg-red-900 dark:hover:bg-red-800"
+              label="Clear All"
+              className="bg-red-600 border-transparent text-white hover:bg-red-500"
             />
           </button>
         </form>

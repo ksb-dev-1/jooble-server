@@ -60,7 +60,7 @@ export default function JobCard({
         className={`h-full block bg-light dark:bg-dark border rounded p-4 md:p-6 hover:shadow-card transition-shadow ${pointerEventsClass}`}
       >
         <header>
-          <h3 className="font-bold text-xl">{role}</h3>
+          <h3 className="font-semibold text-lg">{role}</h3>
           <p className="mt-1">
             <span className="text-primary font-semibold">{companyName}</span>
             {applicationStatus && (
@@ -112,7 +112,7 @@ export default function JobCard({
             {skills?.length > 0 &&
               skills.slice(0, 3).map((skill: string, index: number) => (
                 <div key={skill} className="mt-2 flex items-center">
-                  <span className="capitalize text-sm text-slate-500 dark:text-slate-400">
+                  <span className="capitalize text-text_secondary">
                     {skill}
                   </span>
                   {index !== 2 && index !== skills.slice(0, 3).length - 1 && (
@@ -126,7 +126,7 @@ export default function JobCard({
           </div>
         </section>
 
-        <footer className="flex items-center justify-between w-full text-slate-500 dark:text-slate-400">
+        <footer className="flex items-center justify-between w-full text-text_secondary">
           <p className="text-sm">Openings: {openings}</p>
           <div className="w-fit flex items-center text-xs">
             <BsClock aria-hidden="true" />

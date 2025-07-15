@@ -18,10 +18,10 @@ export default function FilterTrigger() {
         onClick={() => setIsOpen(true)}
         aria-haspopup="dialog"
         aria-expanded={isOpen}
-        className="relative flex items-center px-4 h-[41.6px] rounded border text-primary hover:bg-dark dark:hover:bg-light transition-colors"
+        className="relative flex items-center px-4 h-[41.6px] rounded border hover:bg-dark dark:hover:bg-light transition-colors"
       >
         <MdFilterList className="h-5 w-5 sm:mr-2" />
-        <span className="font-semibold hidden sm:block">Filter</span>
+        <span className="font-semibold hidden sm:block">Filters</span>
         <MdOutlineKeyboardArrowDown className="h-5 w-5 ml-4 hidden sm:block" />
       </button>
       <FilterModal isOpen={isOpen} setIsOpen={setIsOpen} />

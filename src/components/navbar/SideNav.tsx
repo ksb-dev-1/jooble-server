@@ -41,11 +41,11 @@ export default function SideNav({ isOpen, onClose, isHome }: SideNavProps) {
             <LinkWithProgress
               href="/"
               onClick={onClose}
-              className={`text-2xl font-extrabold text-primary rounded hover:tracking-wider transition-all ${
+              className={`text-2xl font-extrabold text-primary rounded hover:opacity-80 dark:hover:opacity-90 transition-opacity ${
                 isHome ? "pointer-events-none" : ""
               }`}
             >
-              Jooble
+              Glassdoor
             </LinkWithProgress>
           </div>
           <div className="flex flex-col items-start mt-4 px-4 space-y-2">
