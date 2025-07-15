@@ -23,6 +23,7 @@ export default function FilterModal({ isOpen, setIsOpen }: FilterModalProps) {
       ref={modalRef}
       isOpen={isOpen}
       setIsOpen={setIsOpen}
+      maxWidth="max-w-2xl"
       labelledById="filter-modal-title"
     >
       <div role="document" className="outline-none">

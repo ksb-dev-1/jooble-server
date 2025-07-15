@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-// actions
-import { fetchAppliedJobsServerAction } from "@/actions/fetch-applied-jobs-server-action";
+// lib
+import { fetchAppliedJobs } from "@/lib/fetch-applied-jobs";
 
 // types
 
@@ -20,10 +20,10 @@ export default async function AppliedJobList({ userId }: AppliedJobListProps) {
 
   // Fetch applied jobs
   try {
-    data = await fetchAppliedJobsServerAction(userId);
+    data = await fetchAppliedJobs(userId);
 
     if (!data) {
-      console.error("❌ No data from fetchAppliedJobsServerAction");
+      console.error("❌ No data from fetchAppliedJobs");
       return <ServerError />;
     }
   } catch (error) {

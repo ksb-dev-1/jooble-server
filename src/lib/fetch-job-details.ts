@@ -1,5 +1,3 @@
-"use server";
-
 import { unstable_cache } from "next/cache";
 
 // lib
@@ -14,7 +12,10 @@ type FetchJobDetailsParams = {
 };
 
 // 👉 Raw DB query function (not cached directly)
-const _fetchJobDetails = async ({ userId, jobId }: FetchJobDetailsParams) => {
+const _fetchJobDetailsFromDB = async ({
+  userId,
+  jobId,
+}: FetchJobDetailsParams) => {
   //console.log("⛏️ Fetching Job Details from DB");
 
   const job = await prisma.job.findUnique({
@@ -44,13 +45,13 @@ const _fetchJobDetails = async ({ userId, jobId }: FetchJobDetailsParams) => {
 };
 
 // ✅ Cached wrapper per userId + jobId
-export const fetchJobDetailsServerAction = async (
+export const fetchJobDetails = async (
   userId: string,
   jobId: string
 ): Promise<JobWithSavedStatusAndApplicationStatus | null> => {
   try {
     const cached = unstable_cache(
-      () => _fetchJobDetails({ userId, jobId }),
+      () => _fetchJobDetailsFromDB({ userId, jobId }),
       [`job-details-${userId}-${jobId}`],
       {
         tags: [`job-details-${userId}-${jobId}`],

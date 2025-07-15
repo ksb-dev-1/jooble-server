@@ -68,7 +68,7 @@ export default function ResumeActions({
 
   return (
     <div className="text-center">
-      <h2 className="text-xl font-semibold up">Ready to Apply</h2>
+      <h2 className="text-xl font-bold up">Ready to Apply</h2>
 
       <p className="sm:text-lg mt-8">
         Review your resume:{" "}

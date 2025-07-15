@@ -1,12 +1,10 @@
-"use server";
-
 import { unstable_cache } from "next/cache";
 
 // lib
 import { prisma } from "@/lib/prisma";
 
 // 👉 Actual DB function (not cached directly)
-const _fetchAppliedJobsCount = async ({ userId }: { userId: string }) => {
+const _fetchAppliedJobsCountFromDB = async ({ userId }: { userId: string }) => {
   //console.log("⛏️ Fetching Saved Jobs count from DB");
 
   const count = await prisma.jobApplication.count({
@@ -17,12 +15,12 @@ const _fetchAppliedJobsCount = async ({ userId }: { userId: string }) => {
 };
 
 // ✅ Helper to wrap the above with correct static tag per call
-export const fetchAppliedJobsCountServerAction = async (
+export const fetchAppliedJobsCount = async (
   userId: string
 ): Promise<number | null> => {
   try {
     const cached = unstable_cache(
-      () => _fetchAppliedJobsCount({ userId }),
+      () => _fetchAppliedJobsCountFromDB({ userId }),
       [`applied-jobs-count-user-${userId}`],
       {
         tags: [`applied-jobs-count-user-${userId}`],

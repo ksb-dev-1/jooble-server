@@ -61,40 +61,38 @@ export default function DeleteAccountModal({
       ref={modalRef}
       labelledById="modal-title"
     >
-      <div role="document">
-        <h2 id="modal-title" className="text-xl font-semibold text-center">
-          Do you want to delete your account?
-        </h2>
+      <h2 id="modal-title" className="text-xl font-bold text-center">
+        Do you want to delete your account?
+      </h2>
 
-        <WarningCard
-          message=" This will delete everything related to your account, including saved
+      <WarningCard
+        message=" This will delete everything related to your account, including saved
             jobs, applied jobs, and more."
-          className="mt-8"
-        />
+        className="mt-8"
+      />
 
-        <button
-          onClick={handleDelete}
-          disabled={isPending}
-          className={`mt-4 relative w-full px-4 h-[41.6px] rounded flex items-center justify-center bg-red-600 text-white dark:bg-red-900 hover:bg-red-500 dark:hover:bg-red-800 transition-colors ${
-            isPending ? "pointer-events-none opacity-70" : ""
-          } font-medium`}
-        >
-          <MdOutlineDelete className="mr-2 h-5 w-5" />
-          Delete
-          {isPending && (
-            <AiOutlineLoading3Quarters
-              className="absolute right-4 animate-spin"
-              aria-hidden="true"
-            />
-          )}
-        </button>
-
-        {errorMsg && (
-          <p className="mt-4 text-sm text-red-600 text-center" role="alert">
-            {errorMsg}
-          </p>
+      <button
+        onClick={handleDelete}
+        disabled={isPending}
+        className={`mt-4 relative w-full px-4 h-[41.6px] rounded flex items-center justify-center bg-red-600 text-white dark:bg-red-900 hover:bg-red-500 dark:hover:bg-red-800 transition-colors ${
+          isPending ? "pointer-events-none opacity-70" : ""
+        } font-medium`}
+      >
+        <MdOutlineDelete className="mr-2 h-5 w-5" />
+        Delete
+        {isPending && (
+          <AiOutlineLoading3Quarters
+            className="absolute right-4 animate-spin"
+            aria-hidden="true"
+          />
         )}
-      </div>
+      </button>
+
+      {errorMsg && (
+        <p className="mt-4 text-sm text-red-600 text-center" role="alert">
+          {errorMsg}
+        </p>
+      )}
     </Modal>
   );
 }

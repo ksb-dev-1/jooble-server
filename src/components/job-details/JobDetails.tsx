@@ -1,4 +1,5 @@
-import { fetchJobDetailsServerAction } from "@/actions/fetch-job-details-server-action";
+// lib
+import { fetchJobDetails } from "@/lib/fetch-job-details";
 
 // types
 import { JobWithSavedStatusAndApplicationStatus } from "@/types/job";
@@ -21,10 +22,10 @@ export default async function JobDetails({ params, userId }: JobDetailsProps) {
 
   // Fetch applied jobs
   try {
-    data = await fetchJobDetailsServerAction(userId, params.job_id);
+    data = await fetchJobDetails(userId, params.job_id);
 
     if (!data) {
-      console.error("❌ No data from fetchJobDetailsServerAction");
+      console.error("❌ No data from fetchJobDetails");
       return <ServerError />;
     }
   } catch (error) {

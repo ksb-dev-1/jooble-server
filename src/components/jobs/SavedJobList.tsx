@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// actions
-import { fetchSavedJobsServerAction } from "@/actions/fetch-saved-jobs-server-action";
+// lib
+import { fetchSavedJobs } from "@/lib/fetch-saved-jobs";
 
 // types
 import { Jobs, JobWithSavedStatusAndApplicationStatus } from "@/types/job";
@@ -20,9 +20,9 @@ export default async function SavedJobList({ userId }: SavedJobListProps) {
 
   // Fetch saved jobs
   try {
-    data = await fetchSavedJobsServerAction(userId);
+    data = await fetchSavedJobs(userId);
     if (!data) {
-      console.error("❌ No data from fetchSavedJobsServerAction");
+      console.error("❌ No data from fetchSavedJobs");
       return <ServerError />;
     }
   } catch (error) {

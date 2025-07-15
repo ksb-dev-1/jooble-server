@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
-// actions
-import { fetchSavedJobsCountServerAction } from "@/actions/fetch-saved-jobs-count-server-action";
-import { fetchAppliedJobsCountServerAction } from "@/actions/fetch-applied-jobs-count-server-action";
+// lib
+import { fetchSavedJobsCount } from "@/lib/fetch-saved-jobs-count";
+import { fetchAppliedJobsCount } from "@/lib/fetch-applied-jobs-count";
 
 // components
 import Container from "@/components/shared/Container";
@@ -32,8 +32,8 @@ export default async function ProfilePage() {
   // Fetch saved and applied jobs count
   try {
     const [savedJobsCount, appliedJobsCount] = await Promise.all([
-      fetchSavedJobsCountServerAction(userId),
-      fetchAppliedJobsCountServerAction(userId),
+      fetchSavedJobsCount(userId),
+      fetchAppliedJobsCount(userId),
     ]);
 
     savedJobsLength = savedJobsCount;

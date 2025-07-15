@@ -17,11 +17,15 @@ interface ModalProps {
   children: React.ReactNode;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  labelledById?: string; // Optional: ID of the modal title for accessibility
+  maxWidth?: string;
+  labelledById?: string;
 }
 
 const Modal = forwardRef<HTMLDivElement, ModalProps>(
-  ({ children, isOpen, setIsOpen, labelledById }, ref) => {
+  (
+    { children, isOpen, setIsOpen, maxWidth = "max-w-lg", labelledById },
+    ref
+  ) => {
     useHandleOutsideClick(ref as React.RefObject<HTMLDivElement>, setIsOpen);
 
     // Handle ESC key to close modal
@@ -50,7 +54,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
 
     return (
       <div
-        className={`z-30 fixed inset-0 transition ${
+        className={`z-30 fixed inset-0 transition duration-500 ${
           isOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -62,8 +66,8 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
         <div
           ref={ref}
           className={`relative ${
-            isOpen ? "translate-y-0" : "translate-y-10"
-          } bg-light dark:bg-dark border-2 max-w-2xl w-full mx-auto rounded overflow-hidden transition shadow-xl p-4 md:p-8`}
+            isOpen ? "scale-100" : "scale-0"
+          } bg-light dark:bg-dark border-2 ${maxWidth} w-full mx-auto rounded overflow-hidden shadow-xl p-4 md:p-8`}
         >
           <button
             onClick={() => setIsOpen(false)}

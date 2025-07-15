@@ -60,15 +60,14 @@ export default function JobCard({
         className={`h-full block bg-light dark:bg-dark border rounded p-4 md:p-6 hover:shadow-card transition-shadow ${pointerEventsClass}`}
       >
         <header>
-          <h3 className="font-semibold text-xl">{role}</h3>
+          <h3 className="font-bold text-xl">{role}</h3>
           <p className="mt-1">
-            <span className="text-primary font-medium">{companyName}</span>
+            <span className="text-primary font-semibold">{companyName}</span>
             {applicationStatus && (
               <>
-                {/* <span className="h-3 w-[2px] inline-block bg-black dark:bg-white mx-2"></span> */}
                 <span className="inline-block mx-2">-</span>
                 <span
-                  className={`${statusColors[applicationStatus]} font-medium`}
+                  className={`${statusColors[applicationStatus]} font-semibold`}
                 >
                   {applicationStatus.charAt(0) +
                     applicationStatus.substring(1).toLowerCase()}

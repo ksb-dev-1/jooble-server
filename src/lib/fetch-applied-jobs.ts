@@ -1,5 +1,3 @@
-"use server";
-
 import { unstable_cache } from "next/cache";
 
 // lib
@@ -13,7 +11,7 @@ type FetchAppliedJobsParams = {
 };
 
 // 👉 Actual DB function (not cached directly)
-const _fetchAppliedJobs = async ({ userId }: FetchAppliedJobsParams) => {
+const _fetchAppliedJobsFromDB = async ({ userId }: FetchAppliedJobsParams) => {
   // console.log("⛏️ Fetching Applied Jobs from DB");
 
   const applications = await prisma.jobApplication.findMany({
@@ -52,12 +50,12 @@ const _fetchAppliedJobs = async ({ userId }: FetchAppliedJobsParams) => {
 };
 
 // ✅ Helper to wrap the above with correct static tag per call
-export const fetchAppliedJobsServerAction = async (
+export const fetchAppliedJobs = async (
   userId: string
 ): Promise<Jobs | null> => {
   try {
     const cached = unstable_cache(
-      () => _fetchAppliedJobs({ userId }),
+      () => _fetchAppliedJobsFromDB({ userId }),
       [`applied-jobs-user-${userId}`],
       {
         tags: [`applied-jobs-user-${userId}`],

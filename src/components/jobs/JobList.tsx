@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-// actions
-import { fetchJobsServerAction } from "@/actions/fetch-jobs-server-action";
+// lib
+import { fetchJobs } from "@/lib/fetch-jobs";
 
 // types
 import {
@@ -40,7 +40,7 @@ export default async function JobList({ userId, filterValues }: JobListProps) {
 
   // Fetch jobs
   try {
-    data = await fetchJobsServerAction({
+    data = await fetchJobs({
       userId,
       page: currentPage,
       limit,
@@ -51,7 +51,7 @@ export default async function JobList({ userId, filterValues }: JobListProps) {
     });
 
     if (!data) {
-      console.error("❌ No data from fetchJobsServerAction");
+      console.error("❌ No data from fetchJobs");
       return <ServerError />;
     }
   } catch (error) {

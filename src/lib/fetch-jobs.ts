@@ -1,5 +1,3 @@
-"use server";
-
 import { unstable_cache } from "next/cache";
 import { Prisma } from "@prisma/client";
 
@@ -22,7 +20,7 @@ type FetchJobsParams = BaseParams & {
   userId: string;
 };
 
-const _fetchPublicJobs = async ({
+const _fetchPublicJobsFromDB = async ({
   location,
   jobType,
   jobMode,
@@ -98,20 +96,6 @@ const _fetchPublicJobs = async ({
       where: whereClause,
       skip,
       take: limit,
-      // select: {
-      //   id: true,
-      //   companyName: true,
-      //   experience: true,
-      //   role: true,
-      //   jobType: true,
-      //   location: true,
-      //   jobMode: true,
-      //   salary: true,
-      //   skills: true,
-      //   openings: true,
-      //   createdAt: true,
-      //   updatedAt: true,
-      // },
     }),
     prisma.job.count({ where: whereClause }),
   ]);
@@ -126,14 +110,14 @@ const _fetchPublicJobs = async ({
 const cachedFetchPublicJobs = (params: BaseParams & { userId: string }) => {
   const cacheKey = [`public-jobs-${JSON.stringify(params)}`];
 
-  return unstable_cache(() => _fetchPublicJobs(params), cacheKey, {
+  return unstable_cache(() => _fetchPublicJobsFromDB(params), cacheKey, {
     revalidate: 3600,
     tags: [`jobs-user-${params.userId}`], // ✅ Add tag
   })();
 };
 
 // ✅ 2. User-specific personalization: isSaved + applicationStatus
-const fetchUserJobMetadata = async (userId: string, jobIds: string[]) => {
+const fetchUserJobMetadataFromDB = async (userId: string, jobIds: string[]) => {
   const [savedJobs, applications] = await Promise.all([
     prisma.savedJob.findMany({
       where: {
@@ -161,7 +145,7 @@ const fetchUserJobMetadata = async (userId: string, jobIds: string[]) => {
 };
 
 // ✅ 3. Final exposed function
-export const fetchJobsServerAction = async (
+export const fetchJobs = async (
   params: FetchJobsParams
 ): Promise<JobsWithTotalPages | null> => {
   const { userId, ...baseParams } = params;
@@ -170,7 +154,7 @@ export const fetchJobsServerAction = async (
     const publicData = await cachedFetchPublicJobs({ ...baseParams, userId });
     const jobIds = publicData.jobs.map((job) => job.id);
 
-    const { savedSet, applicationMap } = await fetchUserJobMetadata(
+    const { savedSet, applicationMap } = await fetchUserJobMetadataFromDB(
       userId,
       jobIds
     );
