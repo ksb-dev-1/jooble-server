@@ -21,7 +21,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         </Suspense>
         {children}
       </QueryClientProvider>
-      <Toaster />
+      <Toaster position="top-right" />
     </SessionProvider>
   );
 }
