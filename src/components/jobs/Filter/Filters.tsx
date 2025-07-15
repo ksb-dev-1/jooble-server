@@ -93,7 +93,7 @@ export default function Filters({ isOpen, setIsOpen }: FiltersProps) {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <h1
-              className="sm:text-lg font-semibold"
+              className="sm:text-lg font-bold"
               id="filters-title"
               role="heading"
               aria-level={1}

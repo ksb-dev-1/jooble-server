@@ -120,18 +120,18 @@ export default function ProfileDetails({
 
       {/* Saved & Applied Job Links */}
       <section
-        className="mt-4 sm:mt-8 grid sm:grid-cols-2 gap-4 sm:gap-8"
+        className="mt-4 grid sm:grid-cols-2 gap-4"
         aria-label="User job statistics"
       >
         <LinkWithProgress
           href="/jobs/saved"
-          className="p-4 rounded border flex items-center justify-between hover:bg-dark dark:hover:bg-light transition-colors"
+          className="px-4 py-2 rounded border flex items-center justify-between hover:bg-dark dark:hover:bg-light transition-colors"
           aria-label="View saved jobs"
         >
           <p className="flex items-center">
             <span className="font-medium">Saved Jobs</span>
             <span
-              className="ml-4 relative inline-block h-6 w-6 rounded border border-gray-400 dark:border-gray-500 text-primary"
+              className="ml-4 relative inline-block h-6 w-6 rounded-full border border-gray-400 dark:border-gray-500 text-primary"
               aria-live="polite"
               aria-label="Saved jobs count"
             >
@@ -145,13 +145,13 @@ export default function ProfileDetails({
 
         <LinkWithProgress
           href="/jobs/applied"
-          className="p-4 rounded border flex items-center justify-between hover:bg-dark dark:hover:bg-light transition-colors"
+          className="px-4 py-2 rounded border flex items-center justify-between hover:bg-dark dark:hover:bg-light transition-colors"
           aria-label="View applied jobs"
         >
           <p className="flex items-center">
             <span className="font-Medium">Applied Jobs</span>
             <span
-              className="ml-4 relative inline-block h-6 w-6 rounded border border-gray-400 dark:border-gray-500 text-primary"
+              className="ml-4 relative inline-block h-6 w-6 rounded-full border border-gray-400 dark:border-gray-500 text-primary"
               aria-live="polite"
               aria-label="Applied jobs count"
             >

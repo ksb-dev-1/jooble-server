@@ -72,7 +72,7 @@ export default function ResumeActions({
       <header className="flex items-center justify-between">
         <h1
           id="resume-actions-title"
-          className="sm:text-lg font-semibold"
+          className="sm:text-lg font-bold"
           role="heading"
           aria-level={1}
         >

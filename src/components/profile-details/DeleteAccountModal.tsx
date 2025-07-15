@@ -64,7 +64,7 @@ export default function DeleteAccountModal({
       <header className="flex items-center justify-between">
         <h1
           id="modal-title"
-          className="text-lg font-semibold"
+          className="text-lg font-bold"
           role="heading"
           aria-level={1}
         >
@@ -84,7 +84,9 @@ export default function DeleteAccountModal({
         aria-describedby="modal-description"
         className="my-4 border p-4 rounded"
       >
-        <p id="modal-description">Do you want to delete your account?</p>
+        <p id="modal-description" className="font-medium">
+          Do you want to delete your account?
+        </p>
 
         <WarningCard
           message="This will delete everything related to your account, including saved jobs, applied jobs, and more."

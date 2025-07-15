@@ -71,7 +71,9 @@ export function FilterTabs({
           >
             <p className="flex items-center">
               {icon}
-              <span className="font-medium hidden sm:block ml-2">{label}</span>
+              <span className="font-semibold hidden sm:block ml-2">
+                {label}
+              </span>
             </p>
             <span
               className="h-5 w-5 sm:h-6 sm:w-6 ml-4 flex items-center justify-center border border-gray-400 dark:border-gray-600 text-primary rounded-md font-medium text-xs sm:text-sm"

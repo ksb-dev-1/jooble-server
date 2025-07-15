@@ -63,7 +63,7 @@ const MultiSelectFilter: React.FC<MultiSelectFilterProps> = ({
                   aria-hidden="true"
                 />
               )}
-              <span className="hover:text-primary dark:hover:text-primary transition-colors text-lg">
+              <span className="hover:text-primary dark:hover:text-primary transition-colors">
                 {capitalize(option)}
               </span>
             </button>
