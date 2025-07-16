@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 // lib
 import { fetchJobDetails } from "@/lib/fetch-job-details";
 
@@ -7,6 +5,7 @@ import { fetchJobDetails } from "@/lib/fetch-job-details";
 import { JobWithSavedStatusAndApplicationStatus } from "@/types/job";
 
 // components
+import NotFoundError from "../errors/NotFoundError";
 import ServerError from "@/components/errors/ServerError";
 import JobCard from "@/components/shared/JobCard";
 import Markdown from "./Markdown";
@@ -22,41 +21,19 @@ interface JobDetailsProps {
 export default async function JobDetails({ params, userId }: JobDetailsProps) {
   let data: JobWithSavedStatusAndApplicationStatus | null = null;
 
-  // Fetch applied jobs
+  // Fetch job details
   try {
     data = await fetchJobDetails(userId, params.job_id);
 
     if (!data) {
       console.error("❌ No data from fetchJobDetails");
-      return <ServerError />;
+      return (
+        <NotFoundError message="The requested job details are unavailable" />
+      );
     }
   } catch (error) {
-    console.error("❌ JobDetails fetch failed:", error);
+    console.error("❌ fetchJobDetails failed:", error);
     return <ServerError />;
-  }
-
-  if (!data) {
-    return (
-      <div
-        role="status"
-        aria-live="polite"
-        aria-labelledby="no-jobs-heading"
-        className="w-full flex flex-col items-center justify-center border border-borderColor rounded px-4 py-16 sm:py-32 gap-8"
-      >
-        <Image
-          src="/empty.svg"
-          alt="No job details found illustration"
-          height={150}
-          width={150}
-          priority
-        />
-        <div className="flex flex-col items-center justify-center gap-2">
-          <h2 id="no-jobs-heading" className="font-semibold text-xl">
-            No job details found!
-          </h2>
-        </div>
-      </div>
-    );
   }
 
   const { id, description, applicationStatus } = data;

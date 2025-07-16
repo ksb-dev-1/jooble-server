@@ -95,7 +95,9 @@ export default function FeatureSection() {
                 {feature.icon}
               </span>
             </div>
-            <h3 className="font-bold text-lg mb-2">{feature.title}</h3>
+            <h1 className="font-bold text-lg sm:text-xl mb-2">
+              {feature.title}
+            </h1>
             <p className="text-text_secondary">{feature.desc}</p>
           </motion.article>
         ))}

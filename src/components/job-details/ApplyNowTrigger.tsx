@@ -1,13 +1,9 @@
 "use client";
 
 import { useState } from "react";
-//import dynamic from "next/dynamic";
 
 // components
 import ApplyForJobModal from "./ApplyForJobModal";
-// const ApplyForJobModal = dynamic(() => import("./ApplyForJobModal"), {
-//   ssr: false,
-// });
 
 // 3rd party
 import { ApplicationStatus } from "@prisma/client";
@@ -46,7 +42,7 @@ export default function ApplyNowTrigger({
         onClick={() => setIsOpen(true)}
         className="mt-4 w-full sm:w-fit px-4 py-2 rounded bg-primary text-light dark:text-dark hover:opacity-80 dark:hover:opacity-90 transition-opacity font-medium"
       >
-        Click here to apply for a job
+        Apply Now
       </button>
 
       <ApplyForJobModal

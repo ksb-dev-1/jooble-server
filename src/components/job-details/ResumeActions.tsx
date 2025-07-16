@@ -5,11 +5,13 @@ import { Dispatch, SetStateAction } from "react";
 // actions
 import { applyForJobServerAction } from "@/actions/apply-for-job-server-action";
 
+// components
+import ApplyForJobButton from "./ApplyForJobButton";
+
 // 3rd party
 import toast from "react-hot-toast";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { MdOutlineClose, MdOutlineSend } from "react-icons/md";
+import { MdOutlineClose } from "react-icons/md";
 
 interface ResumeActionsProps {
   userId: string | undefined;
@@ -71,7 +73,7 @@ export default function ResumeActions({
       <header className="flex items-center justify-between">
         <h1
           id="resume-actions-title"
-          className="text-lg font-bold"
+          className="text-lg sm:text-xl font-bold"
           role="heading"
           aria-level={1}
         >
@@ -88,14 +90,10 @@ export default function ResumeActions({
         </button>
       </header>
 
-      {/* <p className="text-sm mt-2">
-        Review resume, upload a new one if needed, and apply for this job.
-      </p> */}
-
       {/* Resume Preview Link */}
       <section className="my-4 border rounded p-4">
         {resumeUrl && (
-          <div className="font-medium flex items-start mb-4">
+          <div className="flex items-start mb-4">
             <p className="mr-2">-</p>
             <p>
               <span>
@@ -116,7 +114,7 @@ export default function ResumeActions({
         )}
 
         {/* Upload New Resume Button */}
-        <div className="font-medium flex items-start">
+        <div className="flex items-start">
           <p className="mr-2">-</p>
           <p>
             <span>
@@ -135,24 +133,12 @@ export default function ResumeActions({
       </section>
 
       {/* Apply Button */}
-      <button
-        aria-busy={applyJobMutation.isPending}
-        disabled={applyJobMutation.isPending}
+      <ApplyForJobButton
         onClick={handleApply}
-        type="button"
-        className={`relative w-full h-[41.6px] py-2 px-4 flex items-center justify-center rounded font-medium text-white bg-primary dark:text-dark hover:opacity-90 transition-opacity ${
-          applyJobMutation.isPending ? "opacity-60 pointer-events-none" : ""
-        }`}
-      >
-        Apply Now
-        <MdOutlineSend className="ml-2" aria-hidden="true" />
-        {applyJobMutation.isPending && (
-          <AiOutlineLoading3Quarters
-            className="absolute right-4 animate-spin"
-            aria-hidden="true"
-          />
-        )}
-      </button>
+        disabled={applyJobMutation.isPending}
+        isPending={applyJobMutation.isPending}
+        className="px-4 h-[41.6px]"
+      />
     </section>
   );
 }

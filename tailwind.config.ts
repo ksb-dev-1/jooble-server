@@ -13,18 +13,18 @@ const config: Config = {
     extend: {
       colors: {
         ...colors,
-        primary: "var(--primary-color)",
-        light: "var(--light-color)",
-        dark: "var(--dark-color)",
-        hero: "var(--hero-bg-color)",
-        modal: "var(--modal-bg-color)",
+        primary: "var(--primary)",
+        light: "var(--light)",
+        dark: "var(--dark)",
+        hero: "var(--hero-bg)",
+        modal: "var(--modal-bg)",
         skeleton: "var(--skeleton)",
         shadow: "var(--card-shadow)",
-        text_primary: "var(--text-primary-color)",
-        text_secondary: "var(--text-secondary-color)",
+        text_primary: "var(--text-primary)",
+        text_secondary: "var(--text-secondary)",
       },
       borderColor: {
-        DEFAULT: "var(--border-color)",
+        DEFAULT: "var(--border)",
       },
       borderRadius: {
         DEFAULT: "8px",

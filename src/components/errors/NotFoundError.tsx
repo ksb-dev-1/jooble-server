@@ -1,16 +1,14 @@
-"use client";
-
 import { IoCloseSharp } from "react-icons/io5";
 
-interface ServerErrorProps {
+interface NotFoundErrorProps {
   message?: string;
   title?: string;
 }
 
-export default function ServerError({
-  title = "500 - Server Error",
-  message = "Something went wrong on our end. Please try again later.",
-}: ServerErrorProps) {
+export default function NotFoundError({
+  title = "404 - Not Found",
+  message = "The requested content was not found.",
+}: NotFoundErrorProps) {
   return (
     <div
       role="status"
@@ -47,14 +45,6 @@ export default function ServerError({
           Please check the URL or try again later.
         </p>
       </div>
-
-      {/* Optional Action Button */}
-      <button
-        onClick={() => window.location.reload()}
-        className="bg-primary text-light dark:text-dark px-4 py-2 rounded hover:opacity-90 transition-opacity font-medium"
-      >
-        Try Again
-      </button>
     </div>
   );
 }

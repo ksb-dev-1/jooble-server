@@ -1,7 +1,7 @@
 // components
 import Heading from "@/components/home/Heading";
 import FeatureSection from "@/components/home/FeatureSection";
-import FAQs from "@/components/home/FAQs";
+import FAQ from "@/components/home/FAQ";
 import FloatingIcons from "@/components/home/FloatingIcons";
 
 export default function HomePage() {
@@ -15,7 +15,7 @@ export default function HomePage() {
         <FeatureSection />
       </div>
       <div className="py-16">
-        <FAQs />
+        <FAQ />
       </div>
     </div>
   );

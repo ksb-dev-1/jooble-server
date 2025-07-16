@@ -20,7 +20,7 @@ interface ModalProps {
 
 const Modal = forwardRef<HTMLDivElement, ModalProps>(
   (
-    { children, isOpen, setIsOpen, maxWidth = "max-w-[500px]", labelledById },
+    { children, isOpen, setIsOpen, maxWidth = "max-w-xl", labelledById },
     ref
   ) => {
     useHandleOutsideClick(ref as React.RefObject<HTMLDivElement>, setIsOpen);

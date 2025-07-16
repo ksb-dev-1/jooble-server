@@ -33,13 +33,9 @@ export default function Filters({ isOpen, setIsOpen }: FiltersProps) {
   const currentJobMode = searchParams.get("jobMode") || "";
   const currentLocation = searchParams.get("location") || "";
 
-  // const jobTypeCount = currentJobType ? currentJobType.split(",").length : 0;
-  // const jobModeCount = currentJobMode ? currentJobMode.split(",").length : 0;
-  // const jobLocationCount = currentLocation
-  //   ? currentLocation.split(",").length
-  //   : 0;
-  const totalFilterCount = jobType.length + jobMode.length + location.length;
+  const isFilterSelected = jobType.length || jobMode.length || location.length;
 
+  // Reset to default values when open
   useEffect(() => {
     if (isOpen) {
       setJobType(currentJobType ? currentJobType.split(",") : []);
@@ -54,6 +50,7 @@ export default function Filters({ isOpen, setIsOpen }: FiltersProps) {
     currentJobMode !== jobMode.join(",") ||
     currentLocation !== location.join(",");
 
+  // Build href
   const buildHref = () => {
     const params = new URLSearchParams();
     if (currentSearch) params.set("search", currentSearch);
@@ -63,24 +60,16 @@ export default function Filters({ isOpen, setIsOpen }: FiltersProps) {
     return `${pathname}?${params.toString()}`;
   };
 
-  const handleApply = () => {
+  // handle apply filters
+  const handleApplyFilters = () => {
     setIsOpen(false);
     const href = buildHref();
     NProgress.start();
     router.push(href);
   };
 
+  // Handle clear all
   const handleClearAll = () => {
-    // const params = new URLSearchParams(searchParams.toString());
-    // // Keep search, remove jobType, jobMode, location
-    // params.delete("jobType");
-    // params.delete("jobMode");
-    // params.delete("location");
-
-    // setIsOpen(false);
-    // NProgress.start();
-    // router.push(`${pathname}?${params.toString()}`);
-
     setJobType([]);
     setJobMode([]);
     setLocation([]);
@@ -93,20 +82,20 @@ export default function Filters({ isOpen, setIsOpen }: FiltersProps) {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <h1
-              className="text-lg font-bold"
+              className="text-lg sm:text-xl font-bold"
               id="filters-title"
               role="heading"
               aria-level={1}
             >
               Filters
             </h1>
-            {totalFilterCount > 0 && (
+            {isFilterSelected > 0 && (
               <div className="flex items-center">
                 <p className="border-l-2 h-5 mx-4"></p>
                 <button
                   type="button"
                   onClick={handleClearAll}
-                  className="text-red-600 dark:text-red-400 font-medium"
+                  className="text-red-600 dark:text-red-400"
                   aria-label="Clear all applied filters"
                 >
                   Clear all
@@ -135,11 +124,6 @@ export default function Filters({ isOpen, setIsOpen }: FiltersProps) {
         <FilterTabs
           activeTab={activeTab}
           setActiveTab={setActiveTab}
-          // counts={{
-          //   jobType: currentJobType ? currentJobType.split(",").length : 0,
-          //   jobMode: currentJobMode ? currentJobMode.split(",").length : 0,
-          //   location: currentLocation ? currentLocation.split(",").length : 0,
-          // }}
           counts={{
             jobType: jobType.length,
             jobMode: jobMode.length,
@@ -160,8 +144,9 @@ export default function Filters({ isOpen, setIsOpen }: FiltersProps) {
 
       {/* Apply Button */}
       <ApplyFiltersButton
-        isFilterChanged={isFilterChanged}
-        onApply={handleApply}
+        disabled={!isFilterChanged}
+        onClick={handleApplyFilters}
+        className="px-4 h-[41.6px]"
       />
     </>
   );

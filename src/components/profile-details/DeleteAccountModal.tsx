@@ -64,7 +64,7 @@ export default function DeleteAccountModal({
       <header className="flex items-center justify-between">
         <h1
           id="modal-title"
-          className="text-lg font-bold"
+          className="text-lg sm:text-xl font-bold"
           role="heading"
           aria-level={1}
         >
@@ -99,8 +99,10 @@ export default function DeleteAccountModal({
           type="button"
           onClick={handleDelete}
           disabled={isPending}
-          className={`w-full flex items-center justify-center px-4 h-[41.6px] rounded font-medium text-white bg-red-600 hover:bg-red-500 transition-colors ${
-            isPending ? "pointer-events-none opacity-70" : ""
+          className={`w-full flex items-center justify-center px-4 h-[41.6px] rounded font-medium text-white bg-red-600 ${
+            isPending
+              ? "pointer-events-none opacity-70"
+              : "hover:bg-red-500 transition-colors"
           }`}
         >
           <MdOutlineDelete className="w-5 h-5 mr-1" aria-hidden="true" />

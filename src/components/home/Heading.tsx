@@ -27,7 +27,7 @@ export default function Heading() {
     >
       <h1
         id="hero-heading"
-        className="font-extrabold text-3xl sm:text-4xl md:text-5xl text-center text-primary"
+        className="font-extrabold text-3xl sm:text-4xl md:text-5xl text-center text-primary capitalize"
       >
         Unlock your career potential
       </h1>
@@ -39,7 +39,8 @@ export default function Heading() {
       <div className="mt-8 md:mt-12">
         <LinkWithProgress
           href="/jobs"
-          className="font-medium sm:text-xl bg-primary text-light dark:text-dark rounded px-8 py-4 hover:tracking-widest transition-all"
+          className="btn-primary btn-primary-hover sm:text-xl px-8 py-4"
+          // className="font-medium sm:text-xl bg-primary text-light dark:text-dark rounded px-8 py-4 hover:tracking-widest transition-all"
           aria-label="Start exploring job opportunities"
         >
           Start Exploring

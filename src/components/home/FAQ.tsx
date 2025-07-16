@@ -67,7 +67,7 @@ function FAQItem({ faq, isOpen, onToggle, index }: FAQItemProps) {
           className="flex w-full items-center justify-between hover:underline"
           onClick={onToggle}
         >
-          <h3 className="text-left font-semibold">{faq.question}</h3>
+          <h3 className="text-left font-semibold sm:text-lg">{faq.question}</h3>
           <motion.span
             className="ml-6 flex-shrink-0"
             animate={{ rotate: isOpen ? 180 : 0 }}
@@ -100,7 +100,7 @@ function FAQItem({ faq, isOpen, onToggle, index }: FAQItemProps) {
     </motion.div>
   );
 }
-export default function FAQs() {
+export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
@@ -130,7 +130,7 @@ export default function FAQs() {
           }}
           style={{ display: "inline-block" }}
         >
-          FAQ&apos;s
+          Frequently asked questions
         </motion.span>
       </motion.h2>
 

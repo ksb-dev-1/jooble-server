@@ -7,7 +7,7 @@ export default function ResumeMissingPrompt({
 }) {
   return (
     <div className="text-center space-y-4">
-      <h2 className="text-lg font-bold text-red-600 dark:text-red-400">
+      <h2 className="text-lg sm:text-xl font-bold text-red-600 dark:text-red-400">
         Resume Required!
       </h2>
       <p className="font-medium">

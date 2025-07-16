@@ -6,7 +6,7 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import Modal from "@/components/shared/Modal";
 import ResumeActions from "./ResumeActions";
 import ResumeMissingPrompt from "./ResumeMissingPrompt";
-import UploadResume from "./UploadResume";
+import UploadResume from "./upload-resume/UploadResume";
 
 // actions
 import { checkIsResumeUploadedServerAction } from "@/actions/check-is-resume-uploaded-server-action";

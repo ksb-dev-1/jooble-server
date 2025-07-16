@@ -6,30 +6,30 @@
 
 /* Light theme (default) */
 :root {
-  --primary-color: #0a66c2;
-  --light-color: #ffffff;
-  --dark-color: #f1f5f9;
-  --text-primary-color: #000000;
-  --text-secondary-color: #62748e;
-  --border-color: #eae9e8;
-  --hero-bg-color: rgba(255, 255, 255, 0.9);
-  --modal-bg-color: rgba(0, 0, 0, 0.4);
+  --primary: #0a66c2;
+  --light: #ffffff;
+  --dark: #f1f5f9;
+  --text-primary: #2d2d2d;
+  --text-secondary: #62748e;
+  --border: #eae9e8;
+  --hero-bg: rgba(255, 255, 255, 0.9);
+  --modal-bg: rgba(0, 0, 0, 0.4);
   --card-shadow: 0 0 2px #0a66c2;
   --skeleton: linear-gradient(90deg, #e5e7eb 25%, #d1d5db 50%, #e5e7eb 75%);
-  --link-progress-color: #ff4757;
+  --link-progress: #ff4757;
 }
 
 /* Dark Theme Override */
 [data-theme="dark"] {
   /* Base Layout Colors */
-  --primary-color: #50c878;
-  --light-color: #0f172b;
-  --dark-color: #020618;
-  --text-primary-color: #d4d4d4;
-  --text-secondary-color: #90a1b9;
-  --border-color: #1d283c;
-  --hero-bg-color: rgba(2, 6, 24, 0.9);
-  --modal-bg-color: rgba(8, 14, 34, 0.4);
+  --primary: #50c878;
+  --light: #0f172b;
+  --dark: #020618;
+  --text-primary: #d4d4d4;
+  --text-secondary: #90a1b9;
+  --border: #1d283c;
+  --hero-bg: rgba(2, 6, 24, 0.9);
+  --modal-bg: rgba(8, 14, 34, 0.4);
   --card-shadow: 0 0 2px #50c878;
   --skeleton: linear-gradient(
     90deg,
@@ -37,7 +37,19 @@
     #ffffff14 50%,
     #ffffff0d 75%
   );
-  --link-progress-color: #ff4757;
+  --link-progress: #ff4757;
+}
+
+.btn-primary {
+  @apply relative bg-primary text-light dark:text-dark rounded flex items-center justify-center transition-opacity w-full font-medium;
+}
+
+.btn-primary-hover {
+  @apply hover:opacity-80 dark:hover:opacity-90;
+}
+
+.btn-primary-disabled {
+  @apply opacity-60 pointer-events-none;
 }
 
 * {
@@ -77,14 +89,14 @@ body {
 }
 
 .btn {
-  background: var(--primary-color);
-  color: var(--btn-text-color);
+  background: var(--primary);
+  color: var(--btn-text);
   padding: 0.5rem 1rem;
   border-radius: var(--border-radius);
 }
 
 .btn-hover:hover {
-  background: var(--primary-hover-color);
+  background: var(--primary-hover);
   transition: 0.3s background ease;
 }
 
@@ -94,7 +106,7 @@ body {
 }
 
 .btn-disabled:disabled:hover {
-  background: var(--primary-hover-color);
+  background: var(--primary-hover);
 }
 
 /* styles/nprogress.css */
@@ -103,7 +115,7 @@ body {
 }
 
 #nprogress .bar {
-  background: var(--link-progress-color);
+  background: var(--link-progress);
   position: fixed;
   z-index: 9999;
   top: 0;

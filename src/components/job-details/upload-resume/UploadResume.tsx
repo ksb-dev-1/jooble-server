@@ -1,22 +1,21 @@
 "use client";
 
 import { useState } from "react";
-
-// actions
-import { uploadResumeServerAction } from "@/actions/upload-resume-server-action";
+import toast from "react-hot-toast";
+import { useMutation } from "@tanstack/react-query";
 
 // types
 import { UploadResumeResponse } from "@/types/job";
 
+// actions
+import { uploadResumeServerAction } from "@/actions/upload-resume-server-action";
+
 // components
 import WarningCard from "@/components/shared/WarningCard";
-
-// 3rd party
-import { useMutation } from "@tanstack/react-query";
-import toast from "react-hot-toast";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { MdArrowBack } from "react-icons/md";
-import { SlCloudUpload } from "react-icons/sl";
+import BackButton from "./BackButton";
+import ResumeDropzone from "./ResumeDropzone";
+import UploadResumeButton from "./UploadResumeButton";
+import ErrorMessage from "./ErrorMessage";
 
 interface UploadResumeProps {
   isResumeUploaded: boolean;
@@ -34,7 +33,7 @@ export default function UploadResume({
   setResumeUrl,
 }: UploadResumeProps) {
   const [file, setFile] = useState<File | null>(null);
-  const [fileName, setFileName] = useState<string>("");
+  const [fileName, setFileName] = useState("");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const { mutate, isPending } = useMutation({
@@ -68,14 +67,14 @@ export default function UploadResume({
     },
   });
 
+  // Handle file change
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
-      // Validate file type
       const validTypes = [
-        "application/pdf",
-        "text/plain",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "application/pdf", // .pdf
+        "text/plain", // .txt
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .docx
       ];
       if (!validTypes.includes(selectedFile.type)) {
         setErrorMessage(
@@ -84,7 +83,6 @@ export default function UploadResume({
         return;
       }
 
-      // Validate file size (e.g., 5MB max)
       if (selectedFile.size > 5 * 1024 * 1024) {
         setErrorMessage("File size too large. Maximum 5MB allowed.");
         return;
@@ -96,6 +94,7 @@ export default function UploadResume({
     }
   };
 
+  // Handle file upload
   const handleUpload = () => {
     if (!file) {
       setErrorMessage("Please select a file to upload.");
@@ -118,42 +117,14 @@ export default function UploadResume({
 
   return (
     <div>
-      <button
-        onClick={() => setShowUploadResume(false)}
-        className="flex items-center text-primary font-medium"
-        aria-label="Go back to previous screen"
-      >
-        <MdArrowBack className="mr-1" aria-hidden="true" />
-        Back
-      </button>
+      <BackButton onClick={() => setShowUploadResume(false)} />
 
       <div className="mt-4 border rounded p-4">
-        <div className="relative border-2 border-dashed border-primary rounded h-40 flex items-center justify-center">
-          <input
-            id="resume-upload"
-            type="file"
-            accept=".pdf,.txt,.docx"
-            onChange={handleFileChange}
-            disabled={isPending}
-            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-            aria-describedby="file-upload-instructions"
-          />
-          <div className="flex flex-col items-center p-4 text-center">
-            <SlCloudUpload
-              className="text-3xl text-primary"
-              aria-hidden="true"
-            />
-            <p className="font-medium mt-2">
-              {fileName || "Drag and drop or click to select a file"}
-            </p>
-            <p
-              id="file-upload-instructions"
-              className="text-sm text-gray-500 mt-1"
-            >
-              Supported formats: PDF, TXT, DOCX (Max 5MB)
-            </p>
-          </div>
-        </div>
+        <ResumeDropzone
+          onChange={handleFileChange}
+          isPending={isPending}
+          fileName={fileName}
+        />
 
         {file && isResumeUploaded && (
           <WarningCard
@@ -162,29 +133,15 @@ export default function UploadResume({
           />
         )}
       </div>
-      {file && (
-        <button
-          onClick={handleUpload}
-          disabled={isPending}
-          aria-busy={isPending}
-          className={`relative bg-primary text-light dark:text-dark rounded flex items-center justify-center transition-opacity ${
-            file && !isPending
-              ? "hover:opacity-80 dark:hover:opacity-90"
-              : "opacity-60 pointer-events-none"
-          } mt-4 w-full px-4 h-[41.6px] font-medium`}
-        >
-          Upload
-          {isPending && (
-            <AiOutlineLoading3Quarters className="absolute right-4 animate-spin" />
-          )}
-        </button>
-      )}
 
-      {errorMessage && (
-        <p role="alert" className="text-red-600 dark:text-red-400 text-sm mt-2">
-          {errorMessage}
-        </p>
-      )}
+      <UploadResumeButton
+        onClick={handleUpload}
+        disabled={!file || isPending}
+        isPending={isPending}
+        className="px-4 h-[41.6px] mt-4"
+      />
+
+      <ErrorMessage message={errorMessage} />
     </div>
   );
 }

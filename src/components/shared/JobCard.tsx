@@ -60,14 +60,14 @@ export default function JobCard({
         className={`h-full block bg-light dark:bg-dark border rounded p-4 md:p-6 hover:shadow-card transition-shadow ${pointerEventsClass}`}
       >
         <header>
-          <h3 className="font-bold text-lg">{role}</h3>
+          <h3 className="font-bold text-xl">{role}</h3>
           <p className="mt-1">
             <span className="text-primary font-bold">{companyName}</span>
             {applicationStatus && (
               <>
                 <span className="inline-block mx-2">-</span>
                 <span
-                  className={`${statusColors[applicationStatus]} font-semibold`}
+                  className={`${statusColors[applicationStatus]} font-bold`}
                 >
                   {applicationStatus.charAt(0) +
                     applicationStatus.substring(1).toLowerCase()}
@@ -77,7 +77,7 @@ export default function JobCard({
           </p>
         </header>
 
-        <section className="my-4 p-4 rounded border" aria-label="Job details">
+        <section className="mt-4 p-4 rounded border" aria-label="Job details">
           <dl className="grid grid-cols-2 lg:flex items-center flex-wrap gap-4 lg:gap-x-6 lg:gap-y-4">
             <div className="flex items-center">
               <MdOutlineWorkOutline className="h-4 w-4" aria-hidden="true" />
@@ -126,8 +126,8 @@ export default function JobCard({
           </div>
         </section>
 
-        <footer className="flex items-center justify-between w-full text-text_secondary">
-          <p className="text-sm">Openings: {openings}</p>
+        <footer className="mt-4 flex items-center justify-between w-full text-text_secondary">
+          <p>Openings: {openings}</p>
           <div className="w-fit flex items-center text-xs">
             <BsClock aria-hidden="true" />
             <span className="ml-1">{relativeDate(createdAt)}</span>
